@@ -26,36 +26,39 @@ const Dashboard = () => {
     }
   };
 
+  // Create array of items and filter out falsy values
+  const navigationItems = [
+    <NavigationBar.Item
+      path="/home"
+      key="overview"
+      onClick={() => handleMenuClick("overview")}
+      icon={<FolderOpenOutlined size={20} />}
+      text="Overview"
+    />,
+    isAdminOrManager && (
+      <NavigationBar.Item
+        path="/employees"
+        onClick={() => handleMenuClick("employees")}
+        key="employees"
+        icon={<UserOutlined />}
+        text="Employees"
+      />
+    ),
+    onlyEmployee && (
+      <NavigationBar.Item
+        path={`/employees/${user?.id}`}
+        onClick={() => handleMenuClick("profile")}
+        key="profile"
+        icon={<UserOutlined />}
+        text="Profile"
+      />
+    ),
+    <NavigationBar.LogoutButton key="logout" onClick={logout} />,
+  ].filter(Boolean);
+
   return (
     <NavigationBar onMenuClick={handleMenuClick}>
-      {[
-        <NavigationBar.Item
-          path="/home"
-          key="overview"
-          onClick={() => handleMenuClick("overview")}
-          icon={<FolderOpenOutlined size={20} />}
-          text="Overview"
-        />,
-        isAdminOrManager && (
-          <NavigationBar.Item
-            path="/employees"
-            onClick={() => handleMenuClick("employees")}
-            key="employees"
-            icon={<UserOutlined />}
-            text="Employees"
-          />
-        ),
-        onlyEmployee && (
-          <NavigationBar.Item
-            path={`/employees/${user?.id}`}
-            onClick={() => handleMenuClick("profile")}
-            key="profile"
-            icon={<UserOutlined />}
-            text="Profile"
-          />
-        ),
-        <NavigationBar.LogoutButton isOpen={false} onClick={logout} />,
-      ]}
+      {navigationItems}
     </NavigationBar>
   );
 };

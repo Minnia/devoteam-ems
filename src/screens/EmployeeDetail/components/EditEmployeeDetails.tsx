@@ -125,21 +125,21 @@ const EditEmployeeDetails: FC<Props> = ({
           updateEmployeeField(["contact", "telephone"], e.target.value)
         }
       />
-      <Label bold>Department</Label>
+      <Label $bold>Department</Label>
       <Dropdown
         employee={employee!}
         handleDepartmentChange={handleDepartmentChange}
       />
-      <Label bold>Role</Label>
-      <FlexContainer center>
+      <Label $bold>Role</Label>
+      <FlexContainer $center>
         {renderRoleCheckboxes(roles, ["department"])}
       </FlexContainer>
-      <Label bold>Food Preferences</Label>
-      <FlexContainer center>
+      <Label $bold>Food Preferences</Label>
+      <FlexContainer $center>
         {renderAllergyCheckboxes(allergies, ["food"])}
       </FlexContainer>
       <Spacer height={20} />
-      <FlexContainer center>
+      <FlexContainer $center>
         <Button
           onClick={handleSaveClick}
           type="primary"

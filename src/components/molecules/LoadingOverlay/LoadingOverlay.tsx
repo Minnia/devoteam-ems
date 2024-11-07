@@ -4,7 +4,7 @@ import * as S from "./styled";
 
 const LoadingOverlay = () => (
   <S.LoadingOverlayWrapper>
-    <FlexContainer center fullScreen>
+    <FlexContainer>
       <Spin size="large" />
     </FlexContainer>
   </S.LoadingOverlayWrapper>

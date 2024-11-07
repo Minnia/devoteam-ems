@@ -14,13 +14,11 @@ const Login = () => {
   const { login, user } = useAuth();
   const navigate = useNavigate();
 
-  const handleLoginClick = async (e: any) => {
-    if (e.key === "Enter" || e.type === "click") {
-      const isLoginSuccessful = login(email, password);
+  const handleLoginClick = () => {
+    const isLoginSuccessful = login(email, password);
 
-      if (!isLoginSuccessful) {
-        message.error("Invalid email or password. Please try again.");
-      }
+    if (!isLoginSuccessful) {
+      message.error("Invalid email or password. Please try again.");
     }
   };
 
@@ -44,6 +42,7 @@ const Login = () => {
         <S.InputField.Password
           placeholder="Password"
           value={password}
+          onKeyDown={(e) => e.key === "Enter" && handleLoginClick()}
           onChange={(e) => setPassword(e.target.value)}
         />
         <Spacer height={tokens.spacing.BASELINE * 2} />
@@ -51,7 +50,7 @@ const Login = () => {
           disabled={!email || !password}
           type="primary"
           onClick={handleLoginClick}
-          onKeyDown={handleLoginClick}
+          tabIndex={0}
         >
           Login
         </S.LoginButton>

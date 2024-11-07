@@ -22,8 +22,8 @@ const ChatBot: React.FC = () => {
 
   return (
     <>
-      <ChatBotPopupContainer isOpen={isOpen}>
-        <ChatHeader isOpen={isOpen} onClick={toggleChat}>
+      <ChatBotPopupContainer $isOpen={isOpen}>
+        <ChatHeader $isOpen={isOpen} onClick={toggleChat}>
           {!isOpen ? <Logo /> : <span>X</span>}
         </ChatHeader>
 

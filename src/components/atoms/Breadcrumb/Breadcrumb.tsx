@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Typography } from "../../core/theme/typography";
 import * as S from "./styled";
 
 const Breadcrumb = () => {
@@ -9,7 +8,7 @@ const Breadcrumb = () => {
 
   return (
     <S.BreadcrumbContainer>
-      <Typography.BodyMedium style={{ display: "inline", cursor: "pointer" }}>
+      <S.BreadcrumbText>
         {pathnames.map((value, index) => {
           const to = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
@@ -17,24 +16,16 @@ const Breadcrumb = () => {
           return (
             <span key={to}>
               {" / "}
-              {isLast ? (
-                <Typography.BodyMedium
-                  style={{ display: "inline", cursor: "pointer" }}
-                >
-                  {value}
-                </Typography.BodyMedium>
-              ) : (
-                <Typography.BodyMedium
-                  style={{ display: "inline", cursor: "pointer" }}
-                  onClick={() => navigate(to)}
-                >
-                  {value}
-                </Typography.BodyMedium>
-              )}
+              <S.BreadcrumbLink
+                $isLast={isLast}
+                onClick={() => !isLast && navigate(to)}
+              >
+                {value}
+              </S.BreadcrumbLink>
             </span>
           );
         })}
-      </Typography.BodyMedium>
+      </S.BreadcrumbText>
     </S.BreadcrumbContainer>
   );
 };

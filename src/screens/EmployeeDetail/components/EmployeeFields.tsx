@@ -20,37 +20,37 @@ const EmployeeFields: FC<Props> = ({ employee }) => {
     <S.CenteredContent>
       <S.Row>
         <S.FieldContainer>
-          <Label bold>Name</Label>
+          <Label $bold>Name</Label>
           <Label>{employee.name}</Label>
         </S.FieldContainer>
         <S.FieldContainer>
-          <Label bold>Email</Label>
+          <Label $bold>Email</Label>
           <Label>{employee.contact.email}</Label>
         </S.FieldContainer>
         <S.FieldContainer>
-          <Label bold>Telephone</Label>
+          <Label $bold>Telephone</Label>
           <Label>{employee.contact.telephone}</Label>
         </S.FieldContainer>
       </S.Row>
       <Spacer height={20} />
       <S.Row>
         <S.FieldContainer>
-          <Label bold>Department</Label>
+          <Label $bold>Department</Label>
           <Label>{employee.department.name}</Label>
         </S.FieldContainer>
         <S.FieldContainer>
-          <Label bold>Role</Label>
+          <Label $bold>Role</Label>
           <Label>{roles}</Label>
         </S.FieldContainer>
       </S.Row>
       <Spacer height={20} />
       <S.Row>
         <S.FieldContainer>
-          <Label bold>Food Preferences</Label>
+          <Label $bold>Food Preferences</Label>
           <Label>{employee.food.preference}</Label>
         </S.FieldContainer>
         <S.FieldContainer>
-          <Label bold>Food Restrictions</Label>
+          <Label $bold>Food Restrictions</Label>
           <Label>{employee.food.allergies.join(", ")}</Label>
         </S.FieldContainer>
       </S.Row>

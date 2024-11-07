@@ -16,7 +16,7 @@ export const FlexContainer = styled.div<{
   spacing?: number;
   paddingX?: number;
   paddingY?: number;
-  center?: boolean;
+  $center?: boolean;
   direction?: "row" | "column";
   fullScreen?: boolean;
 }>`
@@ -28,8 +28,8 @@ export const FlexContainer = styled.div<{
   padding-left: ${({ paddingX }) => paddingX}px;
   padding-right: ${({ paddingX }) => paddingX}px;
 
-  ${({ center }) =>
-    center &&
+  ${({ $center }) =>
+    $center &&
     `
       justify-content: center;
       align-items: center;
@@ -85,7 +85,7 @@ export const CenteredContainer = styled.div`
   justify-content: center;
 `;
 
-export const CardContainer = styled.div<{ center?: boolean }>`
+export const CardContainer = styled.div<{ $center?: boolean }>`
   border-radius: ${tokens.borderRadius.BASELINE}px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   padding: ${tokens.padding.BASELINE * 2}px;
@@ -97,8 +97,8 @@ export const CardContainer = styled.div<{ center?: boolean }>`
   text-align: center;
   transition: transform 0.2s ease;
 
-  ${({ center }) =>
-    center &&
+  ${({ $center }) =>
+    $center &&
     `
       position: absolute;
       top: 50%;
@@ -109,8 +109,8 @@ export const CardContainer = styled.div<{ center?: boolean }>`
     `}
 `;
 
-export const Label = styled(Typography)<{ bold?: boolean }>`
-  font-weight: ${({ bold }) => (bold ? "bold" : "normal")};
+export const Label = styled(Typography)<{ $bold?: boolean }>`
+  font-weight: ${({ $bold }) => ($bold ? "bold" : "normal")};
   color: ${themes.light.textDark};
   font-size: ${tokens.text.fontSize.MEDIUM}px;
 `;

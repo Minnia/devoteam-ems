@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { themes } from "../../core/theme/theme";
 import tokens from "../../core/theme/tokens";
 
-export const NavContainer = styled.div<{ isMenuOpen: boolean }>`
+export const NavContainer = styled.div<{ $isMenuOpen: boolean }>`
   height: 100%;
   width: 150px;
   position: fixed;
@@ -14,7 +14,7 @@ export const NavContainer = styled.div<{ isMenuOpen: boolean }>`
   z-index: 1000;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    width: ${({ isMenuOpen }) => (isMenuOpen ? "150px" : "60px")};
+    width: ${({ $isMenuOpen }) => ($isMenuOpen ? "150px" : "60px")};
   }
 `;
 
@@ -51,8 +51,8 @@ export const MenuContainer = styled.div<{ isOpen: boolean }>`
 `;
 
 export const NavItem = styled.div<{
-  isActive?: boolean;
-  isOpen?: boolean;
+  $isActive?: boolean;
+  $isOpen?: boolean;
   spacing?: number;
 }>`
   padding: ${tokens.padding.BASELINE}px;
@@ -62,8 +62,8 @@ export const NavItem = styled.div<{
   width: 100%;
   cursor: pointer;
   transition: background-color 0.2s, padding 0.2s;
-  background-color: ${({ isActive }) =>
-    isActive ? themes.light.activeNavItem : themes.light.transparent};
+  background-color: ${({ $isActive }) =>
+    $isActive ? themes.light.activeNavItem : themes.light.transparent};
 
   svg {
     margin-right: ${({ spacing }) =>
@@ -81,7 +81,7 @@ export const NavItem = styled.div<{
       display: block;
     }
     span.navItemText {
-      display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+      display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
     }
   }
 `;

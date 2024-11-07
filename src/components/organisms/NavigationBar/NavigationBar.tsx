@@ -19,11 +19,11 @@ interface NavItemProps {
   onClick: () => void;
   isOpen?: boolean;
   onMenuClick?: (key: string) => void;
+  isActive?: boolean;
 }
 
 interface LogoutButtonProps {
   onClick: () => void;
-  isOpen?: boolean;
 }
 
 const NavigationBar: React.FC<NavigationBarProps> & {
@@ -37,16 +37,21 @@ const NavigationBar: React.FC<NavigationBarProps> & {
   };
 
   return (
-    <S.NavContainer isMenuOpen={isMenuOpen}>
+    <S.NavContainer $isMenuOpen={isMenuOpen}>
       <S.NavHeader>
         <S.HamburgerIcon onClick={toggleMenu}>
-          <MenuOutlined style={{ color: themes.light.text, fontSize: 24 }} />
+          <MenuOutlined
+            style={{
+              color: themes.light.text,
+              fontSize: tokens.text.fontSize.LARGE,
+            }}
+          />
         </S.HamburgerIcon>
       </S.NavHeader>
       {React.Children.map(children, (child) =>
         React.isValidElement<NavItemProps>(child)
           ? React.cloneElement(child, {
-              isOpen: isMenuOpen,
+              $isOpen: isMenuOpen,
               onMenuClick,
             } as Partial<NavItemProps>)
           : child
@@ -62,9 +67,10 @@ const Item: React.FC<NavItemProps> = ({
   onClick,
   isOpen = false,
   onMenuClick,
+  isActive = false,
 }) => {
   const location = useLocation();
-  const isActive = location.pathname === path;
+  const activeClass = location.pathname === path || isActive ? "active" : "";
 
   const handleClick = () => {
     onClick();
@@ -75,15 +81,20 @@ const Item: React.FC<NavItemProps> = ({
 
   return (
     <FlexContainer>
-      <S.NavItem isOpen={isOpen} isActive={isActive} onClick={handleClick}>
-        <div>{icon}</div>
-        {isOpen && <span className="navItemText">{text}</span>}
+      <S.NavItem
+        className={activeClass}
+        $isOpen={isOpen}
+        $isActive={isActive}
+        onClick={handleClick}
+      >
+        {icon}
+        <span className="navItemText">{text}</span>
       </S.NavItem>
     </FlexContainer>
   );
 };
 
-const LogoutButton: React.FC<LogoutButtonProps> = ({ isOpen = false }) => {
+const LogoutButton: React.FC<LogoutButtonProps> = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
@@ -93,11 +104,9 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ isOpen = false }) => {
   };
 
   return (
-    <S.LogoutButton isOpen={isOpen} onClick={handleLogout}>
-      <span>
-        <LogoutOutlined style={{ marginRight: tokens.margin.BASELINE }} />
-      </span>
-      {isOpen && <span className="navItemText">Logout</span>}
+    <S.LogoutButton onClick={handleLogout}>
+      <LogoutOutlined style={{ marginRight: tokens.margin.BASELINE }} />
+      <span className="navItemText">Logout</span>
     </S.LogoutButton>
   );
 };

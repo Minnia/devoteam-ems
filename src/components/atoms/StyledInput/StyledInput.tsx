@@ -11,7 +11,7 @@ type Props = {
 const StyledInput: FC<Props> = ({ label, value, onChange }) => {
   return (
     <>
-      <Label bold>{label}</Label>
+      <Label $bold>{label}</Label>
       <Input value={value} placeholder="Name" onChange={onChange} />
     </>
   );

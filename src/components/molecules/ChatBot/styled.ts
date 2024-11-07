@@ -2,21 +2,21 @@ import styled from "styled-components";
 import { themes } from "../../core/theme/theme";
 import tokens from "../../core/theme/tokens";
 
-export const ChatBotPopupContainer = styled.div<{ isOpen: boolean }>`
+export const ChatBotPopupContainer = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   bottom: ${tokens.margin.BASELINE}px;
   right: ${tokens.margin.BASELINE * 1.5}px;
-  width: ${({ isOpen }) => (isOpen ? "20rem" : "60px")};
-  height: ${({ isOpen }) => (isOpen ? "25rem" : "60px")};
+  width: ${({ $isOpen }) => ($isOpen ? "20rem" : "60px")};
+  height: ${({ $isOpen }) => ($isOpen ? "25rem" : "60px")};
   background-color: ${themes.light.accent};
   color: ${themes.light.black};
-  border-radius: ${({ isOpen }) => (isOpen ? "5%" : "50%")};
+  border-radius: ${({ $isOpen }) => ($isOpen ? "5%" : "50%")};
   cursor: pointer;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: ${({ isOpen }) => (isOpen ? "flex-end" : "center")};
+  align-items: ${({ $isOpen }) => ($isOpen ? "flex-end" : "center")};
 
   transition: all 0.3s ease;
   z-index: 1;
@@ -26,14 +26,14 @@ export const ChatBotPopupContainer = styled.div<{ isOpen: boolean }>`
   }
 `;
 
-export const ChatHeader = styled.div<{ isOpen: boolean }>`
+export const ChatHeader = styled.div<{ $isOpen: boolean }>`
   color: ${themes.light.text};
   display: flex;
   flex-direction: row;
   height: 2rem;
-  padding: ${({ isOpen }) => (isOpen ? tokens.padding.BASELINE : "0")}px;
-  padding-top: ${({ isOpen }) =>
-    isOpen ? tokens.padding.BASELINE * 1.5 : "0"}px;
+  padding: ${({ $isOpen }) => ($isOpen ? tokens.padding.BASELINE : "0")}px;
+  padding-top: ${({ $isOpen }) =>
+    $isOpen ? tokens.padding.BASELINE * 1.5 : "0"}px;
   cursor: pointer;
 `;
 

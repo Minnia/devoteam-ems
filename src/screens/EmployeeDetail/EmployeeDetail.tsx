@@ -38,7 +38,7 @@ const EmployeeDetail = () => {
       <FullWidthContainer>
         <div>
           {isEditing ? (
-            <CardContainer center>
+            <CardContainer $center>
               <EditEmployeeDetails
                 employee={editedEmployee!}
                 handleNestedInputChange={(e, field, parent) =>
@@ -54,7 +54,7 @@ const EmployeeDetail = () => {
             </CardContainer>
           ) : (
             <>
-              <CardContainer center>
+              <CardContainer $center>
                 <EmployeeFields employee={employee} />
                 <Spacer height={20} />
                 {user?.isAdmin && (

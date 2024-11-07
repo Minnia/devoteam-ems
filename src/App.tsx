@@ -38,7 +38,7 @@ const AppRoutes = () => {
         path="/employees"
         element={
           <ProtectedRoute allowedRoles={{ isAdmin: true, isManager: true }}>
-            <EmployeeList horizontal />
+            <EmployeeList />
           </ProtectedRoute>
         }
       />

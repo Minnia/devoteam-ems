@@ -12,7 +12,7 @@ import Breadcrumb from "../../components/atoms/Breadcrumb";
 import * as S from "./styled";
 import tokens from "../../components/core/theme/tokens";
 
-const EmployeeList = ({ horizontal }: { horizontal: boolean }) => {
+const EmployeeList = () => {
   const { filteredEmployees, isLoading, searchText, setSearchText, error } =
     useEmployees();
   const { tableColumns } = useEmployeeList();
@@ -21,16 +21,23 @@ const EmployeeList = ({ horizontal }: { horizontal: boolean }) => {
     return <NotFound />;
   }
 
+  if (!filteredEmployees) {
+    return (
+      <Table
+        dataSource={[]}
+        columns={tableColumns}
+        loading={isLoading}
+        bordered
+      />
+    );
+  }
+
   return (
     <>
       <Dashboard />
       <Breadcrumb />
       <Spacer height={40} />
-      <ScreenContainer
-        center
-        style={{ overflowX: "auto" }}
-        horizontal={horizontal}
-      >
+      <ScreenContainer style={{ overflowX: "auto" }}>
         <FullWidthContainer>
           <S.CompactTableWrapper>
             <S.SearchWrapper>
@@ -41,6 +48,8 @@ const EmployeeList = ({ horizontal }: { horizontal: boolean }) => {
               />
             </S.SearchWrapper>
             <Table
+              rowKey={(record) => record.id}
+              key={filteredEmployees.length}
               size="small"
               dataSource={filteredEmployees}
               columns={tableColumns}
