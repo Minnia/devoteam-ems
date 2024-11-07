@@ -14,7 +14,7 @@ export const NavContainer = styled.div<{ isMenuOpen: boolean }>`
   z-index: 1000;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    width: ${({ isMenuOpen }) => (isMenuOpen ? "100px" : "60px")};
+    width: ${({ isMenuOpen }) => (isMenuOpen ? "150px" : "60px")};
   }
 `;
 
@@ -52,7 +52,7 @@ export const MenuContainer = styled.div<{ isOpen: boolean }>`
 
 export const NavItem = styled.div<{
   isActive?: boolean;
-  isOpen: boolean;
+  isOpen?: boolean;
   spacing?: number;
 }>`
   padding: ${tokens.padding.BASELINE}px;
@@ -86,10 +86,7 @@ export const NavItem = styled.div<{
   }
 `;
 
-export const LogoutButton = styled(NavItem)<{
-  isOpen: boolean;
-  spacing?: number;
-}>`
+export const LogoutButton = styled(NavItem)`
   margin-top: auto;
   border: none;
 `;

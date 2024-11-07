@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ReactElement } from "react";
 import { LogoutOutlined, MenuOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as S from "./styled";
@@ -17,22 +17,25 @@ interface NavItemProps {
   text: string;
   path: string;
   onClick: () => void;
-  isOpen: boolean;
+  isOpen?: boolean;
+  onMenuClick?: (key: string) => void;
 }
 
 interface LogoutButtonProps {
   onClick: () => void;
+  isOpen?: boolean;
 }
 
 const NavigationBar: React.FC<NavigationBarProps> & {
   Item: React.FC<NavItemProps>;
-  LogoutButton: React.FC<LogoutButtonProps & { isOpen: boolean }>;
-} = ({ children }) => {
+  LogoutButton: React.FC<LogoutButtonProps>;
+} = ({ onMenuClick, children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   return (
     <S.NavContainer isMenuOpen={isMenuOpen}>
       <S.NavHeader>
@@ -40,7 +43,14 @@ const NavigationBar: React.FC<NavigationBarProps> & {
           <MenuOutlined style={{ color: themes.light.text, fontSize: 24 }} />
         </S.HamburgerIcon>
       </S.NavHeader>
-      {children}
+      {React.Children.map(children, (child) =>
+        React.isValidElement<NavItemProps>(child)
+          ? React.cloneElement(child, {
+              isOpen: isMenuOpen,
+              onMenuClick,
+            } as Partial<NavItemProps>)
+          : child
+      )}
     </S.NavContainer>
   );
 };
@@ -50,39 +60,30 @@ const Item: React.FC<NavItemProps> = ({
   text,
   path,
   onClick,
-  isOpen,
+  isOpen = false,
+  onMenuClick,
 }) => {
   const location = useLocation();
   const isActive = location.pathname === path;
 
+  const handleClick = () => {
+    onClick();
+    if (onMenuClick) {
+      onMenuClick(path);
+    }
+  };
+
   return (
-    <>
-      <FlexContainer>
-        <S.NavItem
-          spacing={-4}
-          isOpen={isOpen}
-          isActive={isActive}
-          onClick={onClick}
-        >
-          <div>{icon}</div>
-        </S.NavItem>
-        <S.NavItem
-          spacing={-4}
-          className="navItemText"
-          isOpen={isOpen}
-          isActive={isActive}
-          onClick={onClick}
-        >
-          <span className="navItemText">{text}</span>
-        </S.NavItem>
-      </FlexContainer>
-    </>
+    <FlexContainer>
+      <S.NavItem isOpen={isOpen} isActive={isActive} onClick={handleClick}>
+        <div>{icon}</div>
+        {isOpen && <span className="navItemText">{text}</span>}
+      </S.NavItem>
+    </FlexContainer>
   );
 };
 
-const LogoutButton: React.FC<LogoutButtonProps & { isOpen: boolean }> = ({
-  isOpen,
-}) => {
+const LogoutButton: React.FC<LogoutButtonProps> = ({ isOpen = false }) => {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
@@ -96,7 +97,7 @@ const LogoutButton: React.FC<LogoutButtonProps & { isOpen: boolean }> = ({
       <span>
         <LogoutOutlined style={{ marginRight: tokens.margin.BASELINE }} />
       </span>
-      <span className="navItemText"> Logout</span>
+      {isOpen && <span className="navItemText">Logout</span>}
     </S.LogoutButton>
   );
 };
