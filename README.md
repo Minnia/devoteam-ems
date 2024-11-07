@@ -42,3 +42,7 @@ password123
 employee@gmail.com
 password123
 ```
+
+### Is there anyone I can talk to at the company if I have any questions?
+
+You can always talk to our trusted company robot in the chat! Quick warning, they are new on the job and are still learning..
