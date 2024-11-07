@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import api from "../endpoints";
+import api from "../endpoints/employees.endpoints";
 import { queryClient } from "../../integrations/react-query";
 import { Employee } from "./types";
 import useEmployeeById from "./useEmployeeById";
