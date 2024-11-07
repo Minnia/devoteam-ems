@@ -1,4 +1,4 @@
-import { Employee } from "../hooks/types";
+import { Employee } from "../types";
 import { axiosClient } from "./axios-client";
 
 const employees = {

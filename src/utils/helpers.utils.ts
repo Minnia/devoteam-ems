@@ -1,4 +1,4 @@
-import { Employee } from "../api/hooks/types";
+import { Employee } from "../api/types";
 
 export const generateRandomColor = () => {
   const letters = "0123456789ABCDEF";

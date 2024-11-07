@@ -1,4 +1,4 @@
-import { Employee } from "../../api/hooks/types";
+import { Employee } from "../../api/types";
 import useGetAllEmployees from "../../api/hooks/useGetAllEmployees";
 import { useAuth } from "../../context/AuthContext";
 import { generateRandomColor } from "../../utils/helpers.utils";

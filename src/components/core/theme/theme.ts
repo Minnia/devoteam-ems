@@ -34,20 +34,16 @@ const brandPalette = {
 
 type ThemeConfig = {
   accent: string;
-
   background: string;
   danger: string;
   activeNavItem: string;
   error: string;
   secondaryBackground: string;
   button: string;
-
   inputBackground: string;
   backgroundLight: string;
   borderColor: string;
-
   transparent: string;
-
   success: string;
   text: string;
   textDark: string;

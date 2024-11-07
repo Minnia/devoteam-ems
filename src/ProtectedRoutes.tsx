@@ -18,11 +18,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   const { user } = useAuth();
 
   if (!user) {
-    // Redirect to login if not authenticated
     return <Navigate to="/login" replace />;
   }
 
-  // Check if user matches the allowed roles
   const hasAccess =
     (allowedRoles.isAdmin && user.isAdmin) ||
     (allowedRoles.isManager && user.isManager) ||

@@ -4,7 +4,7 @@ import useEmployeeById from "../../../api/hooks/useEmployeeById";
 import { useAuth } from "../../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { message } from "antd";
-import { Employee } from "../../../api/hooks/types";
+import { Employee } from "../../../api/types";
 import useEditEmployee from "../../../api/hooks/useEditEmployee";
 
 const useEmployeeDetails = () => {

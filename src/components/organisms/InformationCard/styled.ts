@@ -11,7 +11,7 @@ export const Content = styled.div`
   margin-bottom: ${tokens.margin.BASELINE * 2}px;
 `;
 
-export const Title = styled.h3`
+export const Title = styled(Typography.Heading3)`
   font-size: 1.2rem;
   margin: 0;
   color: #333;

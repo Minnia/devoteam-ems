@@ -64,13 +64,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     if (token && user && expirationTime) {
       const currentTime = new Date().getTime();
       if (currentTime < parseInt(expirationTime)) {
-        return JSON.parse(user); // Valid session
+        return JSON.parse(user);
       } else {
-        logout(); // Session expired
+        logout();
       }
     }
 
-    return null; // No valid session
+    return null;
   };
   const [user, setUser] = useState<User | null>(null);
 
@@ -92,7 +92,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       const token = "mock-auth-token"; // Replace with real token logic
       const expirationTime = new Date().getTime() + 3600000; // 1 hour from now
 
-      // Save to localStorage
       localStorage.setItem("authToken", token);
       localStorage.setItem("user", JSON.stringify(foundUser));
       localStorage.setItem("expirationTime", expirationTime.toString());

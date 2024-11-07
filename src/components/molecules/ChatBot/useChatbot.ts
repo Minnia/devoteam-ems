@@ -53,6 +53,7 @@ const useChatbot = () => {
     }
     return `You said: ${userInput}. How can I assist you further?`;
   };
+
   return {
     generateRobotResponse,
     sendMessage,

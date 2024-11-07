@@ -1,12 +1,11 @@
-// App.tsx
 import "./App.css";
 import ChatBot from "./components/molecules/ChatBot";
-
 import NotFound from "./components/molecules/NotFound";
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./ProtectedRoutes";
 import EmployeeDetail from "./screens/EmployeeDetail";
 import EmployeeList from "./screens/EmployeeList";
+import Home from "./screens/Home";
 import Login from "./screens/Login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -16,7 +15,6 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Overview from "./screens/Overview/Overview";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +29,7 @@ const AppRoutes = () => {
           <ProtectedRoute
             allowedRoles={{ isAdmin: true, isManager: true, isEmployee: true }}
           >
-            <Overview />
+            <Home />
           </ProtectedRoute>
         }
       />

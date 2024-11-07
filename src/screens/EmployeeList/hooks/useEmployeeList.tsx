@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ClickableText } from "../../../components/core/styled";
-import { Employee, Food } from "../../../api/hooks/types";
+import { Employee, Food } from "../../../api/types";
 
 const useEmployeeList = () => {
   const navigate = useNavigate();

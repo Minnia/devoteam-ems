@@ -47,8 +47,8 @@ export const CardContainer = styled.div`
   flex-direction: row;
   gap: ${tokens.padding.BASELINE * 2}px;
   justify-content: center;
-  align-items: flex-start; /* Align to top instead of stretching */
-  flex-wrap: wrap; /* Allow wrapping to the next row on small screens */
+  align-items: flex-start;
+  flex-wrap: wrap;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     flex-direction: column;

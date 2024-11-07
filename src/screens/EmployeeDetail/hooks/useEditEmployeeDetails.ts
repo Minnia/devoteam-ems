@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useEditEmployee from "../../../api/hooks/useEditEmployee";
-import { Contact, Department, Employee, Food } from "../../../api/hooks/types";
+import { Contact, Department, Employee, Food } from "../../../api/types";
 import { message } from "antd";
 
 const useEditEmployeeDetails = (

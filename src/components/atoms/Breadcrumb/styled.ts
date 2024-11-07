@@ -3,7 +3,7 @@ import tokens from "../../core/theme/tokens";
 
 export const BreadcrumbContainer = styled.div`
   margin-bottom: ${tokens.margin.BASELINE * 2}px;
-  z-index: 100000;
+  z-index: 1000;
   position: absolute;
   margin-left: 200px;
   width: 100%;

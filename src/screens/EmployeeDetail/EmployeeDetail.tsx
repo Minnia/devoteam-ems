@@ -6,7 +6,7 @@ import {
   CardContainer,
   Spacer,
 } from "../../components/core/styled";
-import { Employee } from "../../api/hooks/types";
+import { Employee } from "../../api/types";
 
 import useEmployeeDetails from "./hooks/useEmployeeDetails";
 import NotFound from "../../components/molecules/NotFound";

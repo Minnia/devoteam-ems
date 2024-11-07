@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Employee } from "../../../api/hooks/types";
+import { Employee } from "../../../api/types";
 import * as S from "../styled";
 import { Label, Spacer } from "../../../components/core/styled";
 

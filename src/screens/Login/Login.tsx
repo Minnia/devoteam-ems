@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleLoginClick = async (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
-      const isLoginSuccessful = await login(email, password);
+      const isLoginSuccessful = login(email, password);
 
       if (!isLoginSuccessful) {
         message.error("Invalid email or password. Please try again.");

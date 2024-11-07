@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import useGetAllEmployees from "../../../api/hooks/useGetAllEmployees";
-import { Employee } from "../../../api/hooks/types";
+import { Employee } from "../../../api/types";
 
 const useEmployees = () => {
   const { data: employees, isLoading, error } = useGetAllEmployees();

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import tokens from "../../components/core/theme/tokens";
-import { themes } from "../../components/core/theme/theme";
-import { Typography } from "../../components/core/theme/typography";
 
 export const CenteredContent = styled.div`
   display: flex;

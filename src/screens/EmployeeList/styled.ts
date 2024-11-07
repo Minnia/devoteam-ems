@@ -37,5 +37,3 @@ export const SearchWrapper = styled.div`
     width: 50%;
   }
 `;
-
-// TODO: tyler
