@@ -1,26 +1,75 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// App.tsx
+import "./App.css";
+import ChatBot from "./components/molecules/ChatBot";
 
-function App() {
+import NotFound from "./components/molecules/NotFound";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import ProtectedRoute from "./ProtectedRoutes";
+import EmployeeDetail from "./screens/EmployeeDetail";
+import EmployeeList from "./screens/EmployeeList";
+import Login from "./screens/Login";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Overview from "./screens/Overview/Overview";
+
+const queryClient = new QueryClient();
+
+const AppRoutes = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to="/home" replace />} />
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/home"
+        element={
+          <ProtectedRoute
+            allowedRoles={{ isAdmin: true, isManager: true, isEmployee: true }}
+          >
+            <Overview />
+          </ProtectedRoute>
+        }
+      />
+      {/* Protect route based on roles */}
+      <Route
+        path="/employees"
+        element={
+          <ProtectedRoute allowedRoles={{ isAdmin: true, isManager: true }}>
+            <EmployeeList horizontal />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/employees/:id"
+        element={
+          <ProtectedRoute
+            allowedRoles={{ isAdmin: true, isManager: true, isEmployee: true }}
+          >
+            <EmployeeDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
-}
+};
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <ChatBot />
+          <AppRoutes />
+        </Router>
+      </QueryClientProvider>
+    </AuthProvider>
+  );
+};
 
 export default App;
