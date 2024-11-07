@@ -1,0 +1,38 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Doe",
+      "contact": {
+        "email": "john.doe@example.com",
+        "telephone": "123-456-7890"
+      },
+      "department": {
+        "name": "Engineering",
+        "role": "Software Engineer"
+      },
+      "food": {
+        "preference": "Vegetarian",
+        "allergies": []
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "contact": {
+        "email": "jane.smith@example.com",
+        "telephone": "098-765-4321"
+      },
+      "department": {
+        "name": "Marketing",
+        "role": "Marketing Manager"
+      },
+      "food": {
+        "preference": "Vegan",
+        "allergies": ["Peanuts"]
+      }
+    }
+  ]
+}
