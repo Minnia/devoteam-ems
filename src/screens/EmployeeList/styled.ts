@@ -13,16 +13,13 @@ export const CompactTableWrapper = styled.div`
   padding-left: 500px;
   margin-top: 20px;
   min-width: 100%;
-  @media (max-width: ${tokens.breakpoints.laptop}) {
-    margin-top: 50px;
-  }
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    margin-top: 60px;
+    margin-top: 2rem;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    margin-top: 70px;
+    margin-top: 3rem;
   }
 `;
 

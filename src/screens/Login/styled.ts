@@ -13,6 +13,10 @@ export const LoginContainer = styled.div`
     ${themes.light.secondaryBackground},
     ${themes.light.accent}
   );
+
+  @media (max-width: ${tokens.breakpoints.laptop}) {
+    padding: ${tokens.padding.CONTAINER}px;
+  }
 `;
 
 export const LoginCard = styled.div`
@@ -22,6 +26,19 @@ export const LoginCard = styled.div`
   padding: ${tokens.padding.CONTAINER}px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+  @media (max-width: ${tokens.breakpoints.laptop}) {
+    width: 40%;
+  }
+
+  @media (max-width: ${tokens.breakpoints.tablet}) {
+    width: 60%;
+  }
+
+  @media (max-width: ${tokens.breakpoints.phone}) {
+    width: 100%;
+    padding: ${tokens.padding.CONTAINER}px ${tokens.padding.BASELINE * 2}px;
+  }
 `;
 
 export const LoginButton = styled(Button)`
@@ -37,7 +54,6 @@ export const InputField = styled(Input)`
   border-radius: ${tokens.borderRadius.BASELINE * 0.5}px;
   margin-bottom: ${tokens.margin.BASELINE * 2}px;
   &:focus {
-    border-color: #2575fc;
     box-shadow: 0 0 4px rgba(37, 117, 252, 0.5);
   }
 `;
