@@ -1,4 +1,6 @@
+import logoSrc from "./logo.svg";
+
 export const Logo = {
-  src: "./logo.svg",
+  src: logoSrc,
   alt: "Logo",
 };

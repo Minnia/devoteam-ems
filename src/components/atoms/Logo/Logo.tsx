@@ -1,9 +1,8 @@
 import React from "react";
-import { Logo as LogoData } from "../../../assets";
+import * as logo from "../../../assets/index";
 
 const Logo: React.FC = () => {
-  console.log(LogoData);
-  return <img src={LogoData.src} alt="Logo" />;
+  return <img src={logo.Logo.src} alt="Logo" />;
 };
 
 export default Logo;

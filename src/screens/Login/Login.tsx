@@ -7,6 +7,7 @@ import { Typography } from "../../components/core/theme/typography";
 import { themes } from "../../components/core/theme/theme";
 import { Spacer } from "../../components/core/styled";
 import tokens from "../../components/core/theme/tokens";
+import Logo from "../../components/atoms/Logo";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -31,6 +32,7 @@ const Login = () => {
   return (
     <S.LoginContainer>
       <S.LoginCard>
+        <Logo />
         <Typography.Heading1 color={themes.light.accent}>
           Welcome to Devoteam!
         </Typography.Heading1>

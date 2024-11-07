@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from "react";
 import {
   ChatBotPopupContainer,
   ChatContent,
@@ -7,6 +6,7 @@ import {
   ChatHeader,
 } from "./styled";
 import useChatbot from "./useChatbot";
+import * as logo from "../../../assets/index";
 import Logo from "../../atoms/Logo";
 
 const ChatBot: React.FC = () => {
@@ -20,11 +20,13 @@ const ChatBot: React.FC = () => {
     chatEndRef,
   } = useChatbot();
 
+  console.log(logo.Logo.src);
+
   return (
     <>
       <ChatBotPopupContainer $isOpen={isOpen}>
         <ChatHeader $isOpen={isOpen} onClick={toggleChat}>
-          {!isOpen ? <Logo /> : <span>X</span>}
+          {isOpen ? <span>X</span> : <Logo />}
         </ChatHeader>
 
         {isOpen && (
