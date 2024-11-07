@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+# Welcome to the Devoteam Employee Management System (DEMS)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### What is this?
 
-## Available Scripts
+This is a simple and straight forward EMS, where you can keep track of your employees, or your own information
 
-In the project directory, you can run:
+### Cool, what can I do here?
 
-### `npm start`
+That depends on your role in the company. If you're one of our employees, you can see how many people that are hired in the company, as well as your own personal information. You can't change any information, that is the role of an admin.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you're a manager you can see a list of all employees in the company, but you can't change any information.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you're an admin you have all the power! Kind of, you are allowed to see all employees and edit (some) of their information.
 
-### `npm test`
+### What do I need to do in order to see the EMS?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Glad you asked!
+First you have to clone the project and then follow the instructions below
 
-### `npm run build`
+1. Run `npm i` or `npm install` in your terminal
+2. Open a second terminal and run the script `server` (or if you'd rather run the whole script,
+   `json-server --watch employees.json`)
+3. In the first terminal, run `npm run start` to get the EMS up and going
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+Admin login
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+Manager login
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+Employee login
+```
