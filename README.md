@@ -6,11 +6,6 @@
 2. [Features](#features)
 3. [Technologies Used](#technologies-used)
 4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Folder Structure](#folder-structure)
-7. [Contributing](#contributing)
-8. [License](#license)
-9. [Acknowledgements](#acknowledgements)
 
 ---
 
