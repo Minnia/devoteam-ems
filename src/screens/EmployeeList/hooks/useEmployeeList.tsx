@@ -3,6 +3,7 @@ import { ClickableText } from "../../../components/core/styled";
 import { Employee, Food } from "../../../api/types";
 import { useEffect, useState } from "react";
 import tokens from "../../../components/core/theme/tokens";
+import { toNumber } from "../../../utils/helpers.utils";
 
 const useEmployeeList = () => {
   const navigate = useNavigate();
@@ -12,10 +13,10 @@ const useEmployeeList = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= Number(tokens.breakpoints.phone));
+      setIsSmallScreen(window.innerWidth <= toNumber(tokens.breakpoints.phone));
       setIsTablet(
-        window.innerWidth > Number(tokens.breakpoints.phone) &&
-          window.innerWidth <= Number(tokens.breakpoints.tabletLarge)
+        window.innerWidth > toNumber(tokens.breakpoints.phone) &&
+          window.innerWidth <= toNumber(tokens.breakpoints.tabletLarge)
       );
       setIsLargeScreen(
         window.innerWidth.toString() >= tokens.breakpoints.tabletLarge

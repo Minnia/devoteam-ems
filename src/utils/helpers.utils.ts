@@ -25,3 +25,10 @@ export const hours = (amount: number) => {
 export const join = (array: string[]) => {
   return array.join(", ");
 };
+
+export const toNumber = (value: string): number => {
+  if (value.endsWith("px")) {
+    return parseFloat(value.replace("px", ""));
+  }
+  return parseFloat(value);
+};
