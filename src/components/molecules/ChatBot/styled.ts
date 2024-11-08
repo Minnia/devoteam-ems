@@ -78,3 +78,7 @@ export const MessageInput = styled.input`
 export const ChatMessage = styled.p<{ fontWeight?: boolean }>`
   font-weight: ${({ fontWeight }) => (fontWeight ? "bold" : "normal")};
 `;
+
+export const StyledSpan = styled.span`
+  margin: ${tokens.margin.BASELINE * 0.5}px;
+`;
