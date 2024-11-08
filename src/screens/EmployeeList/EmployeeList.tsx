@@ -3,6 +3,7 @@ import {
   FlexContainer,
   FullWidthContainer,
   ScreenContainer,
+  Spacer,
 } from "../../components/core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
@@ -10,7 +11,7 @@ import NotFound from "../../components/molecules/NotFound";
 import * as S from "./styled";
 import tokens from "../../components/core/theme/tokens";
 import NavBar from "../NavBar";
-import { toNumber } from "../../utils/helpers.utils";
+import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
 
 const EmployeeList = () => {
   const { filteredEmployees, isLoading, searchText, setSearchText, error } =
@@ -35,6 +36,7 @@ const EmployeeList = () => {
   return (
     <>
       <NavBar />
+
       <ScreenContainer $center>
         <FlexContainer>
           <div>
@@ -69,6 +71,7 @@ const EmployeeList = () => {
               </S.CompactTableWrapper>
             </FullWidthContainer>
           </div>
+          <Breadcrumb />
         </FlexContainer>
       </ScreenContainer>
     </>

@@ -11,6 +11,7 @@ import useHome from "./useHome";
 import NotFound from "../../components/molecules/NotFound";
 import NavBar from "../NavBar";
 import { join } from "../../utils/helpers.utils";
+import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
 
 const Overview = () => {
   const {
@@ -49,6 +50,7 @@ const Overview = () => {
                 <Spacer width={20} />
               </S.CardContainer>
             </S.CenteredContainer>
+            <Breadcrumb />
           </FullWidthContainer>
         </FlexContainer>
       </ScreenContainer>

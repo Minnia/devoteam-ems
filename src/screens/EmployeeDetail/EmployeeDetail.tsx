@@ -12,6 +12,9 @@ import NotFound from "../../components/molecules/NotFound";
 import LoadingOverlay from "../../components/molecules/LoadingOverlay";
 import { EditEmployeeDetails, EmployeeFields } from "./components";
 import NavBar from "../NavBar";
+import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
+import tokens from "../../components/core/theme/tokens";
+import { toNumber } from "../../utils/helpers.utils";
 
 const EmployeeDetail = () => {
   const {
@@ -65,6 +68,9 @@ const EmployeeDetail = () => {
             </>
           )}
         </div>
+        {window.innerWidth >= toNumber(tokens.breakpoints.tablet) && (
+          <Breadcrumb />
+        )}
       </FullWidthContainer>
     </ScreenContainer>
   );
