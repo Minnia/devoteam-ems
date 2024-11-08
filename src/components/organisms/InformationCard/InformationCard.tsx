@@ -20,7 +20,7 @@ const InformationCard: React.FC<CardProps> = ({
   children,
   numberOfLines,
 }) => {
-  const maxFooterLength = 54;
+  const maxFooterLength = 55;
 
   const splitFooterText = (footerText: string) => {
     if (footerText.length > maxFooterLength) {
@@ -48,7 +48,7 @@ const InformationCard: React.FC<CardProps> = ({
 
   return (
     <CardContainer style={style}>
-      <S.Content>
+      <S.Content $paddingX={20} $minWidth={220}>
         <Typography.Heading1>{title}</Typography.Heading1>
         {text && (
           <Typography.BodyMedium bold style={textStyle}>
