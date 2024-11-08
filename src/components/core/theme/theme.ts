@@ -16,30 +16,23 @@ const neutrals = {
 const brandPalette = {
   primaryAccent: "#f8475e",
   secondaryAccent: "#194155",
-  panelBackground: "#0A263E",
-  secondaryBackground: "#0F2A44",
-  highlight: "#FFC839",
-  activeButton: "#FF8505",
-  primaryText: "#010612",
-  error: "#E74C3C",
-  border: "#114967",
+  secondaryBackground: "#0f2a44",
+  error: "#f74c3c",
   background: "#051629",
-  success: "#0AD38B",
+  success: "#0ad38b",
   transparent: "transparent",
-  warningOverlay: "#270000",
   borderColor: "#ddd",
-  activeNavItem: "#FFFFFF33",
-  button: "#2575fc",
+  activeNavItem: "#ffffff33",
+  link: "#00008b",
+  buttonHover: "#1f66c1",
 };
 
 type ThemeConfig = {
   accent: string;
   background: string;
-  danger: string;
   activeNavItem: string;
   error: string;
   secondaryBackground: string;
-  button: string;
   inputBackground: string;
   backgroundLight: string;
   borderColor: string;
@@ -48,13 +41,12 @@ type ThemeConfig = {
   text: string;
   textDark: string;
   black: string;
+  buttonHover: string;
 };
 
 const light: ThemeConfig = {
   accent: brandPalette.primaryAccent,
   background: brandPalette.secondaryAccent,
-  danger: brandPalette.warningOverlay,
-  button: brandPalette.button,
   secondaryBackground: brandPalette.secondaryBackground,
   error: brandPalette.error,
   inputBackground: brandPalette.background,
@@ -66,6 +58,7 @@ const light: ThemeConfig = {
   borderColor: brandPalette.borderColor,
   black: neutrals.black,
   activeNavItem: brandPalette.activeNavItem,
+  buttonHover: brandPalette.buttonHover,
 };
 
 export const themes = {
