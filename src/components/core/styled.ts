@@ -50,16 +50,15 @@ export const FlexContainer = styled.div<{
 
 export const ScreenContainer = styled.div<{
   width?: number;
-  center?: boolean;
+  $center?: boolean;
   horizontal?: boolean;
 }>`
   ${({ width }) => (width ? `width: ${width}% ` : `width: 100%`)};
   display: flex;
   flex-direction: row;
-  justify-content: ${({ center }) => (center ? "center" : "flex-start")};
-  align-items: ${({ center }) => (center ? "center" : "flex-start")};
-  overflow-x: ${({ horizontal }) => (horizontal ? "auto" : "hidden")};
-  overflow-y: hidden;
+  justify-content: ${({ $center }) => ($center ? "center" : "flex-start")};
+  align-items: ${({ $center }) => ($center ? "center" : "flex-start")};
+  overflow-x: scroll;
 `;
 
 export const FullWidthContainer = styled.div`
@@ -67,7 +66,6 @@ export const FullWidthContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  min-height: 100vh;
 `;
 
 export const Spacer = styled.div<
@@ -85,26 +83,54 @@ export const CenteredContainer = styled.div`
   justify-content: center;
 `;
 
-export const CardContainer = styled.div<{ $center?: boolean }>`
+export const CardContainer = styled.div<{
+  $center?: boolean;
+  $minWidth?: number;
+}>`
   border-radius: ${tokens.borderRadius.BASELINE}px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   padding: ${tokens.padding.BASELINE * 2}px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
-  min-width: 400px;
   text-align: center;
   transition: transform 0.2s ease;
+  min-width: ${({ $minWidth }) => $minWidth || 600}px;
+
+  @media (max-width: ${tokens.breakpoints.laptop}) {
+    min-width: ${({ $minWidth }) =>
+      $minWidth ? `${$minWidth * 0.8}px` : "80%"};
+    padding: ${tokens.padding.BASELINE * 1.5}px;
+  }
+
+  @media (max-width: ${tokens.breakpoints.tablet}) {
+    min-width: ${({ $minWidth }) =>
+      $minWidth ? `${$minWidth * 0.6}px` : "70%"};
+    padding: ${tokens.padding.BASELINE}px;
+  }
+
+  @media (max-width: ${tokens.breakpoints.phone}) {
+    min-width: 50%; /* Allow the container to occupy more space on small screens */
+    height: auto; /* Let the height adjust dynamically */
+    display: flex;
+    flex-direction: column; /* Ensure the content stacks vertically */
+    justify-content: center;
+    align-items: center;
+    padding: ${tokens.padding.BASELINE}px;
+    margin: 0 auto; /* Center horizontally on the screen */
+  }
 
   ${({ $center }) =>
     $center &&
     `
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); 
-      width: auto; 
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
     `}
 `;
@@ -113,4 +139,12 @@ export const Label = styled(Typography)<{ $bold?: boolean }>`
   font-weight: ${({ $bold }) => ($bold ? "bold" : "normal")};
   color: ${themes.light.textDark};
   font-size: ${tokens.text.fontSize.MEDIUM}px;
+
+  @media (max-width: ${tokens.breakpoints.tablet}) {
+    font-size: ${tokens.text.fontSize.SMALL}px;
+  }
+
+  @media (max-width: ${tokens.breakpoints.phone}) {
+    font-size: ${tokens.text.fontSize.SMALL}px;
+  }
 `;
