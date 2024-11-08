@@ -26,27 +26,28 @@ const employees = {
     editEmployee: async (id: string, employee: Employee) => {
       const employeeId = id;
 
+      const { name, avatar, contact, department, food } = employee;
       const updatedData = {
         id: employeeId,
-        name: employee.name,
-        avatar: employee.avatar,
+        name,
+        avatar,
         contact: {
-          email: employee.contact.email,
-          telephone: employee.contact.telephone,
+          email: contact.email,
+          telephone: contact.telephone,
         },
         department: {
-          name: employee.department.name,
-          role: employee.department.role,
-          isEmployee: employee.department.isEmployee,
-          isManager: employee.department.isManager,
-          isAdmin: employee.department.isAdmin,
+          name: department.name,
+          role: department.role,
+          isEmployee: department.isEmployee,
+          isManager: department.isManager,
+          isAdmin: department.isAdmin,
         },
-        food: employee.food,
-        email: employee.contact.email,
-        telephone: employee.contact.telephone,
-        isEmployee: employee.department.isEmployee,
-        isManager: employee.department.isManager,
-        isAdmin: employee.department.isAdmin,
+        food,
+        email: contact.email,
+        telephone: contact.telephone,
+        isEmployee: department.isEmployee,
+        isManager: department.isManager,
+        isAdmin: department.isAdmin,
       };
 
       try {

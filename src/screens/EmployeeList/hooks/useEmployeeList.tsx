@@ -6,17 +6,19 @@ import tokens from "../../../components/core/theme/tokens";
 
 const useEmployeeList = () => {
   const navigate = useNavigate();
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(
-        window.innerWidth.toString() <= tokens.breakpoints.phone
-      );
+      setIsSmallScreen(window.innerWidth <= Number(tokens.breakpoints.phone));
       setIsTablet(
-        window.innerWidth.toString() > tokens.breakpoints.phone &&
-          window.innerWidth.toString() <= tokens.breakpoints.tablet
+        window.innerWidth > Number(tokens.breakpoints.phone) &&
+          window.innerWidth <= Number(tokens.breakpoints.tabletLarge)
+      );
+      setIsLargeScreen(
+        window.innerWidth.toString() >= tokens.breakpoints.tabletLarge
       );
     };
 
@@ -88,14 +90,21 @@ const useEmployeeList = () => {
     ];
 
     if (isSmallScreen) {
+      console.log("small");
       return columns.filter((col) => col.key === "name");
     }
 
     if (isTablet) {
+      console.log("tablet");
       return columns.filter(
         (col) =>
           col.key === "name" || col.key === "role" || col.key === "department"
       );
+    }
+
+    if (isLargeScreen) {
+      console.log("large");
+      return columns;
     }
 
     return columns;

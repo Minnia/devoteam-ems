@@ -16,7 +16,6 @@ const Overview = () => {
     user,
     numberOfEmployees,
     numberOfDepartments,
-    numberOfRoles,
     pieChartData,
     departmentPieChartData,
   } = useHome();
