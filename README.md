@@ -64,9 +64,9 @@ git clone git@github.com:Minnia/devoteam-ems.git
 ```
 
 2. Run `npm i` or `npm install` in your terminal
-3. Open a second terminal and run the script `server` (or if you'd rather run the whole script,
+3. In the terminal, run `npm run start` to get the EMS up and going
+4. Open a second terminal and run the script `server` (or if you'd rather run the whole script,
    `json-server --watch employees.json`)
-4. In the first terminal, run `npm run start` to get the EMS up and going
 
 ### Admin login 👩‍💼🧑‍💼
 
