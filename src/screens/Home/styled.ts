@@ -28,7 +28,7 @@ export const CenteredContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: ${tokens.gap.LARGE * 2}px;
   padding:${tokens.padding.CONTAINER * 2}px; 0;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {

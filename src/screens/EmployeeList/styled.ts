@@ -10,7 +10,7 @@ export const TableContainer = styled.div`
 `;
 
 export const CompactTableWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: ${tokens.margin.BASELINE * 3.5}px;
   min-width: 100%;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {

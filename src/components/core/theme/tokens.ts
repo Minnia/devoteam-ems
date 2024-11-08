@@ -42,8 +42,14 @@ const spacing = {
   BASELINE: 8,
 };
 
+const gap = {
+  BASELINE: 8,
+  LARGE: 16,
+};
+
 const tokens = {
   breakpoints,
+  gap,
   padding,
   margin,
   spacing,
