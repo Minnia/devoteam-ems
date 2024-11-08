@@ -39,7 +39,7 @@ const useEmployeeList = () => {
         title: "Name",
         dataIndex: "name",
         key: "name",
-        width: "1%",
+        width: "2%",
         sorter: (a: Employee, b: Employee) => a.name.localeCompare(b.name),
         render: (name: Employee["name"], record: Employee) => {
           const link = `/employees/${record.id}`;
@@ -60,7 +60,7 @@ const useEmployeeList = () => {
         title: "Telephone",
         dataIndex: ["contact", "telephone"],
         key: "contact.telephone",
-        width: "1%",
+        width: "2%",
       },
       {
         title: "Department",
@@ -88,7 +88,7 @@ const useEmployeeList = () => {
         title: "Allergies",
         dataIndex: ["food", "allergies"],
         key: "allergies",
-        width: "1%",
+        width: "2%",
         render: (allergies: Food["allergies"]) => (
           <span>{allergies?.length > 0 ? allergies.join(", ") : "None"}</span>
         ),
