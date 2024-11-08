@@ -14,25 +14,26 @@ const ChatBot: React.FC = () => {
   } = useChatbot();
 
   return (
-    <>
-      <S.ChatBotPopupContainer $isOpen={isOpen}>
-        <S.ChatHeader $isOpen={isOpen} onClick={toggleChat}>
-          {isOpen ? <S.StyledSpan>X</S.StyledSpan> : <Logo />}
-        </S.ChatHeader>
+    <S.ChatBotPopupContainer $isOpen={isOpen}>
+      <S.ChatHeader $isOpen={isOpen} onClick={toggleChat}>
+        {isOpen ? <S.StyledSpan>X</S.StyledSpan> : <Logo />}
+      </S.ChatHeader>
 
-        {isOpen && (
+      {isOpen && (
+        <>
           <S.ChatContent>
             <S.MessageList>
               {messages.map((msg, idx) => (
-                <div key={idx}>
-                  <S.ChatMessage fontWeight>
-                    {msg.sender === "robot" ? "Robot" : "You"}
+                <S.MessageContainer key={idx} isUser={msg.sender === "user"}>
+                  <S.ChatMessage isUser={msg.sender === "user"}>
+                    {msg.text}
                   </S.ChatMessage>
-                  <S.ChatMessage>{msg.text}</S.ChatMessage>
-                </div>
+                </S.MessageContainer>
               ))}
               <div ref={chatEndRef} />
             </S.MessageList>
+          </S.ChatContent>
+          <S.MessageInputContainer>
             <S.MessageInput
               type="text"
               placeholder="Type a message..."
@@ -40,10 +41,11 @@ const ChatBot: React.FC = () => {
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             />
-          </S.ChatContent>
-        )}
-      </S.ChatBotPopupContainer>
-    </>
+            <S.SendButton onClick={sendMessage}>Send</S.SendButton>
+          </S.MessageInputContainer>
+        </>
+      )}
+    </S.ChatBotPopupContainer>
   );
 };
 
