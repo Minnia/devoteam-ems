@@ -27,6 +27,11 @@ const borderRadius = {
   ROUND: 50,
 };
 
+const chatBot = {
+  small: 3,
+  large: 4,
+};
+
 const margin = {
   BASELINE: 8,
 };
@@ -42,6 +47,7 @@ const tokens = {
   spacing,
   text,
   borderRadius,
+  chatBot,
 };
 
 export default tokens;

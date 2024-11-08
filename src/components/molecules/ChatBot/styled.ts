@@ -6,8 +6,9 @@ export const ChatBotPopupContainer = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   bottom: ${tokens.margin.BASELINE}px;
   right: ${tokens.margin.BASELINE * 1.5}px;
-  width: ${({ $isOpen }) => ($isOpen ? "20rem" : "60px")};
-  height: ${({ $isOpen }) => ($isOpen ? "25rem" : "60px")};
+  width: ${({ $isOpen }) => ($isOpen ? "20rem" : `${tokens.chatBot.large}rem`)};
+  height: ${({ $isOpen }) =>
+    $isOpen ? "25rem" : `${tokens.chatBot.large}rem`};
   background-color: ${themes.light.accent};
   color: ${themes.light.black};
   border-radius: ${({ $isOpen }) => ($isOpen ? "5%" : "50%")};
@@ -23,6 +24,13 @@ export const ChatBotPopupContainer = styled.div<{ $isOpen: boolean }>`
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: ${tokens.breakpoints.tablet}) {
+    width: ${({ $isOpen }) =>
+      $isOpen ? "15rem" : `${tokens.chatBot.small}rem`};
+    height: ${({ $isOpen }) =>
+      $isOpen ? "20rem" : `${tokens.chatBot.small}rem`};
   }
 `;
 
