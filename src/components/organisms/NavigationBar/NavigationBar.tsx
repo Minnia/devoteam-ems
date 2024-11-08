@@ -1,10 +1,9 @@
-import React, { useState, ReactElement } from "react";
-import { LogoutOutlined, MenuOutlined } from "@ant-design/icons";
+import React from "react";
+import { LogoutOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as S from "./styled";
 import { useAuth } from "../../../context/AuthContext";
-import { FlexContainer } from "../../core/styled";
-import { themes } from "../../core/theme/theme";
+import { FlexContainer, Spacer } from "../../core/styled";
 import tokens from "../../core/theme/tokens";
 
 interface NavigationBarProps {
@@ -29,34 +28,15 @@ interface LogoutButtonProps {
 const NavigationBar: React.FC<NavigationBarProps> & {
   Item: React.FC<NavItemProps>;
   LogoutButton: React.FC<LogoutButtonProps>;
-} = ({ onMenuClick, children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+} = ({ children }) => {
   return (
-    <S.NavContainer $isMenuOpen={isMenuOpen}>
-      <S.NavHeader>
-        <S.HamburgerIcon onClick={toggleMenu}>
-          <MenuOutlined
-            style={{
-              color: themes.light.text,
-              fontSize: tokens.text.fontSize.LARGE,
-            }}
-          />
-        </S.HamburgerIcon>
-      </S.NavHeader>
-      {React.Children.map(children, (child) =>
-        React.isValidElement<NavItemProps>(child)
-          ? React.cloneElement(child, {
-              $isOpen: isMenuOpen,
-              onMenuClick,
-            } as Partial<NavItemProps>)
-          : child
-      )}
-    </S.NavContainer>
+    <>
+      <S.NavContainer>
+        <S.NavHeader></S.NavHeader>
+        {React.Children.map(children, (child) => child)}
+      </S.NavContainer>
+      <Spacer width={30} />
+    </>
   );
 };
 
@@ -65,12 +45,12 @@ const Item: React.FC<NavItemProps> = ({
   text,
   path,
   onClick,
-  isOpen = false,
+  isOpen,
   onMenuClick,
-  isActive = false,
+  isActive,
 }) => {
   const location = useLocation();
-  const activeClass = location.pathname === path || isActive ? "active" : "";
+  const isItemActive = location.pathname === path || isActive;
 
   const handleClick = () => {
     onClick();
@@ -82,9 +62,8 @@ const Item: React.FC<NavItemProps> = ({
   return (
     <FlexContainer>
       <S.NavItem
-        className={activeClass}
         $isOpen={isOpen}
-        $isActive={isActive}
+        $isActive={isItemActive}
         onClick={handleClick}
       >
         {icon}

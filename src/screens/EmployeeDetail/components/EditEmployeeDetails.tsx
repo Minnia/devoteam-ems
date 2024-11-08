@@ -9,6 +9,7 @@ import useGetCompanyRolesAndAllergies from "../hooks/useGetCompanyRolesAndAllerg
 import LoadingOverlay from "../../../components/molecules/LoadingOverlay";
 import NotFound from "../../../components/molecules/NotFound";
 import Dropdown from "../../../components/organisms/Dropdown";
+import * as S from "../styled";
 
 type Props = {
   employee: Employee;
@@ -24,7 +25,6 @@ type Props = {
 const EditEmployeeDetails: FC<Props> = ({
   employee,
   handleNestedInputChange,
-
   handleSaveEdit,
   handleCancelEdit,
 }) => {
@@ -59,7 +59,7 @@ const EditEmployeeDetails: FC<Props> = ({
     fieldPath: (keyof Employee)[]
   ) => {
     return roles.map((role) => (
-      <Checkbox
+      <S.StyledCheckbox
         key={role}
         checked={(editedEmployee?.[fieldPath[0]] as any)?.[role]}
         onChange={(e) => {
@@ -67,7 +67,7 @@ const EditEmployeeDetails: FC<Props> = ({
         }}
       >
         {roleLabels[role]}
-      </Checkbox>
+      </S.StyledCheckbox>
     ));
   };
 
@@ -76,7 +76,7 @@ const EditEmployeeDetails: FC<Props> = ({
     fieldPath: (keyof Employee)[]
   ) => {
     return allergies.map((allergy) => (
-      <Checkbox
+      <S.StyledCheckbox
         key={allergy}
         checked={(editedEmployee?.[fieldPath[0]] as Food)?.allergies.includes(
           allergy
@@ -101,7 +101,7 @@ const EditEmployeeDetails: FC<Props> = ({
         }}
       >
         {allergy}
-      </Checkbox>
+      </S.StyledCheckbox>
     ));
   };
 
@@ -109,7 +109,7 @@ const EditEmployeeDetails: FC<Props> = ({
   if (isError) return <NotFound />;
 
   return (
-    <div style={{ maxWidth: "600px", marginBottom: "20px" }}>
+    <S.Container>
       <StyledInput label="Name" value={employee?.name} />
       <StyledInput
         label="Email"
@@ -131,15 +131,15 @@ const EditEmployeeDetails: FC<Props> = ({
         handleDepartmentChange={handleDepartmentChange}
       />
       <Label $bold>Role</Label>
-      <FlexContainer $center>
+      <S.StyledFlexContainer>
         {renderRoleCheckboxes(roles, ["department"])}
-      </FlexContainer>
+      </S.StyledFlexContainer>
       <Label $bold>Food Preferences</Label>
-      <FlexContainer $center>
+      <S.StyledFlexContainer>
         {renderAllergyCheckboxes(allergies, ["food"])}
-      </FlexContainer>
+      </S.StyledFlexContainer>
       <Spacer height={20} />
-      <FlexContainer $center>
+      <S.StyledButtonContainer>
         <Button
           onClick={handleSaveClick}
           type="primary"
@@ -148,8 +148,8 @@ const EditEmployeeDetails: FC<Props> = ({
           Save Changes
         </Button>
         <Button onClick={handleCancelEdit}>Cancel</Button>
-      </FlexContainer>
-    </div>
+      </S.StyledButtonContainer>
+    </S.Container>
   );
 };
 

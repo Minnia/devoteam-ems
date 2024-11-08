@@ -1,13 +1,6 @@
-import {
-  ChatBotPopupContainer,
-  ChatContent,
-  MessageInput,
-  MessageList,
-  ChatHeader,
-} from "./styled";
 import useChatbot from "./useChatbot";
-import * as logo from "../../../assets/index";
 import Logo from "../../atoms/Logo";
+import * as S from "./styled";
 
 const ChatBot: React.FC = () => {
   const {
@@ -20,38 +13,36 @@ const ChatBot: React.FC = () => {
     chatEndRef,
   } = useChatbot();
 
-  console.log(logo.Logo.src);
-
   return (
     <>
-      <ChatBotPopupContainer $isOpen={isOpen}>
-        <ChatHeader $isOpen={isOpen} onClick={toggleChat}>
+      <S.ChatBotPopupContainer $isOpen={isOpen}>
+        <S.ChatHeader $isOpen={isOpen} onClick={toggleChat}>
           {isOpen ? <span>X</span> : <Logo />}
-        </ChatHeader>
+        </S.ChatHeader>
 
         {isOpen && (
-          <ChatContent>
-            <MessageList>
+          <S.ChatContent>
+            <S.MessageList>
               {messages.map((msg, idx) => (
                 <div key={idx}>
-                  <p style={{ fontWeight: "bold" }}>
+                  <S.ChatMessage fontWeight>
                     {msg.sender === "robot" ? "Robot" : "You"}
-                  </p>
-                  <p>{msg.text}</p>
+                  </S.ChatMessage>
+                  <S.ChatMessage>{msg.text}</S.ChatMessage>
                 </div>
               ))}
               <div ref={chatEndRef} />
-            </MessageList>
-            <MessageInput
+            </S.MessageList>
+            <S.MessageInput
               type="text"
               placeholder="Type a message..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             />
-          </ChatContent>
+          </S.ChatContent>
         )}
-      </ChatBotPopupContainer>
+      </S.ChatBotPopupContainer>
     </>
   );
 };

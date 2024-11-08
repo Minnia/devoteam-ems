@@ -21,8 +21,8 @@ export const LoginContainer = styled.div`
 
 export const LoginCard = styled.div`
   width: 25%;
-  background-color: #fff;
-  border-radius: 8px;
+  background-color: ${themes.light.backgroundLight};
+  border-radius: ${tokens.borderRadius.BASELINE}px;
   padding: ${tokens.padding.CONTAINER}px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -43,10 +43,9 @@ export const LoginCard = styled.div`
 
 export const LoginButton = styled(Button)`
   width: 100%;
-  background-color: ${themes.light.button};
   border: none;
   &:hover {
-    background-color: #1f66c1;
+    background-color: ${themes.light.buttonHover};
   }
 `;
 

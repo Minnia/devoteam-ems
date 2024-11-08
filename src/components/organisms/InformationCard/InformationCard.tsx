@@ -25,7 +25,7 @@ const InformationCard: React.FC<CardProps> = ({
       {icon && <S.IconContainer>{icon}</S.IconContainer>}
       <S.Content>
         <Typography.Heading3>{title}</Typography.Heading3>
-        {text && <Typography.BodyMedium>{text}</Typography.BodyMedium>}
+        {text && <Typography.BodyMedium bold>{text}</Typography.BodyMedium>}
         {children}
       </S.Content>
       {footer && <S.Footer>{footer}</S.Footer>}

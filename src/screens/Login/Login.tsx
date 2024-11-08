@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <S.LoginContainer>
       <S.LoginCard>
-        <Logo />
+        <Logo height={200} />
         <Typography.Heading1 color={themes.light.accent}>
           Welcome to Devoteam!
         </Typography.Heading1>

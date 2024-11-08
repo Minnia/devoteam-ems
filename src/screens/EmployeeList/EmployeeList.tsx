@@ -1,5 +1,6 @@
 import { Table, Input } from "antd";
 import {
+  FlexContainer,
   FullWidthContainer,
   ScreenContainer,
   Spacer,
@@ -8,7 +9,7 @@ import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
 import Dashboard from "../Dashboard";
 import NotFound from "../../components/molecules/NotFound";
-import Breadcrumb from "../../components/atoms/Breadcrumb";
+
 import * as S from "./styled";
 import tokens from "../../components/core/theme/tokens";
 
@@ -35,35 +36,37 @@ const EmployeeList = () => {
   return (
     <>
       <Dashboard />
-      <Breadcrumb />
-      <Spacer height={40} />
-      <ScreenContainer style={{ overflowX: "auto" }}>
-        <FullWidthContainer>
-          <S.CompactTableWrapper>
-            <S.SearchWrapper>
-              <Input
-                placeholder="Search Employees"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-              />
-            </S.SearchWrapper>
-            <Table
-              rowKey={(record) => record.id}
-              key={filteredEmployees.length}
-              size="small"
-              dataSource={filteredEmployees}
-              columns={tableColumns}
-              loading={isLoading}
-              bordered
-              scroll={{ x: "max-content" }}
-              style={{
-                overflowX: "auto",
-                marginTop: tokens.margin.BASELINE * 2,
-              }}
-              pagination={{ hideOnSinglePage: true, pageSize: 20 }}
-            />
-          </S.CompactTableWrapper>
-        </FullWidthContainer>
+      <ScreenContainer $center>
+        <FlexContainer>
+          <div>
+            <FullWidthContainer>
+              <S.CompactTableWrapper>
+                <S.SearchWrapper>
+                  <Input
+                    placeholder="Search Employees"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                  />
+                </S.SearchWrapper>
+                <Table
+                  rowKey={(record) => record.id}
+                  key={filteredEmployees.length}
+                  size="small"
+                  dataSource={filteredEmployees}
+                  columns={tableColumns}
+                  loading={isLoading}
+                  bordered
+                  scroll={{ x: "max-content" }}
+                  style={{
+                    overflowX: "scroll",
+                    marginTop: tokens.margin.BASELINE * 2,
+                  }}
+                  pagination={{ hideOnSinglePage: true, pageSize: 20 }}
+                />
+              </S.CompactTableWrapper>
+            </FullWidthContainer>
+          </div>
+        </FlexContainer>
       </ScreenContainer>
     </>
   );

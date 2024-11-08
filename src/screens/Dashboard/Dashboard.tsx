@@ -26,7 +26,6 @@ const Dashboard = () => {
     }
   };
 
-  // Create array of items and filter out falsy values
   const navigationItems = [
     <NavigationBar.Item
       path="/home"

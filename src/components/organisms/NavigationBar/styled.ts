@@ -2,24 +2,21 @@ import styled from "styled-components";
 import { themes } from "../../core/theme/theme";
 import tokens from "../../core/theme/tokens";
 
-export const NavContainer = styled.div<{ $isMenuOpen: boolean }>`
-  height: 100%;
-  width: 150px;
+export const NavContainer = styled.div`
+  height: 100vh;
   position: fixed;
+  padding: ${tokens.padding.BASELINE}px;
+
   overflow-y: auto;
   background-color: ${themes.light.accent};
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
   z-index: 1000;
-
-  @media (max-width: ${tokens.breakpoints.tablet}) {
-    width: ${({ $isMenuOpen }) => ($isMenuOpen ? "150px" : "60px")};
-  }
 `;
 
 export const NavHeader = styled.div`
-  padding: ${tokens.padding.BASELINE * 2}px;
+  padding: ${tokens.padding.BASELINE}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +27,6 @@ export const NavHeader = styled.div`
 `;
 
 export const HamburgerIcon = styled.div`
-  display: none;
   font-size: ${tokens.text.fontSize}px;
   cursor: pointer;
 
@@ -76,7 +72,7 @@ export const NavItem = styled.div<{
   }
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    justify-content: center;
+    justify-content: flex-start;
     span {
       display: block;
     }

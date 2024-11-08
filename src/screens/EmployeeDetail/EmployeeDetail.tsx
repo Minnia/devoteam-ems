@@ -12,7 +12,6 @@ import useEmployeeDetails from "./hooks/useEmployeeDetails";
 import NotFound from "../../components/molecules/NotFound";
 import LoadingOverlay from "../../components/molecules/LoadingOverlay";
 import { EditEmployeeDetails, EmployeeFields } from "./components";
-import Breadcrumb from "../../components/atoms/Breadcrumb";
 
 const EmployeeDetail = () => {
   const {
@@ -34,7 +33,7 @@ const EmployeeDetail = () => {
   return (
     <ScreenContainer>
       <Dashboard />
-      <Breadcrumb />
+
       <FullWidthContainer>
         <div>
           {isEditing ? (

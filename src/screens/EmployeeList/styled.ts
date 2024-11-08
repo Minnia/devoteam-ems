@@ -10,7 +10,6 @@ export const TableContainer = styled.div`
 `;
 
 export const CompactTableWrapper = styled.div`
-  padding-left: 500px;
   margin-top: 20px;
   min-width: 100%;
 
@@ -27,10 +26,10 @@ export const SearchWrapper = styled.div`
   width: 20%;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    width: 30%;
+    width: 40%;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    width: 50%;
+    width: 100%;
   }
 `;

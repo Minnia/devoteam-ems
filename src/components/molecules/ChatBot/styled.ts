@@ -74,3 +74,7 @@ export const MessageInput = styled.input`
     border-color: ${themes.light.accent};
   }
 `;
+
+export const ChatMessage = styled.p<{ fontWeight?: boolean }>`
+  font-weight: ${({ fontWeight }) => (fontWeight ? "bold" : "normal")};
+`;

@@ -26,4 +26,9 @@ export const Footer = styled.div`
   margin-top: ${tokens.margin.BASELINE * 2}px;
   font-size: 0.9rem;
   color: #888;
+
+  @media (max-width: ${tokens.breakpoints.phone}) {
+    font-size: 0.8rem;
+    display: none;
+  }
 `;
