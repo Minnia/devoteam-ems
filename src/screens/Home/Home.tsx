@@ -6,11 +6,10 @@ import {
 } from "../../components/core/styled";
 import InformationCard from "../../components/organisms/InformationCard";
 import { Typography } from "../../components/core/theme/typography";
-import Dashboard from "../Dashboard";
 import * as S from "./styled";
-import { PieChart } from "react-minimal-pie-chart";
 import useHome from "./useHome";
 import NotFound from "../../components/molecules/NotFound";
+import NavBar from "../NavBar";
 
 const Overview = () => {
   const {
@@ -27,7 +26,7 @@ const Overview = () => {
   return (
     <ScreenContainer>
       <FlexContainer>
-        <Dashboard />
+        <NavBar />
         <FullWidthContainer>
           <Spacer width={60} />
           <S.CenteredContainer>

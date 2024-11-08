@@ -97,7 +97,8 @@ export const CardContainer = styled.div<{
   transition: transform 0.2s ease;
   min-width: ${({ $minWidth }) => $minWidth || 600}px;
 
-  @media (max-width: ${tokens.breakpoints.laptop}) {
+  @media (max-width: ${tokens.breakpoints.laptop &&
+    tokens.breakpoints.tabletLarge}) {
     min-width: ${({ $minWidth }) =>
       $minWidth ? `${$minWidth * 0.8}px` : "80%"};
     padding: ${tokens.padding.BASELINE * 1.5}px;
@@ -105,7 +106,7 @@ export const CardContainer = styled.div<{
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     min-width: ${({ $minWidth }) =>
-      $minWidth ? `${$minWidth * 0.6}px` : "70%"};
+      $minWidth ? `${$minWidth * 0.6}px` : "60%"};
     padding: ${tokens.padding.BASELINE}px;
   }
 

@@ -3,15 +3,13 @@ import {
   FlexContainer,
   FullWidthContainer,
   ScreenContainer,
-  Spacer,
 } from "../../components/core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
-import Dashboard from "../Dashboard";
 import NotFound from "../../components/molecules/NotFound";
-
 import * as S from "./styled";
 import tokens from "../../components/core/theme/tokens";
+import NavBar from "../NavBar";
 
 const EmployeeList = () => {
   const { filteredEmployees, isLoading, searchText, setSearchText, error } =
@@ -35,7 +33,7 @@ const EmployeeList = () => {
 
   return (
     <>
-      <Dashboard />
+      <NavBar />
       <ScreenContainer $center>
         <FlexContainer>
           <div>

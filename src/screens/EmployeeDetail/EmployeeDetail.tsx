@@ -1,5 +1,4 @@
 import { Button } from "antd";
-import Dashboard from "../Dashboard";
 import {
   FullWidthContainer,
   ScreenContainer,
@@ -12,6 +11,7 @@ import useEmployeeDetails from "./hooks/useEmployeeDetails";
 import NotFound from "../../components/molecules/NotFound";
 import LoadingOverlay from "../../components/molecules/LoadingOverlay";
 import { EditEmployeeDetails, EmployeeFields } from "./components";
+import NavBar from "../NavBar";
 
 const EmployeeDetail = () => {
   const {
@@ -32,7 +32,7 @@ const EmployeeDetail = () => {
 
   return (
     <ScreenContainer>
-      <Dashboard />
+      <NavBar />
 
       <FullWidthContainer>
         <div>

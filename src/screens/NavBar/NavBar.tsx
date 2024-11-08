@@ -3,7 +3,7 @@ import { UserOutlined, FolderOpenOutlined } from "@ant-design/icons";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Dashboard = () => {
+const NavBar = () => {
   const { logout, user } = useAuth();
   const navigate = useNavigate();
 
@@ -62,4 +62,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default NavBar;
