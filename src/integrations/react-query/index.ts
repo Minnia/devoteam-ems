@@ -1,8 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-
-const hours = (amount: number) => {
-  return 1000 * 60 * 60 * amount;
-};
+import { hours } from "../../utils/helpers.utils";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
