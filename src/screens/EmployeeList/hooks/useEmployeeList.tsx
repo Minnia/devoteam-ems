@@ -8,6 +8,7 @@ import { toNumber } from "../../../utils/helpers.utils";
 const useEmployeeList = () => {
   const navigate = useNavigate();
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [isMedium, setIsMedium] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
@@ -17,6 +18,10 @@ const useEmployeeList = () => {
       setIsTablet(
         window.innerWidth > toNumber(tokens.breakpoints.phone) &&
           window.innerWidth <= toNumber(tokens.breakpoints.tabletLarge)
+      );
+      setIsMedium(
+        window.innerWidth > toNumber(tokens.breakpoints.tabletLarge) &&
+          window.innerWidth <= toNumber(tokens.breakpoints.laptop)
       );
       setIsLargeScreen(
         window.innerWidth.toString() >= tokens.breakpoints.tabletLarge
@@ -90,25 +95,28 @@ const useEmployeeList = () => {
       },
     ];
 
-    if (isSmallScreen) {
-      console.log("small");
-      return columns.filter((col) => col.key === "name");
-    }
+    switch (true) {
+      case isSmallScreen:
+        return columns.filter((col) => col.key === "name");
+      case isTablet:
+        return columns.filter(
+          (col) =>
+            col.key === "name" || col.key === "role" || col.key === "department"
+        );
+      case isMedium:
+        return columns.filter(
+          (col) =>
+            col.key === "name" ||
+            col.key === "role" ||
+            col.key === "department" ||
+            col.key === "contact.email"
+        );
+      case isLargeScreen:
+        return columns;
 
-    if (isTablet) {
-      console.log("tablet");
-      return columns.filter(
-        (col) =>
-          col.key === "name" || col.key === "role" || col.key === "department"
-      );
+      default:
+        return columns;
     }
-
-    if (isLargeScreen) {
-      console.log("large");
-      return columns;
-    }
-
-    return columns;
   };
 
   return {

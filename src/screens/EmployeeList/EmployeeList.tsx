@@ -10,6 +10,7 @@ import NotFound from "../../components/molecules/NotFound";
 import * as S from "./styled";
 import tokens from "../../components/core/theme/tokens";
 import NavBar from "../NavBar";
+import { toNumber } from "../../utils/helpers.utils";
 
 const EmployeeList = () => {
   const { filteredEmployees, isLoading, searchText, setSearchText, error } =
@@ -49,7 +50,11 @@ const EmployeeList = () => {
                 <Table
                   rowKey={(record) => record.id}
                   key={filteredEmployees.length}
-                  size="small"
+                  size={
+                    tokens.breakpoints.phone || tokens.breakpoints.tabletLarge
+                      ? "small"
+                      : "middle"
+                  }
                   dataSource={filteredEmployees}
                   columns={tableColumns}
                   loading={isLoading}
