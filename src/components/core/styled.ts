@@ -95,7 +95,7 @@ export const CardContainer = styled.div<{
   align-items: center;
   text-align: center;
   transition: transform 0.2s ease;
-  min-width: ${({ $minWidth }) => $minWidth || 600}px;
+  min-width: ${({ $minWidth }) => ($minWidth ? `${$minWidth}px` : "600px")};
 
   @media (max-width: ${tokens.breakpoints.laptop &&
     tokens.breakpoints.tabletLarge}) {

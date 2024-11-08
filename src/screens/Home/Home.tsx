@@ -24,55 +24,37 @@ const Overview = () => {
   if (!user) return <NotFound />;
 
   return (
-    <ScreenContainer>
-      <FlexContainer>
-        <NavBar />
-        <FullWidthContainer>
-          <Spacer width={60} />
-          <S.CenteredContainer>
-            <Spacer height={20} />
-            <Typography.Heading1>Welcome, {user.name}</Typography.Heading1>
-            <S.CardContainer>
-              <InformationCard
-                title="Number of employees"
-                text={numberOfEmployees}
-                footer={pieChartData.map((data) => (
-                  <div key={data.title}>{data.title}</div>
-                ))}
-              />
-              <Spacer width={20} />
-              <InformationCard
-                title="Number of departments"
-                text={numberOfDepartments}
-                footer={departmentPieChartData.map((data) => (
-                  <div key={data.title}>{data.title}</div>
-                ))}
-              />
-              <Spacer width={20} />
-              <InformationCard
-                title="Employee roles"
-                text={`${numberOfRoles} roles in the company`}
-                footer={pieChartData.map((data) => (
-                  <div key={data.title}>
-                    <S.StyledGuide
-                      style={{
-                        height: 10,
-                        width: 10,
-                        backgroundColor: data.color,
-                      }}
-                      color={data.color}
-                    ></S.StyledGuide>
-                    {data.title} - {data.value}
-                  </div>
-                ))}
-              >
-                <S.StyledPieChart data={pieChartData} />
-              </InformationCard>
-            </S.CardContainer>
-          </S.CenteredContainer>
-        </FullWidthContainer>
-      </FlexContainer>
-    </ScreenContainer>
+    <>
+      <NavBar />
+      <ScreenContainer $center>
+        <FlexContainer>
+          <FullWidthContainer>
+            <Spacer width={60} />
+            <S.CenteredContainer>
+              <Spacer height={20} />
+              <Typography.Heading1>Welcome, {user.name}</Typography.Heading1>
+              <S.CardContainer>
+                <InformationCard
+                  numberOfLines={1}
+                  title="Number of employees"
+                  text={numberOfEmployees}
+                  footer={pieChartData.map((data) => data.title).join(", ")}
+                />
+                <Spacer width={20} />
+                <InformationCard
+                  title="Number of departments"
+                  text={numberOfDepartments}
+                  footer={departmentPieChartData
+                    .map((data) => data.title)
+                    .join(", ")}
+                />
+                <Spacer width={20} />
+              </S.CardContainer>
+            </S.CenteredContainer>
+          </FullWidthContainer>
+        </FlexContainer>
+      </ScreenContainer>
+    </>
   );
 };
 

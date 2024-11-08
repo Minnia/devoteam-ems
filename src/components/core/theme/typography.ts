@@ -78,7 +78,7 @@ const Heading3 = styled(TextBaseComponent)`
   ${textProps}
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    font-size: ${tokens.text.fontSize.MEDIUM}px;
+    font-size: ${tokens.text.fontSize.HEADING_SMALL}px;
   }
 `;
 
