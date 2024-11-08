@@ -1,4 +1,3 @@
-import "./App.css";
 import ChatBot from "./components/molecules/ChatBot";
 import NotFound from "./components/molecules/NotFound";
 import { AuthProvider } from "./context/AuthContext";
