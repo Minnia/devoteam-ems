@@ -55,7 +55,7 @@ const BodySmall = styled(TextBaseComponent)`
   ${textProps}
 `;
 
-export const Heading1 = styled.p`
+export const Heading1 = styled(TextBaseComponent)`
   font-size: ${tokens.text.fontSize.HEADING_LARGE}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
