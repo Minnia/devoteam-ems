@@ -21,3 +21,7 @@ export const typesOfRoles = (employees: Employee[]) => {
 export const hours = (amount: number) => {
   return 1000 * 60 * 60 * amount;
 };
+
+export const join = (array: string[]) => {
+  return array.join(", ");
+};

@@ -20,7 +20,7 @@ const InformationCard: React.FC<CardProps> = ({
   children,
   numberOfLines,
 }) => {
-  const maxFooterLength = 50;
+  const maxFooterLength = 54;
 
   const splitFooterText = (footerText: string) => {
     if (footerText.length > maxFooterLength) {

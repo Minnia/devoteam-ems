@@ -10,14 +10,15 @@ import * as S from "./styled";
 import useHome from "./useHome";
 import NotFound from "../../components/molecules/NotFound";
 import NavBar from "../NavBar";
+import { join } from "../../utils/helpers.utils";
 
 const Overview = () => {
   const {
     user,
     numberOfEmployees,
     numberOfDepartments,
-    pieChartData,
-    departmentPieChartData,
+    roleDistributonData,
+    departmentData,
   } = useHome();
 
   if (!user) return <NotFound />;
@@ -37,15 +38,13 @@ const Overview = () => {
                   numberOfLines={1}
                   title="Number of employees"
                   text={numberOfEmployees}
-                  footer={pieChartData.map((data) => data.title).join(", ")}
+                  footer={join(roleDistributonData.map((data) => data.title))}
                 />
                 <Spacer width={20} />
                 <InformationCard
                   title="Number of departments"
                   text={numberOfDepartments}
-                  footer={departmentPieChartData
-                    .map((data) => data.title)
-                    .join(", ")}
+                  footer={join(departmentData.map((data) => data.title))}
                 />
                 <Spacer width={20} />
               </S.CardContainer>

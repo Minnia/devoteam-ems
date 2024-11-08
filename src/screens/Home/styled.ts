@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import tokens from "../../components/core/theme/tokens";
-import { PieChart } from "react-minimal-pie-chart";
 
 export const TableContainer = styled.div`
   width: 100%;
@@ -66,16 +65,4 @@ export const StyledGuide = styled.span<{ color: string }>`
   display: inline-block;
   background-color: ${(props) => props.color};
   margin-right: ${tokens.margin.BASELINE * 0.5}px;
-`;
-
-export const StyledPieChart = styled(PieChart)`
-  height: 15rem;
-
-  @media (max-width: ${tokens.breakpoints.tablet}) {
-    height: 10rem;
-  }
-
-  @media (max-width: ${tokens.breakpoints.phone}) {
-    height: 5rem;
-  }
 `;

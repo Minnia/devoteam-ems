@@ -39,7 +39,7 @@ const useHome = () => {
     }
   });
 
-  const pieChartData = Object.entries(roleDistribution).map(
+  const roleDistributonData = Object.entries(roleDistribution).map(
     ([role, count]) => ({
       title: role,
       value: count,
@@ -58,7 +58,7 @@ const useHome = () => {
     }
   });
 
-  const departmentPieChartData = Object.entries(departmentDistribution).map(
+  const departmentData = Object.entries(departmentDistribution).map(
     ([department, count]) => ({
       title: department,
       value: count,
@@ -69,8 +69,8 @@ const useHome = () => {
     numberOfEmployees,
     numberOfDepartments,
     numberOfRoles,
-    pieChartData,
-    departmentPieChartData,
+    roleDistributonData,
+    departmentData,
     user,
   };
 };
