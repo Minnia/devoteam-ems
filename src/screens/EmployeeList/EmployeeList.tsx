@@ -1,10 +1,10 @@
 import { Table, Input } from "antd";
-import { FlexContainer, ScreenContainer } from "../../components/core/styled";
+import { FlexContainer, ScreenContainer } from "../../core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
 import NotFound from "../../components/molecules/NotFound";
 import * as S from "./styled";
-import tokens from "../../components/core/theme/tokens";
+import tokens from "../../core/theme/tokens";
 import NavBar from "../NavBar";
 import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
 

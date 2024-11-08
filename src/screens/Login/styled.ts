@@ -1,7 +1,7 @@
 import { Button, Input } from "antd";
 import styled from "styled-components";
-import { themes } from "../../components/core/theme/theme";
-import tokens from "../../components/core/theme/tokens";
+import { themes } from "../../core/theme/theme";
+import tokens from "../../core/theme/tokens";
 
 export const LoginContainer = styled.div`
   display: flex;

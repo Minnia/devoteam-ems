@@ -3,10 +3,10 @@ import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 import * as S from "./styled";
-import { Typography } from "../../components/core/theme/typography";
-import { themes } from "../../components/core/theme/theme";
-import { Spacer } from "../../components/core/styled";
-import tokens from "../../components/core/theme/tokens";
+import { Typography } from "../../core/theme/typography";
+import { themes } from "../../core/theme/theme";
+import { Spacer } from "../../core/styled";
+import tokens from "../../core/theme/tokens";
 import Logo from "../../components/atoms/Logo";
 
 const Login = () => {

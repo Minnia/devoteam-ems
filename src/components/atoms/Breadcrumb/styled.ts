@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import tokens from "../../core/theme/tokens";
+import tokens from "../../../core/theme/tokens";
 
 export const BreadcrumbContainer = styled.nav`
   display: inline;

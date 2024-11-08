@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import tokens from "../../core/theme/tokens";
-import { Typography } from "../../core/theme/typography";
+import tokens from "../../../core/theme/tokens";
+import { Typography } from "../../../core/theme/typography";
 
 export const Content = styled.div<{
   $paddingY?: number;

@@ -3,9 +3,9 @@ import {
   FullWidthContainer,
   ScreenContainer,
   Spacer,
-} from "../../components/core/styled";
+} from "../../core/styled";
 import InformationCard from "../../components/organisms/InformationCard";
-import { Typography } from "../../components/core/theme/typography";
+import { Typography } from "../../core/theme/typography";
 import * as S from "./styled";
 import useHome from "./useHome";
 import NotFound from "../../components/molecules/NotFound";

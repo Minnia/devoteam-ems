@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { themes } from "../../core/theme/theme";
-import { Typography } from "../../core/theme/typography";
+import { themes } from "../../../core/theme/theme";
+import { Typography } from "../../../core/theme/typography";
 import * as S from "./styled";
-import { Spacer } from "../../core/styled";
+import { Spacer } from "../../../core/styled";
 
 const NotFound = () => {
   const navigate = useNavigate();

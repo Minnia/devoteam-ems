@@ -5,7 +5,7 @@ import {
   CardContainer,
   Spacer,
   FlexContainer,
-} from "../../components/core/styled";
+} from "../../core/styled";
 import { Employee } from "../../api/types";
 
 import useEmployeeDetails from "./hooks/useEmployeeDetails";
@@ -14,9 +14,9 @@ import LoadingOverlay from "../../components/molecules/LoadingOverlay";
 import { EditEmployeeDetails, EmployeeFields } from "./components";
 import NavBar from "../NavBar";
 import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
-import tokens from "../../components/core/theme/tokens";
+import tokens from "../../core/theme/tokens";
 import { toNumber } from "../../utils/helpers.utils";
-import { Typography } from "../../components/core/theme/typography";
+import { Typography } from "../../core/theme/typography";
 
 const EmployeeDetail = () => {
   const {

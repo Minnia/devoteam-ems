@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import tokens from "../../components/core/theme/tokens";
-import { FlexContainer } from "../../components/core/styled";
+import tokens from "../../core/theme/tokens";
+import { FlexContainer } from "../../core/styled";
 import { Checkbox } from "antd";
 
 export const CenteredContent = styled.div`

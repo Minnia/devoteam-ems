@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./styled";
-import { Typography } from "../../core/theme/typography";
-import { CardContainer } from "../../core/styled";
+import { Typography } from "../../../core/theme/typography";
+import { CardContainer } from "../../../core/styled";
 
 interface CardProps {
   title: string;

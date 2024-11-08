@@ -1,8 +1,8 @@
 import { Button, Checkbox } from "antd";
 import { Employee, Food } from "../../../api/types";
 import { FC } from "react";
-import { FlexContainer, Label, Spacer } from "../../../components/core/styled";
-import tokens from "../../../components/core/theme/tokens";
+import { FlexContainer, Label, Spacer } from "../../../core/styled";
+import tokens from "../../../core/theme/tokens";
 import useEditEmployeeDetails from "../hooks/useEditEmployeeDetails";
 import StyledInput from "../../../components/atoms/StyledInput";
 import useGetCompanyRolesAndAllergies from "../hooks/useGetCompanyRolesAndAllergies";

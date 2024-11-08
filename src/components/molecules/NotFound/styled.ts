@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { themes } from "../../core/theme/theme";
-import tokens from "../../core/theme/tokens";
+import { themes } from "../../../core/theme/theme";
+import tokens from "../../../core/theme/tokens";
 import { Button } from "antd";
 
 export const NotFoundContainer = styled.div`

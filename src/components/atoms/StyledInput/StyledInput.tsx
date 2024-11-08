@@ -1,5 +1,5 @@
 import { Input } from "antd";
-import { Label } from "../../core/styled";
+import { Label } from "../../../core/styled";
 import { FC } from "react";
 
 type Props = {

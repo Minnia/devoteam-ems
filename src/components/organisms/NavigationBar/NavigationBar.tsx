@@ -3,8 +3,8 @@ import { LogoutOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as S from "./styled";
 import { useAuth } from "../../../context/AuthContext";
-import { FlexContainer, Spacer } from "../../core/styled";
-import tokens from "../../core/theme/tokens";
+import { FlexContainer, Spacer } from "../../../core/styled";
+import tokens from "../../../core/theme/tokens";
 
 interface NavigationBarProps {
   onMenuClick: (key: string) => void;

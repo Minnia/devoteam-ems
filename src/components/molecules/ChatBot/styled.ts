@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { themes } from "../../core/theme/theme";
-import tokens from "../../core/theme/tokens";
+import { themes } from "../../../core/theme/theme";
+import tokens from "../../../core/theme/tokens";
 import { SendOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 

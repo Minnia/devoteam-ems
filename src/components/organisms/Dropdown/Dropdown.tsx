@@ -1,7 +1,7 @@
 import { Select } from "antd";
 import { FC } from "react";
 import { Employee } from "../../../api/types";
-import tokens from "../../core/theme/tokens";
+import tokens from "../../../core/theme/tokens";
 
 type Props = {
   employee: Employee;

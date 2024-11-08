@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { ClickableText } from "../../../components/core/styled";
+import { ClickableText } from "../../../core/styled";
 import { Employee, Food } from "../../../api/types";
 import { useEffect, useState } from "react";
-import tokens from "../../../components/core/theme/tokens";
+import tokens from "../../../core/theme/tokens";
 import { toNumber } from "../../../utils/helpers.utils";
 
 const useEmployeeList = () => {

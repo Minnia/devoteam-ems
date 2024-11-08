@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Typography } from "../../core/theme/typography";
+import { Typography } from "../../../core/theme/typography";
 import * as S from "./styled";
 
 const Breadcrumb = () => {
