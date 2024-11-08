@@ -34,6 +34,7 @@ export const textProps = css<TypographyProps>`
     onSecondary && `color: ${theme.colors.secondary_on};`}
   ${({ bold }) => bold && "font-weight: bold;"}
   ${({ demi }) => demi && "font-weight: 600;"}
+    font-family: 'Host Grotesk', sans-serif;
 `;
 
 const BodyLarge = styled(TextBaseComponent)`
