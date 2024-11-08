@@ -60,7 +60,7 @@ First you have to clone the project and then follow the instructions below
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/employee-management-system.git
+git clone git@github.com:Minnia/devoteam-ems.git
 ```
 
 2. Run `npm i` or `npm install` in your terminal
