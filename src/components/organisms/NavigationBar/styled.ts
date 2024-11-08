@@ -71,6 +71,10 @@ export const NavItem = styled.div<{
       spacing !== undefined ? `${spacing}px` : `${tokens.margin.BASELINE}px`};
   }
 
+  &:hover {
+    background-color: ${themes.light.activeNavItem};
+  }
+
   @media (max-width: ${tokens.breakpoints.tablet}) {
     justify-content: flex-start;
     span {
@@ -84,5 +88,6 @@ export const NavItem = styled.div<{
 
 export const LogoutButton = styled(NavItem)`
   margin-top: auto;
+  margin-bottom: ${tokens.margin.BASELINE}px;
   border: none;
 `;
