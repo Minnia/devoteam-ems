@@ -11,6 +11,7 @@ const text = {
     BASE: 16,
     LARGE: 24,
     MEDIUM: 20,
+    X_SMALL: 10,
     SMALL: 14,
     HEADING_SMALL: 32,
     HEADING_MEDIUM: 48,

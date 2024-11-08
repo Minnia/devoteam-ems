@@ -34,6 +34,7 @@ export const textProps = css<TypographyProps>`
     onSecondary && `color: ${theme.colors.secondary_on};`}
   ${({ bold }) => bold && "font-weight: bold;"}
   ${({ demi }) => demi && "font-weight: 600;"}
+    font-family: 'Host Grotesk', sans-serif;
 `;
 
 const BodyLarge = styled(TextBaseComponent)`
@@ -54,7 +55,7 @@ const BodySmall = styled(TextBaseComponent)`
   ${textProps}
 `;
 
-export const Heading1 = styled.p`
+export const Heading1 = styled(TextBaseComponent)`
   font-size: ${tokens.text.fontSize.HEADING_LARGE}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {

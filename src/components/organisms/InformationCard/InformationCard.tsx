@@ -49,7 +49,7 @@ const InformationCard: React.FC<CardProps> = ({
   return (
     <CardContainer style={style}>
       <S.Content>
-        <Typography.Heading3>{title}</Typography.Heading3>
+        <Typography.Heading1>{title}</Typography.Heading1>
         {text && (
           <Typography.BodyMedium bold style={textStyle}>
             {text}
