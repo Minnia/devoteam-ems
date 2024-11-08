@@ -110,14 +110,14 @@ export const CardContainer = styled.div<{
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    min-width: 50%; /* Allow the container to occupy more space on small screens */
-    height: auto; /* Let the height adjust dynamically */
+    min-width: 50%;
+    height: auto;
     display: flex;
-    flex-direction: column; /* Ensure the content stacks vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: ${tokens.padding.BASELINE}px;
-    margin: 0 auto; /* Center horizontally on the screen */
+    margin: 0 auto;
   }
 
   ${({ $center }) =>
