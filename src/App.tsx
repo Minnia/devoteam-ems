@@ -32,7 +32,6 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
-      {/* Protect route based on roles */}
       <Route
         path="/employees"
         element={
