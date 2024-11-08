@@ -4,6 +4,7 @@ import {
   ScreenContainer,
   CardContainer,
   Spacer,
+  FlexContainer,
 } from "../../components/core/styled";
 import { Employee } from "../../api/types";
 
@@ -15,6 +16,7 @@ import NavBar from "../NavBar";
 import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
 import tokens from "../../components/core/theme/tokens";
 import { toNumber } from "../../utils/helpers.utils";
+import { Typography } from "../../components/core/theme/typography";
 
 const EmployeeDetail = () => {
   const {
@@ -38,6 +40,19 @@ const EmployeeDetail = () => {
       <NavBar />
 
       <FullWidthContainer>
+        <FlexContainer
+          $paddingY={0}
+          $direction="row"
+          style={{ display: "inline" }}
+        >
+          <Typography.Heading1>Employee Details</Typography.Heading1>
+          {user?.isAdmin && (
+            <Typography.BodyMedium>
+              As an admin you can edit the user details, except the name, of
+              your employees
+            </Typography.BodyMedium>
+          )}
+        </FlexContainer>
         <div>
           {isEditing ? (
             <CardContainer $center>

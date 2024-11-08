@@ -1,10 +1,5 @@
 import { Table, Input } from "antd";
-import {
-  FlexContainer,
-  FullWidthContainer,
-  ScreenContainer,
-  Spacer,
-} from "../../components/core/styled";
+import { FlexContainer, ScreenContainer } from "../../components/core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
 import NotFound from "../../components/molecules/NotFound";
@@ -40,36 +35,32 @@ const EmployeeList = () => {
       <ScreenContainer $center>
         <FlexContainer>
           <div>
-            <FullWidthContainer>
-              <S.CompactTableWrapper>
-                <S.SearchWrapper>
-                  <Input
-                    placeholder="Search Employees"
-                    value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
-                  />
-                </S.SearchWrapper>
-                <Table
-                  rowKey={(record) => record.id}
-                  key={filteredEmployees.length}
-                  size={
-                    tokens.breakpoints.phone || tokens.breakpoints.tabletLarge
-                      ? "small"
-                      : "middle"
-                  }
-                  dataSource={filteredEmployees}
-                  columns={tableColumns}
-                  loading={isLoading}
-                  bordered
-                  scroll={{ x: "max-content" }}
-                  style={{
-                    overflowX: "scroll",
-                    marginTop: tokens.margin.BASELINE * 2,
-                  }}
-                  pagination={{ hideOnSinglePage: true, pageSize: 20 }}
+            <S.CompactTableWrapper>
+              <S.SearchWrapper>
+                <Input
+                  placeholder="Search Employees"
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
                 />
-              </S.CompactTableWrapper>
-            </FullWidthContainer>
+              </S.SearchWrapper>
+              <Table
+                rowKey={(record) => record.id}
+                key={filteredEmployees.length}
+                size={
+                  tokens.breakpoints.phone || tokens.breakpoints.tabletLarge
+                    ? "small"
+                    : "middle"
+                }
+                dataSource={filteredEmployees}
+                columns={tableColumns}
+                loading={isLoading}
+                bordered
+                style={{
+                  marginTop: tokens.margin.BASELINE * 2,
+                }}
+                pagination={{ hideOnSinglePage: true }}
+              />
+            </S.CompactTableWrapper>
           </div>
           <Breadcrumb />
         </FlexContainer>

@@ -13,20 +13,20 @@ export const ClickableText = styled(Typography.Text)<{ link: string }>`
 `;
 
 export const FlexContainer = styled.div<{
-  spacing?: number;
-  paddingX?: number;
-  paddingY?: number;
+  $spacing?: number;
+  $paddingX?: number;
+  $paddingY?: number;
   $center?: boolean;
-  direction?: "row" | "column";
-  fullScreen?: boolean;
+  $direction?: "row" | "column";
+  $fullScreen?: boolean;
 }>`
   display: flex;
-  flex-direction: ${({ direction }) => direction || "row"};
-  gap: ${({ spacing }) => spacing || 0}px;
-  padding-top: ${({ paddingY }) => paddingY}px;
-  padding-bottom: ${({ paddingY }) => paddingY}px;
-  padding-left: ${({ paddingX }) => paddingX}px;
-  padding-right: ${({ paddingX }) => paddingX}px;
+  flex-direction: ${({ $direction }) => $direction || "row"};
+  gap: ${({ $spacing }) => $spacing || 0}px;
+  padding-top: ${({ $paddingY }) => $paddingY}px;
+  padding-bottom: ${({ $paddingY }) => $paddingY}px;
+  padding-left: ${({ $paddingX }) => $paddingX}px;
+  padding-right: ${({ $paddingX }) => $paddingX}px;
 
   ${({ $center }) =>
     $center &&
@@ -35,8 +35,8 @@ export const FlexContainer = styled.div<{
       align-items: center;
     `}
 
-  ${({ fullScreen }) =>
-    fullScreen &&
+  ${({ $fullScreen }) =>
+    $fullScreen &&
     `
       position: fixed;
       top: 0;
@@ -49,16 +49,17 @@ export const FlexContainer = styled.div<{
 `;
 
 export const ScreenContainer = styled.div<{
-  width?: number;
+  $width?: number;
   $center?: boolean;
-  horizontal?: boolean;
+  $horizontal?: boolean;
 }>`
-  ${({ width }) => (width ? `width: ${width}% ` : `width: 100%`)};
+  ${({ $width }) => ($width ? `width: ${$width}%` : `width: 100%`)};
   display: flex;
   flex-direction: row;
   justify-content: ${({ $center }) => ($center ? "center" : "flex-start")};
   align-items: ${({ $center }) => ($center ? "center" : "flex-start")};
-  overflow-x: scroll;
+  overflow-x: ${({ $horizontal }) => ($horizontal ? "auto" : "hidden")};
+  overflow-y: hidden;
 `;
 
 export const FullWidthContainer = styled.div`
@@ -100,14 +101,16 @@ export const CardContainer = styled.div<{
   @media (max-width: ${tokens.breakpoints.laptop &&
     tokens.breakpoints.tabletLarge}) {
     min-width: ${({ $minWidth }) =>
-      $minWidth ? `${$minWidth * 0.8}px` : "80%"};
-    padding: ${tokens.padding.BASELINE * 1.5}px;
+      $minWidth ? `${$minWidth * 0.8}px` : "70%"};
+    padding: ${tokens.padding.BASELINE * 0.5}px;
+    margin-left: 5rem;
   }
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     min-width: ${({ $minWidth }) =>
-      $minWidth ? `${$minWidth * 0.6}px` : "60%"};
+      $minWidth ? `${$minWidth * 0.6}px` : "50%"};
     padding: ${tokens.padding.BASELINE}px;
+    margin-left: 2rem;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
@@ -119,6 +122,7 @@ export const CardContainer = styled.div<{
     align-items: center;
     padding: ${tokens.padding.BASELINE}px;
     margin: 0 auto;
+    margin-left: 1rem;
   }
 
   ${({ $center }) =>
