@@ -7,6 +7,7 @@ import {
   FlexContainer,
   InfoButton,
   StyledButton,
+  NavbarAwareFlexContainer,
 } from "../../core/styled";
 import { Employee } from "../../api/types";
 import { InfoCircleOutlined } from "@ant-design/icons";
@@ -35,6 +36,8 @@ const EmployeeDetail = () => {
     handleCancelEdit,
     handleSaveEdit,
     handleNestedInputChange,
+    navbarWidth,
+    setNavbarWidth,
   } = useEmployeeDetails();
 
   const { t } = useTranslation();
@@ -44,12 +47,16 @@ const EmployeeDetail = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar setNavbarWidth={setNavbarWidth} />
       {window.innerWidth >= toNumber(tokens.breakpoints.tablet) && (
         <Breadcrumb />
       )}
-      <ScreenContainer $center>
-        <FullWidthContainer $direction="column">
+      <ScreenContainer $navbarPadding={navbarWidth} $center>
+        <NavbarAwareFlexContainer
+          $navbarWidth={navbarWidth}
+          $direction="column"
+          $center
+        >
           <FlexContainer $center>
             <Typography.Heading2>
               {t("employees.details.title")}
@@ -94,7 +101,7 @@ const EmployeeDetail = () => {
               </>
             )}
           </div>
-        </FullWidthContainer>
+        </NavbarAwareFlexContainer>
       </ScreenContainer>
     </>
   );

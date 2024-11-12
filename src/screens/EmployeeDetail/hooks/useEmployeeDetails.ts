@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import useEmployeeById from "../../../api/hooks/useEmployeeById";
 
 import { useAuth } from "../../../context/AuthContext";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { message } from "antd";
 import { Employee } from "../../../api/types";
 import useEditEmployee from "../../../api/hooks/useEditEmployee";
@@ -17,6 +17,9 @@ const useEmployeeDetails = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedEmployee, setEditedEmployee] = useState(employee);
+  const [navbarWidth, setNavbarWidth] = useState(window.innerWidth);
+
+  const employeeRef = useRef(employee);
 
   useEffect(() => {
     setEditedEmployee(employee);
@@ -27,7 +30,7 @@ const useEmployeeDetails = () => {
       setEditedEmployee({
         ...employee,
         department: employee.department || {
-          name: "",
+          name: "Sales",
           isEmployee: false,
           isManager: false,
           isAdmin: false,
@@ -43,7 +46,8 @@ const useEmployeeDetails = () => {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
-    setEditedEmployee(employee);
+    setEditedEmployee(employeeRef.current);
+    refetch();
   };
 
   const handleSaveEdit = async () => {
@@ -52,7 +56,6 @@ const useEmployeeDetails = () => {
     try {
       const updatedEmployee = await editEmployee(editedEmployee);
       setEditedEmployee(updatedEmployee);
-      refetch();
       setIsEditing(false);
     } catch (error) {
       console.error("Error saving employee:", error);
@@ -73,6 +76,7 @@ const useEmployeeDetails = () => {
     const { value } = e.target;
 
     setEditedEmployee((prev) => {
+      console.log("here");
       if (!prev) return;
 
       return {
@@ -96,8 +100,9 @@ const useEmployeeDetails = () => {
     handleEditClick,
     handleCancelEdit,
     handleSaveEdit,
-
     handleNestedInputChange,
+    navbarWidth,
+    setNavbarWidth,
   };
 };
 

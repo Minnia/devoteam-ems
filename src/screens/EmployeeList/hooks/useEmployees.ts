@@ -5,6 +5,7 @@ import { Employee } from "../../../api/types";
 const useEmployees = () => {
   const { data: employees, isLoading, error } = useGetAllEmployees();
   const [searchText, setSearchText] = useState("");
+  const [navbarWidth, setNavbarWidth] = useState(window.innerWidth);
 
   const filteredEmployees = useMemo(() => {
     if (!searchText) return employees;
@@ -27,7 +28,15 @@ const useEmployees = () => {
     });
   }, [employees, searchText]);
 
-  return { filteredEmployees, isLoading, error, searchText, setSearchText };
+  return {
+    filteredEmployees,
+    isLoading,
+    error,
+    searchText,
+    setSearchText,
+    navbarWidth,
+    setNavbarWidth,
+  };
 };
 
 export default useEmployees;

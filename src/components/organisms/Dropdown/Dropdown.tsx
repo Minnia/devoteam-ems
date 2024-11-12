@@ -2,6 +2,7 @@ import { Select } from "antd";
 import { FC } from "react";
 import { Employee } from "../../../api/types";
 import tokens from "../../../core/theme/tokens";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   employee: Employee;
@@ -9,22 +10,27 @@ type Props = {
 };
 
 const Dropdown: FC<Props> = ({ employee, handleDepartmentChange }) => {
+  const { t } = useTranslation();
   return (
     <Select
-      value={employee.department.name}
+      value={employee.department?.name}
       onChange={handleDepartmentChange}
-      placeholder={employee.department.name ?? "Select a department"}
+      placeholder={employee.department?.name}
       style={{
         textAlign: "left",
         marginBottom: tokens.margin.BASELINE * 1.5,
         width: "100%",
       }}
     >
-      <Select.Option value="HR">HR</Select.Option>
-      <Select.Option value="Engineering">Engineering</Select.Option>
-      <Select.Option value="Marketing">Marketing</Select.Option>
-      <Select.Option value="Sales">Sales</Select.Option>
-      <Select.Option value="Finance">Finance</Select.Option>
+      <Select.Option value="HR">{t("departments.hr")}</Select.Option>
+      <Select.Option value="Engineering">
+        {t("departments.engineering")}
+      </Select.Option>
+      <Select.Option value="Marketing">
+        {t("departments.marketing")}
+      </Select.Option>
+      <Select.Option value="Sales">{t("departments.sales")}</Select.Option>
+      <Select.Option value="Finance">{t("departments.finance")}</Select.Option>
     </Select>
   );
 };

@@ -27,6 +27,7 @@ const brandPalette = {
   buttonHover: "#1f66c1",
   redHover: "#e03e4e",
   inactive: "#f1f0f0",
+  beige: "#fffff9",
 };
 
 type ThemeConfig = {
@@ -46,6 +47,7 @@ type ThemeConfig = {
   black: string;
   buttonHover: string;
   redHover: string;
+  beige: string;
 };
 
 const light: ThemeConfig = {
@@ -65,6 +67,7 @@ const light: ThemeConfig = {
   buttonHover: brandPalette.buttonHover,
   inactive: brandPalette.inactive,
   redHover: brandPalette.redHover,
+  beige: brandPalette.beige,
 };
 
 export const themes = {

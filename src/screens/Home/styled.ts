@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import tokens from "../../core/theme/tokens";
+import { FlexContainer } from "../../core/styled";
 
 export const Block = styled.div`
   display: flex;
@@ -8,19 +9,17 @@ export const Block = styled.div`
   width: 100%;
 `;
 
-export const CenteredContainer = styled.div`
+export const CenteredContainer = styled.div<{ $navbarPadding?: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: ${tokens.gap.LARGE * 2}px;
-  padding:${tokens.padding.CONTAINER * 2}px; 20px;
-
+  padding-left: ${(props) => props.$navbarPadding}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     padding: ${tokens.padding.BASELINE * 2}px 0;
     gap: ${tokens.padding.BASELINE * 2}px;
   }
-
 
   @media (max-width: ${tokens.breakpoints.phone}) {
     padding: ${tokens.padding.BASELINE}px 0;
@@ -29,27 +28,25 @@ export const CenteredContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: ${tokens.padding.BASELINE * 2}px;
   justify-items: center;
   align-items: flex-start;
   padding: ${tokens.padding.CONTAINER}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    grid-template-columns: repeat(2, 1fr);
     gap: ${tokens.padding.BASELINE * 1.5}px;
+    margin: 0 auto;
   }
 
   @media (max-width: ${tokens.breakpoints.tabletLarge}) {
-    grid-template-columns: repeat(2, 1fr);
     gap: ${tokens.padding.BASELINE}px;
+    justify-content: center;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    grid-template-columns: 1fr;
     gap: ${tokens.padding.BASELINE}px;
-    padding: 0;
   }
 `;
 

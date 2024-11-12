@@ -52,10 +52,13 @@ export const ScreenContainer = styled.div<{
   $width?: number;
   $center?: boolean;
   $horizontal?: boolean;
+  $navbarPadding?: number;
 }>`
-  ${({ $width }) => ($width ? `width: ${$width}%` : `width: 100%`)};
+  width: 100vw;
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
+  padding-left: ${(props) => props.$navbarPadding}px;
   justify-content: ${({ $center }) => ($center ? "center" : "flex-start")};
   align-items: ${({ $center }) => ($center ? "center" : "flex-start")};
   overflow-x: ${({ $horizontal }) => ($horizontal ? "auto" : "hidden")};
@@ -98,6 +101,7 @@ export const CardContainer = styled.div<{
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${themes.light.beige};
   text-align: center;
   height: ${({ height }) => (height ? `${height}px` : "auto")};
   transition: transform 0.2s ease;
@@ -106,21 +110,17 @@ export const CardContainer = styled.div<{
 
   @media (max-width: ${tokens.breakpoints.laptop &&
     tokens.breakpoints.tabletLarge}) {
-    min-width: ${({ $minWidth }) =>
-      $minWidth ? `${$minWidth * 0.8}px` : "80%"};
+    min-width: 50%;
     padding: ${tokens.padding.BASELINE * 0.5}px;
-    margin-left: 5rem;
   }
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    min-width: ${({ $minWidth }) =>
-      $minWidth ? `${$minWidth * 0.6}px` : "50%"};
+    width: 100%;
     padding: ${tokens.padding.BASELINE}px;
-    margin-left: 2rem;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    min-width: 50%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -128,7 +128,6 @@ export const CardContainer = styled.div<{
     align-items: center;
     padding: ${tokens.padding.BASELINE}px;
     margin: 0 auto;
-    margin-left: 1rem;
   }
 
   ${({ $center }) =>
@@ -192,4 +191,10 @@ export const StyledButton = styled(Button)<{
     color: ${themes.light.redHover} !important;
     border: 1px solid ${themes.light.redHover} !important;
   }
+`;
+
+export const NavbarAwareFlexContainer = styled(FlexContainer)<{
+  $navbarWidth?: number;
+}>`
+  width: calc(100vw - ${(props) => props.$navbarWidth}px);
 `;

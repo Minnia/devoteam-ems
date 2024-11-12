@@ -11,8 +11,15 @@ import { toNumber } from "../../utils/helpers.utils";
 import SearchBar from "../../components/atoms/SearchBar";
 
 const EmployeeList = () => {
-  const { filteredEmployees, isLoading, searchText, setSearchText, error } =
-    useEmployees();
+  const {
+    filteredEmployees,
+    isLoading,
+    searchText,
+    setSearchText,
+    error,
+    navbarWidth,
+    setNavbarWidth,
+  } = useEmployees();
   const { tableColumns, expandedRowRender, isExpandable } = useEmployeeList();
 
   if (error) {
@@ -32,7 +39,7 @@ const EmployeeList = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar setNavbarWidth={setNavbarWidth} />
       <FlexContainer>
         {window.innerWidth > toNumber(tokens.breakpoints.tablet) && (
           <Breadcrumb />

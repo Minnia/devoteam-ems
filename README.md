@@ -64,8 +64,8 @@ git clone git@github.com:Minnia/devoteam-ems.git
 ```
 
 2. Run `npm i` or `npm install` in your terminal
-3. Make sure you have the latest translations by running the script `fetchTranslations`
-4. Open a second terminal and run the script `server` (or if you'd rather run the whole script,
+3. Make sure you have the latest translations by running the script `npm run fetchTranslations`
+4. Open a second terminal and run the script `npm run server` (or if you'd rather run the whole script,
    `json-server --watch employees.json`)
 5. In the first terminal, run `npm run start` to get the EMS up and going
 

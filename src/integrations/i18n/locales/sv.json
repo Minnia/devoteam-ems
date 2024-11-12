@@ -24,10 +24,19 @@
   "home.news.employees": "Antal anställda",
   "employees.edit.information": "Som adminanvändare kan du ändra användardetaljer, förutom namn, för dina anställlda",
   "employees.edit.actions.edit": "Ändra användaruppgifter",
+  "test": "Användaruppgifter uppdaterade.",
   "employees.details.title": "Anställds information",
+  "employees.details.you": "Din information",
   "employees.details.modal.title": "Osparade ändringar",
   "employees.details.modal.body": "Du har osparade ändringar. Vill du fortsätta?",
   "navigation.home": "Hem",
   "navigation.employees": "Anställda",
-  "navigation.employee": "Profil"
+  "navigation.employee": "Profil",
+  "breadcrumb.home": "Hem",
+  "breadcrumb.employees": "Anställda",
+  "departments.hr": "HR",
+  "departments.engineering": "Utveckling",
+  "departments.marketing": "PR",
+  "departments.sales": "Sälj",
+  "departments.finance": "Ekonomi"
 }

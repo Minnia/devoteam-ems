@@ -5,8 +5,8 @@
       "name": "Stella Wiza",
       "avatar": "https://via.placeholder.com/100x100/e1f11a/3ee87e.jpg?text=vindico%20sustineo%20volubilis",
       "contact": {
-        "email": "Brennon41@gmail.e",
-        "telephone": "1-466-919-5850 "
+        "email": "Brennon41@gmail.sdessdfh",
+        "telephone": "sdf1-466-919-5850 dd"
       },
       "department": {
         "name": "Sales",
@@ -20,12 +20,11 @@
         "allergies": [
           "Shellfish",
           "Dairy",
-          "Eggs",
-          "Peanuts"
+          "Soy"
         ]
       },
-      "email": "Brennon41@gmail.e",
-      "telephone": "1-466-919-5850 ",
+      "email": "Brennon41@gmail.sdessdfh",
+      "telephone": "sdf1-466-919-5850 dd",
       "isEmployee": true,
       "isManager": true,
       "isAdmin": false
@@ -1077,7 +1076,7 @@
       "avatar": "https://via.placeholder.com/100x100/6b25ec/fcaaaa.webp?text=tutis%20canonicus%20abundans",
       "contact": {
         "email": "Heber.McDermott3@gmail.com",
-        "telephone": "474-783-6837 x6913"
+        "telephone": "474-783-6837 x6913ilijijn"
       },
       "department": {
         "name": "Finance",
@@ -1092,7 +1091,12 @@
           "Shellfish",
           "Soy"
         ]
-      }
+      },
+      "email": "Heber.McDermott3@gmail.com",
+      "telephone": "474-783-6837 x6913ilijijn",
+      "isEmployee": true,
+      "isManager": false,
+      "isAdmin": true
     },
     {
       "id": "8ac9104112ebcad58e5f45fa",
