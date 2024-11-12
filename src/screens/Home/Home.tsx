@@ -10,17 +10,24 @@ import * as S from "./styled";
 import useHome from "./useHome";
 import NotFound from "../../components/molecules/NotFound";
 import NavBar from "../NavBar";
-import { join } from "../../utils/helpers.utils";
+import { join, toNumber } from "../../utils/helpers.utils";
 import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
+import { CrownOutlined, UserOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
+import tokens from "../../core/theme/tokens";
 
 const Overview = () => {
   const {
     user,
     numberOfEmployees,
+    employeeOfTheMonth,
     numberOfDepartments,
     roleDistributonData,
+    navigate,
     departmentData,
   } = useHome();
+
+  const { t } = useTranslation();
 
   if (!user) return <NotFound />;
 
@@ -33,24 +40,40 @@ const Overview = () => {
             <Spacer width={60} />
             <S.CenteredContainer>
               <Spacer height={20} />
-              <Typography.Heading1>Welcome, {user.name}</Typography.Heading1>
+              <Typography.Heading1>
+                {t("globals.welcomeUser", { user: user.name })}
+              </Typography.Heading1>
               <S.CardContainer>
                 <InformationCard
+                  onClick={() => navigate("/employees")}
                   numberOfLines={1}
-                  title="Number of employees"
+                  title={t("home.news.employees")}
                   text={numberOfEmployees}
                   footer={join(roleDistributonData.map((data) => data.title))}
                 />
-                <Spacer width={20} />
                 <InformationCard
-                  title="Number of departments"
+                  onClick={() =>
+                    navigate(`/employees/${employeeOfTheMonth!.id}`)
+                  }
+                  icon={<UserOutlined height={48} />}
+                  title={t("home.news.employeeOfTheMonth")}
+                  text={employeeOfTheMonth?.name}
+                  footer={`${employeeOfTheMonth?.department.name} - ${employeeOfTheMonth?.department.role}`}
+                />
+                <InformationCard
+                  title={t("home.news.departments")}
                   text={numberOfDepartments}
                   footer={join(departmentData.map((data) => data.title))}
                 />
-                <Spacer width={20} />
+                <InformationCard
+                  icon={<CrownOutlined height={48} />}
+                  title={t("home.news.ceo")}
+                />
               </S.CardContainer>
             </S.CenteredContainer>
-            <Breadcrumb />
+            {window.innerWidth > toNumber(tokens.breakpoints.tablet) && (
+              <Breadcrumb />
+            )}
           </FullWidthContainer>
         </FlexContainer>
       </ScreenContainer>

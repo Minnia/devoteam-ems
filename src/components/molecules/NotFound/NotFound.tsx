@@ -25,9 +25,7 @@ const NotFound = () => {
         back.
       </Typography.BodyMedium>
       <Spacer height={16} />
-      <S.StyledButton type="primary" onClick={handleGoHome}>
-        Go back
-      </S.StyledButton>
+      <S.StyledButton onClick={handleGoHome}>Go back</S.StyledButton>
     </S.NotFoundContainer>
   );
 };

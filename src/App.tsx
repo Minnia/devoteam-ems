@@ -6,6 +6,7 @@ import EmployeeDetail from "./screens/EmployeeDetail";
 import EmployeeList from "./screens/EmployeeList";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
+import { useTranslation } from "react-i18next";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import {
@@ -26,7 +27,11 @@ const AppRoutes = () => {
         path="/home"
         element={
           <ProtectedRoute
-            allowedRoles={{ isAdmin: true, isManager: true, isEmployee: true }}
+            allowedRoles={{
+              isAdmin: true,
+              isManager: true,
+              isEmployee: true,
+            }}
           >
             <Home />
           </ProtectedRoute>
@@ -44,7 +49,11 @@ const AppRoutes = () => {
         path="/employees/:id"
         element={
           <ProtectedRoute
-            allowedRoles={{ isAdmin: true, isManager: true, isEmployee: true }}
+            allowedRoles={{
+              isAdmin: true,
+              isManager: true,
+              isEmployee: true,
+            }}
           >
             <EmployeeDetail />
           </ProtectedRoute>
@@ -56,11 +65,33 @@ const AppRoutes = () => {
 };
 
 const App = () => {
+  const lngs: { [key in "en" | "sv"]: { nativeName: string } } = {
+    en: { nativeName: "English" },
+    sv: { nativeName: "Svenska" },
+  };
+
+  const { t, i18n } = useTranslation();
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <Router>
           <ChatBot />
+          {/* <div>
+            {Object.keys(lngs).map((lng) => (
+              <button
+                key={lng}
+                style={{
+                  fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
+                }}
+                type="submit"
+                onClick={() => i18n.changeLanguage(lng)}
+              >
+                {lngs[lng as "en" | "sv"].nativeName}
+              </button>
+            ))}
+          </div>
+          <p>{t("globals.welcome")}</p> */}
+
           <AppRoutes />
         </Router>
       </QueryClientProvider>

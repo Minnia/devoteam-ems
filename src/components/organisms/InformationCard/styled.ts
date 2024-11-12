@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import tokens from "../../../core/theme/tokens";
 import { Typography } from "../../../core/theme/typography";
+import { themes } from "../../../core/theme/theme";
 
 export const Content = styled.div<{
   $paddingY?: number;
@@ -24,4 +25,10 @@ export const Footer = styled(Typography.BodySmall)`
     font-size: 0.8rem;
     display: none;
   }
+`;
+
+export const StyledIcon = styled.div<{ icon?: React.ReactNode }>`
+  display: flex;
+  justify-content: center;
+  color: ${themes.light.accent};
 `;

@@ -1,4 +1,4 @@
-import { Typography } from "antd";
+import { Button, Typography } from "antd";
 import styled from "styled-components";
 import * as StyledSystem from "styled-system";
 import tokens from "./theme/tokens";
@@ -62,10 +62,13 @@ export const ScreenContainer = styled.div<{
   overflow-y: hidden;
 `;
 
-export const FullWidthContainer = styled.div`
+export const FullWidthContainer = styled.div<{ $direction?: "row" | "column" }>`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  flex-direction: ${({ $direction }) => $direction || "row"};
+  align-items: ${({ $direction }) =>
+    $direction === "column" ? "center" : "flex-start"};
+
   width: 100%;
 `;
 
@@ -87,6 +90,7 @@ export const CenteredContainer = styled.div`
 export const CardContainer = styled.div<{
   $center?: boolean;
   $minWidth?: number;
+  height?: number;
 }>`
   border-radius: ${tokens.borderRadius.BASELINE}px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -95,13 +99,15 @@ export const CardContainer = styled.div<{
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: ${({ height }) => (height ? `${height}px` : "auto")};
   transition: transform 0.2s ease;
+  cursor: pointer;
   min-width: ${({ $minWidth }) => ($minWidth ? `${$minWidth}px` : "600px")};
 
   @media (max-width: ${tokens.breakpoints.laptop &&
     tokens.breakpoints.tabletLarge}) {
     min-width: ${({ $minWidth }) =>
-      $minWidth ? `${$minWidth * 0.8}px` : "70%"};
+      $minWidth ? `${$minWidth * 0.8}px` : "80%"};
     padding: ${tokens.padding.BASELINE * 0.5}px;
     margin-left: 5rem;
   }
@@ -138,6 +144,10 @@ export const CardContainer = styled.div<{
       align-items: center;
 
     `}
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 export const Label = styled(Typography)<{ $bold?: boolean }>`
@@ -151,5 +161,35 @@ export const Label = styled(Typography)<{ $bold?: boolean }>`
 
   @media (max-width: ${tokens.breakpoints.phone}) {
     font-size: ${tokens.text.fontSize.SMALL}px;
+  }
+`;
+
+export const InfoButton = styled(Button)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: ${tokens.text.fontSize.SMALL}px;
+  color: ${themes.light.accent};
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: blue;
+  }
+`;
+
+export const StyledButton = styled(Button)<{
+  color: string;
+  $textColor: string;
+}>`
+  background-color: ${({ color }) => color};
+  color: ${({ $textColor }) => $textColor};
+  width: 100%;
+  border: none;
+  &:hover {
+    color: ${themes.light.redHover} !important;
+    border: 1px solid ${themes.light.redHover} !important;
   }
 `;

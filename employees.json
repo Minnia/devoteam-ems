@@ -19,7 +19,9 @@
         "preference": "Vegetarian",
         "allergies": [
           "Shellfish",
-          "Dairy"
+          "Dairy",
+          "Eggs",
+          "Peanuts"
         ]
       },
       "email": "Brennon41@gmail.e",

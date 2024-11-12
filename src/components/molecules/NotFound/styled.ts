@@ -18,4 +18,12 @@ export const NotFoundContainer = styled.div`
 export const StyledButton = styled(Button)`
   padding: 0 ${tokens.padding.BASELINE * 4}px;
   height: 48px;
+  background-color: ${themes.light.error};
+  border: none;
+  color: ${themes.light.text};
+
+  &:hover {
+    background-color: ${themes.light.error};
+    color: ${themes.light.text};
+  }
 `;

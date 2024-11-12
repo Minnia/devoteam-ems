@@ -43,21 +43,22 @@ export const CenteredContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: ${tokens.padding.BASELINE * 2}px;
-  justify-content: center;
+  width: 100%;
+  justify-items: center;
   align-items: flex-start;
-  flex-wrap: wrap;
+  padding: ${tokens.padding.CONTAINER}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${tokens.padding.BASELINE * 1.5}px;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: ${tokens.padding.BASELINE}px;
   }
 `;
 

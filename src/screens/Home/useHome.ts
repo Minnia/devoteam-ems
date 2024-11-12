@@ -2,12 +2,20 @@ import { Employee } from "../../api/types";
 import useGetAllEmployees from "../../api/hooks/useGetAllEmployees";
 import { useAuth } from "../../context/AuthContext";
 import { generateRandomColor } from "../../utils/helpers.utils";
+import { useNavigate } from "react-router-dom";
 
 const useHome = () => {
   const { data: employees } = useGetAllEmployees();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const numberOfEmployees = employees?.length || 0;
+
+  const employeeOfTheMonth = employees?.find((employee) => {
+    if (!employee) return employees[0].name;
+    return employee.name.endsWith("son");
+  });
+
   const numberOfDepartments = employees?.reduce(
     (acc: string[], employee: Employee) => {
       if (!acc.includes(employee.department.name)) {
@@ -72,6 +80,8 @@ const useHome = () => {
     roleDistributonData,
     departmentData,
     user,
+    navigate,
+    employeeOfTheMonth,
   };
 };
 

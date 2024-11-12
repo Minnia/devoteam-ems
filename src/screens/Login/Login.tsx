@@ -5,15 +5,17 @@ import { message } from "antd";
 import * as S from "./styled";
 import { Typography } from "../../core/theme/typography";
 import { themes } from "../../core/theme/theme";
-import { Spacer } from "../../core/styled";
+import { Spacer, StyledButton } from "../../core/styled";
 import tokens from "../../core/theme/tokens";
 import Logo from "../../components/atoms/Logo";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, user } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleLoginClick = () => {
     const isLoginSuccessful = login(email, password);
@@ -37,25 +39,26 @@ const Login = () => {
           Welcome to Devoteam!
         </Typography.Heading1>
         <S.InputField
-          placeholder="Email"
+          placeholder={t("globals.email")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <S.InputField.Password
-          placeholder="Password"
+          placeholder={t("globals.password")}
           value={password}
           onKeyDown={(e) => e.key === "Enter" && handleLoginClick()}
           onChange={(e) => setPassword(e.target.value)}
         />
         <Spacer height={tokens.spacing.BASELINE * 2} />
-        <S.LoginButton
+        <StyledButton
+          color={themes.light.accent}
+          $textColor={themes.light.backgroundLight}
           disabled={!email || !password}
-          type="primary"
           onClick={handleLoginClick}
           tabIndex={0}
         >
-          Login
-        </S.LoginButton>
+          {t("globals.login")}
+        </StyledButton>
       </S.LoginCard>
     </S.LoginContainer>
   );

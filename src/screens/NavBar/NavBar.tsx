@@ -2,10 +2,12 @@ import NavigationBar from "../../components/organisms/NavigationBar";
 import { UserOutlined, FolderOpenOutlined } from "@ant-design/icons";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const NavBar = () => {
   const { logout, user } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const onlyEmployee = user?.isEmployee && !user?.isAdmin && !user?.isManager;
   const isAdminOrManager = user?.isAdmin || user?.isManager;
@@ -32,7 +34,7 @@ const NavBar = () => {
       key="overview"
       onClick={() => handleMenuClick("overview")}
       icon={<FolderOpenOutlined size={20} />}
-      text="Overview"
+      text={t("navigation.home")}
     />,
     isAdminOrManager && (
       <NavigationBar.Item
@@ -40,7 +42,7 @@ const NavBar = () => {
         onClick={() => handleMenuClick("employees")}
         key="employees"
         icon={<UserOutlined />}
-        text="Employees"
+        text={t("navigation.employees")}
       />
     ),
     onlyEmployee && (
@@ -49,7 +51,7 @@ const NavBar = () => {
         onClick={() => handleMenuClick("profile")}
         key="profile"
         icon={<UserOutlined />}
-        text="Profile"
+        text={t("navigation.profile")}
       />
     ),
     <NavigationBar.LogoutButton key="logout" onClick={logout} />,

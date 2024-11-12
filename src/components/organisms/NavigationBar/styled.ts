@@ -6,8 +6,6 @@ export const NavContainer = styled.div`
   height: 100vh;
   position: fixed;
   padding: ${tokens.padding.BASELINE}px;
-
-  overflow-y: auto;
   background-color: ${themes.light.accent};
   display: flex;
   flex-direction: column;
@@ -26,21 +24,12 @@ export const NavHeader = styled.div`
   }
 `;
 
-export const HamburgerIcon = styled.div`
-  font-size: ${tokens.text.fontSize}px;
-  cursor: pointer;
-
-  @media (max-width: ${tokens.breakpoints.tablet}) {
-    display: block;
-  }
-`;
-
 export const MenuContainer = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   transition: max-height 0.3s ease-in-out;
-
   overflow: hidden;
+
   @media (min-width: ${tokens.breakpoints.tablet}) {
     max-height: none;
   }

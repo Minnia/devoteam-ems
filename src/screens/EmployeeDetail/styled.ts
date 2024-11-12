@@ -7,13 +7,12 @@ export const CenteredContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: ${tokens.padding.BASELINE}px;
+  padding: initial;
   width: 100%;
 `;
 
 export const Row = styled.div`
   display: flex;
-  gap: ${tokens.margin.BASELINE * 2}px;
   width: 100%;
   justify-content: space-evenly;
 
@@ -31,6 +30,7 @@ export const FieldContainer = styled.div`
   min-width: 200px;
   display: flex;
   flex-direction: column;
+
   gap: ${tokens.margin.BASELINE}px;
 
   @media (max-width: ${tokens.breakpoints.phone}) {

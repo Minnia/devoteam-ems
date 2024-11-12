@@ -11,7 +11,6 @@ export const TableContainer = styled.div`
 
 export const CompactTableWrapper = styled.div`
   margin-top: ${tokens.margin.BASELINE * 3.5}px;
-  min-width: 100%;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     margin-top: 2rem;
@@ -19,17 +18,5 @@ export const CompactTableWrapper = styled.div`
 
   @media (max-width: ${tokens.breakpoints.phone}) {
     margin-top: 3rem;
-  }
-`;
-
-export const SearchWrapper = styled.div`
-  width: 20%;
-
-  @media (max-width: ${tokens.breakpoints.tablet}) {
-    width: 40%;
-  }
-
-  @media (max-width: ${tokens.breakpoints.phone}) {
-    width: 100%;
   }
 `;

@@ -5,6 +5,7 @@ import * as S from "./styled";
 import { useAuth } from "../../../context/AuthContext";
 import { FlexContainer, Spacer } from "../../../core/styled";
 import tokens from "../../../core/theme/tokens";
+import { useTranslation } from "react-i18next";
 
 interface NavigationBarProps {
   onMenuClick: (key: string) => void;
@@ -76,6 +77,7 @@ const Item: React.FC<NavItemProps> = ({
 const LogoutButton: React.FC<LogoutButtonProps> = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const { t } = useTranslation();
 
   const handleLogout = () => {
     logout();
@@ -85,7 +87,7 @@ const LogoutButton: React.FC<LogoutButtonProps> = () => {
   return (
     <S.LogoutButton onClick={handleLogout}>
       <LogoutOutlined style={{ marginRight: tokens.margin.BASELINE }} />
-      <span className="navItemText">Logout</span>
+      <span className="navItemText">{t("globals.logout")}</span>
     </S.LogoutButton>
   );
 };

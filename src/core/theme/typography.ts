@@ -59,11 +59,11 @@ export const Heading1 = styled(TextBaseComponent)`
   font-size: ${tokens.text.fontSize.HEADING_LARGE}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    font-size: ${tokens.text.fontSize.MEDIUM}px;
+    font-size: ${tokens.text.fontSize.SMALL}px;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    font-size: ${tokens.text.fontSize.MEDIUM}px;
+    font-size: ${tokens.text.fontSize.X_SMALL}px;
   }
   ${textProps}
 `;
@@ -71,16 +71,26 @@ export const Heading1 = styled(TextBaseComponent)`
 const Heading2 = styled(TextBaseComponent)`
   font-size: ${tokens.text.fontSize.HEADING_MEDIUM}px;
   ${textProps}
+
+  @media (max-width: ${tokens.breakpoints.tablet}) {
+    font-size: ${tokens.text.fontSize.MEDIUM}px;
+  }
+
+  @media (max-width: ${tokens.breakpoints.phone}) {
+    font-size: ${tokens.text.fontSize.SMALL}px;
+  }
 `;
 
 const Heading3 = styled(TextBaseComponent)`
   font-size: ${tokens.text.fontSize.HEADING_SMALL}px;
-  line-height: ${tokens.text.lineHeight}px;
   ${textProps}
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     font-size: ${tokens.text.fontSize.HEADING_SMALL}px;
   }
+
+  @media (max-width: ${tokens.breakpoints.phone}) {
+    font-size: ${tokens.text.fontSize.X_SMALL}px;
 `;
 
 export const Typography = {

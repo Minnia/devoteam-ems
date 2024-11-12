@@ -1,5 +1,5 @@
-import { Table, Input } from "antd";
-import { FlexContainer, ScreenContainer } from "../../core/styled";
+import { Table } from "antd";
+import { FlexContainer, ScreenContainer, Spacer } from "../../core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
 import NotFound from "../../components/molecules/NotFound";
@@ -7,11 +7,13 @@ import * as S from "./styled";
 import tokens from "../../core/theme/tokens";
 import NavBar from "../NavBar";
 import Breadcrumb from "../../components/atoms/Breadcrumb/Breadcrumb";
+import { toNumber } from "../../utils/helpers.utils";
+import SearchBar from "../../components/atoms/SearchBar";
 
 const EmployeeList = () => {
   const { filteredEmployees, isLoading, searchText, setSearchText, error } =
     useEmployees();
-  const { tableColumns } = useEmployeeList();
+  const { tableColumns, expandedRowRender, isExpandable } = useEmployeeList();
 
   if (error) {
     return <NotFound />;
@@ -31,39 +33,37 @@ const EmployeeList = () => {
   return (
     <>
       <NavBar />
-
-      <ScreenContainer $center>
-        <FlexContainer>
-          <div>
-            <S.CompactTableWrapper>
-              <S.SearchWrapper>
-                <Input
-                  placeholder="Search Employees"
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                />
-              </S.SearchWrapper>
-              <Table
-                rowKey={(record) => record.id}
-                key={filteredEmployees.length}
-                size={
-                  tokens.breakpoints.phone || tokens.breakpoints.tabletLarge
-                    ? "small"
-                    : "middle"
-                }
-                dataSource={filteredEmployees}
-                columns={tableColumns}
-                loading={isLoading}
-                bordered
-                style={{
-                  marginTop: tokens.margin.BASELINE * 2,
-                }}
-                pagination={{ hideOnSinglePage: true }}
-              />
-            </S.CompactTableWrapper>
-          </div>
+      <FlexContainer>
+        {window.innerWidth > toNumber(tokens.breakpoints.tablet) && (
           <Breadcrumb />
-        </FlexContainer>
+        )}
+      </FlexContainer>
+      <ScreenContainer $center>
+        <S.CompactTableWrapper>
+          <SearchBar searchText={searchText} setSearchText={setSearchText} />
+          <Spacer height={8} />
+
+          <Table
+            dataSource={filteredEmployees}
+            columns={tableColumns}
+            loading={isLoading}
+            expandable={
+              isExpandable
+                ? {
+                    expandedRowRender,
+                    rowExpandable: (record) => Boolean(record.contact),
+                    expandIconColumnIndex: tableColumns.length + 1,
+                  }
+                : undefined
+            }
+            size={
+              tokens.breakpoints.phone || tokens.breakpoints.tabletLarge
+                ? "small"
+                : "large"
+            }
+            bordered
+          />
+        </S.CompactTableWrapper>
       </ScreenContainer>
     </>
   );

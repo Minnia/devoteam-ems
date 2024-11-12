@@ -10,6 +10,8 @@ interface CardProps {
   footer?: React.ReactNode;
   children?: React.ReactNode;
   numberOfLines?: number;
+  icon?: React.ReactNode;
+  onClick?: () => void;
 }
 
 const InformationCard: React.FC<CardProps> = ({
@@ -19,6 +21,8 @@ const InformationCard: React.FC<CardProps> = ({
   footer,
   children,
   numberOfLines,
+  icon,
+  onClick,
 }) => {
   const maxFooterLength = 55;
 
@@ -47,14 +51,15 @@ const InformationCard: React.FC<CardProps> = ({
     : {};
 
   return (
-    <CardContainer style={style}>
-      <S.Content $paddingX={20} $minWidth={220}>
-        <Typography.Heading1>{title}</Typography.Heading1>
+    <CardContainer onClick={onClick} style={style} $minWidth={400}>
+      <S.Content $paddingX={20} $paddingY={10} $minWidth={220}>
+        <Typography.Heading3>{title}</Typography.Heading3>
         {text && (
           <Typography.BodyMedium bold style={textStyle}>
             {text}
           </Typography.BodyMedium>
         )}
+        {icon && <S.StyledIcon icon={icon}>{icon}</S.StyledIcon>}
         {children}
       </S.Content>
       {footer && (
