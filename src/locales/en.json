@@ -30,5 +30,7 @@
   "employees.details.modal.body": "You have unsaved changes. Do you want to continue?",
   "navigation.home": "Home",
   "navigation.employees": "Employees",
-  "navigation.employee": "Profile"
+  "navigation.employee": "Profile",
+  "breadcrumb.home": "Home",
+  "breadcrumb.employees": "Employees"
 }

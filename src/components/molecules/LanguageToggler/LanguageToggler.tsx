@@ -3,7 +3,7 @@ import * as S from "./styled";
 import { useTranslation } from "react-i18next";
 
 const LanguageToggler = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "sv" : "en";

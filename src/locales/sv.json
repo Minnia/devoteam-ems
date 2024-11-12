@@ -30,5 +30,7 @@
   "employees.details.modal.body": "Du har osparade ändringar. Vill du fortsätta?",
   "navigation.home": "Hem",
   "navigation.employees": "Anställda",
-  "navigation.employee": "Profil"
+  "navigation.employee": "Profil",
+  "breadcrumb.home": "Hem",
+  "breadcrumb.employees": "Anställda"
 }

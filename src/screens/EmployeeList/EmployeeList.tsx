@@ -41,9 +41,10 @@ const EmployeeList = () => {
       <ScreenContainer $center>
         <Spacer width={70} />
         <S.CompactTableWrapper>
-          <SearchBar searchText={searchText} setSearchText={setSearchText} />
+          <S.SearchBarWrapper>
+            <SearchBar searchText={searchText} setSearchText={setSearchText} />
+          </S.SearchBarWrapper>
           <Spacer height={8} />
-
           <Table
             dataSource={filteredEmployees}
             columns={tableColumns}

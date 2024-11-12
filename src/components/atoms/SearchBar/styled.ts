@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { SearchOutlined } from "@ant-design/icons";
 import { themes } from "../../../core/theme/theme";
 import { Input } from "antd";
@@ -11,11 +11,8 @@ export const Container = styled.div<{ hover?: boolean }>`
   box-sizing: border-box;
   border-radius: 50px;
   border: 4px solid ${themes.light.accent};
-
   padding: 5px;
-
   transition: all 0.5s;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,14 +21,19 @@ export const Container = styled.div<{ hover?: boolean }>`
   ${({ hover }) =>
     hover &&
     css`
-      width: 20%;
-      @media (min-width: ${tokens.breakpoints.tablet}px) {
-        width: 50%;
-      }
-      @media (min-width: ${tokens.breakpoints.phone}px) {
-        width: 100%;
-      }
       border: 4px solid ${themes.light.accent};
+
+      @media (max-width: ${tokens.breakpoints.tabletLarge}) {
+        width: 40%;
+      }
+
+      @media (max-width: ${tokens.breakpoints.phone}) {
+        width: 70%;
+      }
+
+      @media (min-width: ${tokens.breakpoints.laptop}) {
+        width: 20%;
+      }
     `}
 `;
 

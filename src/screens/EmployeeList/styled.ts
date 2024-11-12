@@ -20,3 +20,13 @@ export const CompactTableWrapper = styled.div`
     margin-top: 3rem;
   }
 `;
+
+export const SearchBarWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+
+  @media (max-width: ${tokens.breakpoints.phone}) {
+    justify-content: center;
+  }
+`;
