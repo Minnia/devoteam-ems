@@ -19,7 +19,7 @@ export const Content = styled.div<{
 export const Footer = styled(Typography.BodySmall)`
   margin-top: ${tokens.margin.BASELINE * 2}px;
 
-  color: #888;
+  color: ${themes.light.black};
 
   @media (max-width: ${tokens.breakpoints.phone}) {
     font-size: 0.8rem;

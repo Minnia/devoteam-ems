@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "homepage": "https://Minnia.github.io/devoteam-ems",
   "dependencies": {
     "@tanstack/react-query": "^4.36.1",
     "@testing-library/jest-dom": "^5.17.0",
@@ -33,6 +34,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build", 
+    "deploy": "gh-pages -d build",  
     "server": "json-server --watch employees.json",
     "fetchTranslations": "npx tsx src/scripts/fetchTranslations.ts",
     "employees": "npx tsx src/scripts/mockEmployees.ts"
@@ -57,6 +60,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@types/styled-system": "^5.1.23"
+    "@types/styled-system": "^5.1.23",
+    "gh-pages": "^6.2.0"
   }
 }

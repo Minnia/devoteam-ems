@@ -8,5 +8,5 @@ export const BreadcrumbContainer = styled.nav`
 `;
 
 export const Separator = styled.span`
-  margin: 0 8px;
+  margin: 0 ${tokens.margin.BASELINE}px;
 `;

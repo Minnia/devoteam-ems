@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 import { message } from "antd";
 import { Employee } from "../../../api/types";
 import useEditEmployee from "../../../api/hooks/useEditEmployee";
+import { useTranslation } from "react-i18next";
 
 const useEmployeeDetails = () => {
   const { id } = useParams();
   const { data: employee, isLoading, error, refetch } = useEmployeeById(id!);
   const { mutateAsync: editEmployee } = useEditEmployee(id!);
-
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedEmployee, setEditedEmployee] = useState(employee);

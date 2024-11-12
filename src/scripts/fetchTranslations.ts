@@ -1,4 +1,3 @@
-// src/scripts/fetchTranslations.ts
 import fs from "fs";
 import path from "path";
 
@@ -13,7 +12,6 @@ interface Translation {
 
 async function fetchTranslations() {
   try {
-    // Create output directory if it doesn't exist
     if (!fs.existsSync(OUTPUT_DIR)) {
       fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     }
@@ -27,12 +25,10 @@ async function fetchTranslations() {
 
     const translations: Translation[] = await response.json();
 
-    // Organize translations by language
     const enTranslations: { [key: string]: string } = {};
     const svTranslations: { [key: string]: string } = {};
 
     translations.forEach((item) => {
-      // Ensure the translation key is not undefined
       if (item.translation_key) {
         enTranslations[item.translation_key] = item.EN;
         svTranslations[item.translation_key] = item.SV;
@@ -43,7 +39,6 @@ async function fetchTranslations() {
       }
     });
 
-    // Write translation files
     fs.writeFileSync(
       path.join(OUTPUT_DIR, "en.json"),
       JSON.stringify(enTranslations, null, 2)

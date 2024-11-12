@@ -62,6 +62,9 @@ export const Heading1 = styled(TextBaseComponent)`
   @media (max-width: ${tokens.breakpoints.tablet}) {
     font-size: ${tokens.text.fontSize.HEADING_MEDIUM}px;
   }
+  
+  @media (max-width: ${tokens.breakpoints.tabletLarge}) {
+    font-size: ${tokens.text.fontSize.HEADING_SMALL}px;
 
   @media (max-width: ${tokens.breakpoints.phone}) {
     font-size: ${tokens.text.fontSize.MEDIUM}px;
