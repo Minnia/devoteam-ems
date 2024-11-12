@@ -44,6 +44,7 @@ If you're an admin you have all the power! Kind of, you are allowed to see all e
 - **Ant Design**: A React UI framework for building rich, interactive UIs.
 - **Styled Components**: For styling the app components with CSS-in-JS.
 - **Context API**: For managing global state (authentication, user info).
+- **JSON Server**: A simple way to set up a mock API based on a JSON file.
 - **Axios**: For making API requests (used in data fetching).
 - **TypeScript**: For statically typed JavaScript and better tooling support.
 - **Styled Components**: To implement CSS-in-JS with styled-components for scoped styling.
@@ -67,6 +68,14 @@ git clone git@github.com:Minnia/devoteam-ems.git
 3. Open a second terminal and run the script `server` (or if you'd rather run the whole script,
    `json-server --watch employees.json`)
 4. In the first terminal, run `npm run start` to get the EMS up and going
+
+### ❗️ Running JSON server❗️
+
+JSON server defaults to port 3000. If you want to run the server on a different port you need to specify this by adding it
+
+```
+json-server --watch employees.json --port 5000
+```
 
 ### Admin login 👩‍💼🧑‍💼
 
