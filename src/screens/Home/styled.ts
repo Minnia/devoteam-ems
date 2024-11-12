@@ -31,7 +31,6 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${tokens.padding.BASELINE * 2}px;
-  background-color: green;
   justify-items: center;
   align-items: flex-start;
   padding: ${tokens.padding.CONTAINER}px;
