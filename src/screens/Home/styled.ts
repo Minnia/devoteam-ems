@@ -21,6 +21,7 @@ export const CenteredContainer = styled.div`
     gap: ${tokens.padding.BASELINE * 2}px;
   }
 
+
   @media (max-width: ${tokens.breakpoints.phone}) {
     padding: ${tokens.padding.BASELINE}px 0;
     gap: ${tokens.padding.BASELINE * 2}px;
@@ -40,9 +41,15 @@ export const CardContainer = styled.div`
     gap: ${tokens.padding.BASELINE * 1.5}px;
   }
 
+  @media (max-width: ${tokens.breakpoints.tabletLarge}) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${tokens.padding.BASELINE}px;
+  }
+
   @media (max-width: ${tokens.breakpoints.phone}) {
     grid-template-columns: 1fr;
     gap: ${tokens.padding.BASELINE}px;
+    padding: 0;
   }
 `;
 
