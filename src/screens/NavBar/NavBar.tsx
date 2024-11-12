@@ -3,8 +3,13 @@ import { UserOutlined, FolderOpenOutlined } from "@ant-design/icons";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { FC } from "react";
 
-const NavBar = () => {
+type Props = {
+  setNavbarWidth: (width: number) => void;
+};
+
+const NavBar: FC<Props> = ({ setNavbarWidth }) => {
   const { logout, user } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -58,7 +63,10 @@ const NavBar = () => {
   ].filter(Boolean);
 
   return (
-    <NavigationBar onMenuClick={handleMenuClick}>
+    <NavigationBar
+      setNavbarWidth={setNavbarWidth}
+      onMenuClick={handleMenuClick}
+    >
       {navigationItems}
     </NavigationBar>
   );

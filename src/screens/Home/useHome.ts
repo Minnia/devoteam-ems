@@ -3,11 +3,14 @@ import useGetAllEmployees from "../../api/hooks/useGetAllEmployees";
 import { useAuth } from "../../context/AuthContext";
 import { generateRandomColor } from "../../utils/helpers.utils";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const useHome = () => {
   const { data: employees } = useGetAllEmployees();
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  const [navbarWidth, setNavbarWidth] = useState(window.innerWidth);
 
   const numberOfEmployees = employees?.length || 0;
 
@@ -82,6 +85,8 @@ const useHome = () => {
     user,
     navigate,
     employeeOfTheMonth,
+    navbarWidth,
+    setNavbarWidth,
   };
 };
 

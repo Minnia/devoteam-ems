@@ -38,7 +38,7 @@ export const FieldContainer = styled.div`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{ $navbarWidth?: number }>`
   margin-bottom: ${tokens.margin.BASELINE * 2.5}px;
   padding: ${tokens.padding.BASELINE}px;
 

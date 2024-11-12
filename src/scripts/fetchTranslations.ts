@@ -2,7 +2,13 @@ import fs from "fs";
 import path from "path";
 
 const SHEETDB_API = "https://sheetdb.io/api/v1/w7u9huqxtmhja";
-const OUTPUT_DIR = path.join(process.cwd(), "src", "locales");
+const OUTPUT_DIR = path.join(
+  process.cwd(),
+  "src",
+  "integrations",
+  "i18n",
+  "locales"
+);
 
 interface Translation {
   translation_key: string;

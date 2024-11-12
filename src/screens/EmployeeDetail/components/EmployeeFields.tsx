@@ -9,6 +9,7 @@ type Props = {
 };
 
 const EmployeeFields: FC<Props> = ({ employee }) => {
+  console.log("employee", employee);
   const roles = [
     employee.department.isEmployee && "Employee",
     employee.department.isManager && "Manager",

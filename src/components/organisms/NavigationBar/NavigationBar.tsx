@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as S from "./styled";
@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 interface NavigationBarProps {
   onMenuClick: (key: string) => void;
   children: React.ReactNode;
+  setNavbarWidth: (width: number) => void;
 }
 
 interface NavItemProps {
@@ -29,11 +30,26 @@ interface LogoutButtonProps {
 const NavigationBar: React.FC<NavigationBarProps> & {
   Item: React.FC<NavItemProps>;
   LogoutButton: React.FC<LogoutButtonProps>;
-} = ({ children }) => {
+} = ({ children, setNavbarWidth }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const updateWidth = () => {
+    if (ref.current) {
+      const width = ref.current.getBoundingClientRect().width;
+      setNavbarWidth(width);
+      return width;
+    }
+  };
+  useEffect(() => {
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, []);
   return (
     <>
-      <S.NavContainer>
-        <S.NavHeader></S.NavHeader>
+      <S.NavContainer ref={ref}>
+        <S.NavHeader />
         {React.Children.map(children, (child) => child)}
       </S.NavContainer>
       <Spacer width={30} />

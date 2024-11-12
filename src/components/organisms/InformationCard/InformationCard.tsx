@@ -21,7 +21,6 @@ const InformationCard: React.FC<CardProps> = ({
   style,
   footer,
   children,
-  numberOfLines,
   icon,
   onClick,
 }) => {

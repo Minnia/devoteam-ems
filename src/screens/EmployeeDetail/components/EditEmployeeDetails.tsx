@@ -33,8 +33,8 @@ const EditEmployeeDetails: FC<Props> = ({
     handleSaveClick,
     updateEmployeeField,
     handleDepartmentChange,
-    handleCancel,
     t,
+    navbarWidth,
   } = useEditEmployeeDetails(
     employee,
     handleSaveEdit,
@@ -65,17 +65,23 @@ const EditEmployeeDetails: FC<Props> = ({
     roles: (keyof typeof roleLabels)[],
     fieldPath: (keyof Employee)[]
   ) => {
-    return roles.map((role) => (
-      <S.StyledCheckbox
-        key={role}
-        checked={(editedEmployee?.[fieldPath[0]] as any)?.[role]}
-        onChange={(e) => {
-          updateEmployeeField([fieldPath[0], role], e.target.checked);
-        }}
-      >
-        {roleLabels[role]}
-      </S.StyledCheckbox>
-    ));
+    return roles.map(
+      (role) => (
+        console.log("role", editedEmployee?.[fieldPath[0]], employee),
+        (
+          <S.StyledCheckbox
+            key={role}
+            value={editedEmployee?.[fieldPath[0]]}
+            checked={(editedEmployee?.[fieldPath[0]] as any)?.[role]}
+            onChange={(e) => {
+              updateEmployeeField([fieldPath[0], role], e.target.checked);
+            }}
+          >
+            {roleLabels[role]}
+          </S.StyledCheckbox>
+        )
+      )
+    );
   };
 
   const renderAllergyCheckboxes = (
@@ -116,7 +122,7 @@ const EditEmployeeDetails: FC<Props> = ({
   if (isError) return <NotFound />;
 
   return (
-    <S.Container>
+    <S.Container $navbarWidth={navbarWidth}>
       <StyledInput label={t("globals.name")} value={employee?.name} />
       <StyledInput
         label={t("globals.email")}
@@ -134,7 +140,7 @@ const EditEmployeeDetails: FC<Props> = ({
       />
       <Label $bold>{t("globals.department")}</Label>
       <Dropdown
-        employee={employee!}
+        employee={editedEmployee!}
         handleDepartmentChange={handleDepartmentChange}
       />
       <Label $bold>{t("globals.role")}</Label>
@@ -159,7 +165,7 @@ const EditEmployeeDetails: FC<Props> = ({
         <StyledButton
           color={themes.light.backgroundLight}
           $textColor={themes.light.accent}
-          onClick={handleCancel}
+          onClick={handleCancelEdit}
         >
           {t("globals.cancel")}
         </StyledButton>

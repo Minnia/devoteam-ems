@@ -1,6 +1,7 @@
 import {
   FlexContainer,
   FullWidthContainer,
+  NavbarAwareFlexContainer,
   ScreenContainer,
   Spacer,
 } from "../../core/styled";
@@ -25,6 +26,8 @@ const Overview = () => {
     roleDistributonData,
     navigate,
     departmentData,
+    navbarWidth,
+    setNavbarWidth,
   } = useHome();
 
   const { t } = useTranslation();
@@ -33,11 +36,10 @@ const Overview = () => {
 
   return (
     <>
-      <NavBar />
-      <ScreenContainer $center>
-        <FlexContainer>
+      <NavBar setNavbarWidth={setNavbarWidth} />
+      <ScreenContainer $navbarPadding={navbarWidth} $center>
+        <NavbarAwareFlexContainer $navbarWidth={navbarWidth}>
           <FullWidthContainer>
-            <Spacer width={60} />
             <S.CenteredContainer>
               <Spacer height={20} />
               <Typography.Heading1>
@@ -75,7 +77,7 @@ const Overview = () => {
               <Breadcrumb />
             )}
           </FullWidthContainer>
-        </FlexContainer>
+        </NavbarAwareFlexContainer>
       </ScreenContainer>
     </>
   );

@@ -5,7 +5,7 @@ import { queryClient } from "../../integrations/react-query";
 const queryKey = (id: string) => ["employees", id];
 
 const queryFn = async (id: string) => {
-  if (!id) return;
+  if (!id) return null;
 
   const employee = await api.employees.getById(id);
 

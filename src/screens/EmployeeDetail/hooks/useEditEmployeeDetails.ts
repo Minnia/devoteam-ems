@@ -1,7 +1,7 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import useEditEmployee from "../../../api/hooks/useEditEmployee";
 import { Contact, Department, Employee, Food } from "../../../api/types";
-import { message, Modal } from "antd";
+import { message } from "antd";
 import { useTranslation } from "react-i18next";
 
 const useEditEmployeeDetails = (
@@ -15,15 +15,16 @@ const useEditEmployeeDetails = (
   handleCancelEdit: () => void
 ) => {
   const [editedEmployee, setEditedEmployee] = useState(employee);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [navbarWidth, setNavbarWidth] = useState(window.innerWidth);
   const { mutateAsync: editEmployee } = useEditEmployee(editedEmployee?.id);
+
+  const employeeRef = useRef(employee);
 
   const { t } = useTranslation();
 
   const handleSaveClick = async () => {
     try {
       await editEmployee(editedEmployee);
-      setHasUnsavedChanges(false);
       handleSaveEdit();
     } catch (error) {
       message.error("Error saving employee. Please try again.");
@@ -58,10 +59,6 @@ const useEditEmployeeDetails = (
           ] as any;
         }
 
-        if (value !== (originalValue as unknown as typeof value)) {
-          setHasUnsavedChanges(true);
-        }
-
         return updatedState;
       });
     },
@@ -75,25 +72,13 @@ const useEditEmployeeDetails = (
         "name",
         "department"
       );
-      setHasUnsavedChanges(true);
     },
     [handleNestedInputChange]
   );
 
   const handleCancel = () => {
-    if (hasUnsavedChanges) {
-      Modal.confirm({
-        title: t("employees.details.modal.title"),
-        content: t("employees.details.modal.body"),
-        okText: t("globals.yes"),
-        cancelText: t("globals.cancel"),
-        onOk: () => {
-          handleCancelEdit();
-        },
-      });
-    } else {
-      handleCancelEdit();
-    }
+    setEditedEmployee(employeeRef.current);
+    handleCancelEdit();
   };
 
   return {
@@ -101,8 +86,10 @@ const useEditEmployeeDetails = (
     handleSaveClick,
     updateEmployeeField,
     handleDepartmentChange,
-    hasUnsavedChanges,
     handleCancel,
+    navbarWidth,
+    setNavbarWidth,
+    setEditedEmployee,
     t,
   };
 };
