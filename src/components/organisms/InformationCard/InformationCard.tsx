@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./styled";
 import { Typography } from "../../../core/theme/typography";
 import { CardContainer } from "../../../core/styled";
+import tokens from "../../../core/theme/tokens";
 
 interface CardProps {
   title: string;
@@ -41,24 +42,15 @@ const InformationCard: React.FC<CardProps> = ({
     return footerText;
   };
 
-  const textStyle = numberOfLines
-    ? {
-        display: "-webkit-box",
-        WebkitBoxOrient: "vertical" as const,
-        overflow: "hidden",
-        WebkitLineClamp: numberOfLines,
-      }
-    : {};
-
   return (
     <CardContainer onClick={onClick} style={style} $minWidth={400}>
-      <S.Content $paddingX={20} $paddingY={10} $minWidth={220}>
+      <S.Content
+        $paddingX={tokens.padding.BASELINE * 2}
+        $paddingY={tokens.padding.BASELINE}
+        $minWidth={220}
+      >
         <Typography.Heading3>{title}</Typography.Heading3>
-        {text && (
-          <Typography.BodyMedium bold style={textStyle}>
-            {text}
-          </Typography.BodyMedium>
-        )}
+        {text && <Typography.BodyMedium bold>{text}</Typography.BodyMedium>}
         {icon && <S.StyledIcon icon={icon}>{icon}</S.StyledIcon>}
         {children}
       </S.Content>
