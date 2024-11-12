@@ -68,7 +68,7 @@ export const MessageInput = styled(Input)`
   border: 1px solid ${themes.light.borderColor};
   border-radius: ${tokens.borderRadius.BASELINE}px;
   outline: none;
-  margin-right: ${tokens.margin.BASELINE * 0.5}px;
+  margin-left: ${tokens.margin.BASELINE * 0.2}px;
   height: 2rem;
   &:focus {
     border-color: ${themes.light.accent};
@@ -105,7 +105,6 @@ export const ChatMessage = styled.div<{
 
 export const MessageContainer = styled.div<{ isUser: boolean }>`
   display: flex;
-
   justify-content: ${({ isUser }) => (isUser ? "flex-end" : "flex-start")};
 `;
 
@@ -124,6 +123,7 @@ export const SendButton = styled(SendOutlined)`
   color: ${themes.light.backgroundLight};
   border-radius: ${tokens.borderRadius.BASELINE}px;
   padding: ${tokens.padding.BASELINE}px;
+  margin-right: ${tokens.margin.BASELINE * 0.2}px;
   cursor: pointer;
   height: inherit;
   transition: background-color 0.3s ease;
