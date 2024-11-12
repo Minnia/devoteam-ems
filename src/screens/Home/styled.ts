@@ -1,22 +1,6 @@
 import styled from "styled-components";
 import tokens from "../../core/theme/tokens";
 
-export const TableContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: ${tokens.breakpoints.tablet}) {
-    flex-direction: column;
-  }
-
-  @media (max-width: ${tokens.breakpoints.phone}) {
-    flex-direction: column;
-  }
-`;
-
 export const Block = styled.div`
   display: flex;
   justify-content: center;
@@ -29,7 +13,7 @@ export const CenteredContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${tokens.gap.LARGE * 2}px;
-  padding:${tokens.padding.CONTAINER * 2}px; 0;
+  padding:${tokens.padding.CONTAINER * 2}px; 20px;
 
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
@@ -47,7 +31,7 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${tokens.padding.BASELINE * 2}px;
-
+  background-color: green;
   justify-items: center;
   align-items: flex-start;
   padding: ${tokens.padding.CONTAINER}px;
