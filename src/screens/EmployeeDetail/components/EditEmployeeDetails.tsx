@@ -65,23 +65,18 @@ const EditEmployeeDetails: FC<Props> = ({
     roles: (keyof typeof roleLabels)[],
     fieldPath: (keyof Employee)[]
   ) => {
-    return roles.map(
-      (role) => (
-        console.log("role", editedEmployee?.[fieldPath[0]], employee),
-        (
-          <S.StyledCheckbox
-            key={role}
-            value={editedEmployee?.[fieldPath[0]]}
-            checked={(editedEmployee?.[fieldPath[0]] as any)?.[role]}
-            onChange={(e) => {
-              updateEmployeeField([fieldPath[0], role], e.target.checked);
-            }}
-          >
-            {roleLabels[role]}
-          </S.StyledCheckbox>
-        )
-      )
-    );
+    return roles.map((role) => (
+      <S.StyledCheckbox
+        key={role}
+        value={editedEmployee?.[fieldPath[0]]}
+        checked={(editedEmployee?.[fieldPath[0]] as any)?.[role]}
+        onChange={(e) => {
+          updateEmployeeField([fieldPath[0], role], e.target.checked);
+        }}
+      >
+        {roleLabels[role]}
+      </S.StyledCheckbox>
+    ));
   };
 
   const renderAllergyCheckboxes = (

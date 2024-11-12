@@ -76,7 +76,6 @@ const useEmployeeDetails = () => {
     const { value } = e.target;
 
     setEditedEmployee((prev) => {
-      console.log("here");
       if (!prev) return;
 
       return {
