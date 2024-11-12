@@ -156,9 +156,9 @@ const useEmployeeList = () => {
   };
 
   const expandedRowRender = (record: Employee) => (
-    <div style={{ padding: "8px" }}>
+    <div style={{ width: 100 }}>
       <p>
-        <b>{t("globals.allergies")}:</b> {record.contact?.email || "N/A"}
+        <b>{t("globals.email")}:</b> {record.contact?.email || "N/A"}
       </p>
       <p>
         <b>{t("globals.telephone")}:</b> {record.contact?.telephone || "N/A"}
@@ -167,7 +167,7 @@ const useEmployeeList = () => {
         <b>{t("globals.preferences")}:</b> {record.food?.preference || "N/A"}
       </p>
       <p>
-        <b>{t("globals.allergies")}:</b>{" "}
+        <b>{t("globals.allergies")}:</b>
         {record.food?.allergies?.join(", ") || "None"}
       </p>
     </div>

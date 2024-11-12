@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Space, Table } from "antd";
 import { FlexContainer, ScreenContainer, Spacer } from "../../core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
@@ -39,6 +39,7 @@ const EmployeeList = () => {
         )}
       </FlexContainer>
       <ScreenContainer $center>
+        <Spacer width={70} />
         <S.CompactTableWrapper>
           <SearchBar searchText={searchText} setSearchText={setSearchText} />
           <Spacer height={8} />
@@ -52,7 +53,7 @@ const EmployeeList = () => {
                 ? {
                     expandedRowRender,
                     rowExpandable: (record) => Boolean(record.contact),
-                    expandIconColumnIndex: tableColumns.length + 1,
+                    expandIconColumnIndex: 0,
                   }
                 : undefined
             }

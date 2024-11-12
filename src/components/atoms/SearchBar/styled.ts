@@ -25,6 +25,12 @@ export const Container = styled.div<{ hover?: boolean }>`
     hover &&
     css`
       width: 20%;
+      @media (min-width: ${tokens.breakpoints.tablet}px) {
+        width: 50%;
+      }
+      @media (min-width: ${tokens.breakpoints.phone}px) {
+        width: 100%;
+      }
       border: 4px solid ${themes.light.accent};
     `}
 `;
@@ -33,14 +39,13 @@ export const SearchInput = styled(Input)<{ $showSearchInput: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
-  height: 42px;
+  height: 40px;
 
-  line-height: 16px;
   outline: 0;
   border: 0;
-  font-size: 12px;
-  border-radius: 20px;
-  padding: 0 20px;
+
+  border-radius: ${tokens.borderRadius.ROUND}px;
+  padding: 0 ${tokens.padding.BASELINE * 2.5}px;
   margin: 0;
 
   appearance: none;

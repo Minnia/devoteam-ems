@@ -36,7 +36,7 @@ const Login = () => {
       <S.LoginCard>
         <Logo height={200} />
         <Typography.Heading1 color={themes.light.accent}>
-          Welcome to Devoteam!
+          {t("globals.welcome")}
         </Typography.Heading1>
         <S.InputField
           placeholder={t("globals.email")}

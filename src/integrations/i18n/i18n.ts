@@ -1,6 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
-import * as locales from "../locales";
+import * as locales from "./locales";
 
 const translations = {
   en: locales.resources.en,
