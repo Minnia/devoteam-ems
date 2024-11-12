@@ -30,7 +30,7 @@ const useEmployeeDetails = () => {
       setEditedEmployee({
         ...employee,
         department: employee.department || {
-          name: " ",
+          name: "Sales",
           isEmployee: false,
           isManager: false,
           isAdmin: false,
