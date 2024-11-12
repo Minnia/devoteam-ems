@@ -51,7 +51,7 @@ const NavBar = () => {
         onClick={() => handleMenuClick("profile")}
         key="profile"
         icon={<UserOutlined />}
-        text={t("navigation.profile")}
+        text={t("navigation.employee")}
       />
     ),
     <NavigationBar.LogoutButton key="logout" onClick={logout} />,
