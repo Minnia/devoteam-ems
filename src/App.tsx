@@ -6,7 +6,6 @@ import EmployeeDetail from "./screens/EmployeeDetail";
 import EmployeeList from "./screens/EmployeeList";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
-import { useTranslation } from "react-i18next";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import {
@@ -15,6 +14,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import LanguageToggler from "./components/molecules/LanguageToggler";
 
 const queryClient = new QueryClient();
 
@@ -65,33 +65,12 @@ const AppRoutes = () => {
 };
 
 const App = () => {
-  const lngs: { [key in "en" | "sv"]: { nativeName: string } } = {
-    en: { nativeName: "English" },
-    sv: { nativeName: "Svenska" },
-  };
-
-  const { t, i18n } = useTranslation();
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <Router>
           <ChatBot />
-          {/* <div>
-            {Object.keys(lngs).map((lng) => (
-              <button
-                key={lng}
-                style={{
-                  fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
-                }}
-                type="submit"
-                onClick={() => i18n.changeLanguage(lng)}
-              >
-                {lngs[lng as "en" | "sv"].nativeName}
-              </button>
-            ))}
-          </div>
-          <p>{t("globals.welcome")}</p> */}
-
+          <LanguageToggler />
           <AppRoutes />
         </Router>
       </QueryClientProvider>

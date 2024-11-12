@@ -57,15 +57,15 @@ const BodySmall = styled(TextBaseComponent)`
 
 export const Heading1 = styled(TextBaseComponent)`
   font-size: ${tokens.text.fontSize.HEADING_LARGE}px;
+  ${textProps}
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    font-size: ${tokens.text.fontSize.SMALL}px;
+    font-size: ${tokens.text.fontSize.HEADING_MEDIUM}px;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    font-size: ${tokens.text.fontSize.X_SMALL}px;
+    font-size: ${tokens.text.fontSize.MEDIUM}px;
   }
-  ${textProps}
 `;
 
 const Heading2 = styled(TextBaseComponent)`
