@@ -31,6 +31,7 @@ export const CenteredContainer = styled.div`
   gap: ${tokens.gap.LARGE * 2}px;
   padding:${tokens.padding.CONTAINER * 2}px; 0;
 
+
   @media (max-width: ${tokens.breakpoints.tablet}) {
     padding: ${tokens.padding.BASELINE * 2}px 0;
     gap: ${tokens.padding.BASELINE * 2}px;
@@ -46,7 +47,7 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${tokens.padding.BASELINE * 2}px;
-  width: 100%;
+
   justify-items: center;
   align-items: flex-start;
   padding: ${tokens.padding.CONTAINER}px;
