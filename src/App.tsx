@@ -14,6 +14,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import LanguageToggler from "./components/molecules/LanguageToggler";
 
 const queryClient = new QueryClient();
 
@@ -26,7 +27,11 @@ const AppRoutes = () => {
         path="/home"
         element={
           <ProtectedRoute
-            allowedRoles={{ isAdmin: true, isManager: true, isEmployee: true }}
+            allowedRoles={{
+              isAdmin: true,
+              isManager: true,
+              isEmployee: true,
+            }}
           >
             <Home />
           </ProtectedRoute>
@@ -44,7 +49,11 @@ const AppRoutes = () => {
         path="/employees/:id"
         element={
           <ProtectedRoute
-            allowedRoles={{ isAdmin: true, isManager: true, isEmployee: true }}
+            allowedRoles={{
+              isAdmin: true,
+              isManager: true,
+              isEmployee: true,
+            }}
           >
             <EmployeeDetail />
           </ProtectedRoute>
@@ -61,6 +70,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <Router>
           <ChatBot />
+          <LanguageToggler />
           <AppRoutes />
         </Router>
       </QueryClientProvider>

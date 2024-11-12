@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import tokens from "../../components/core/theme/tokens";
+import tokens from "../../core/theme/tokens";
 
 export const TableContainer = styled.div`
   width: 100%;
@@ -10,8 +10,7 @@ export const TableContainer = styled.div`
 `;
 
 export const CompactTableWrapper = styled.div`
-  margin-top: 20px;
-  min-width: 100%;
+  margin-top: ${tokens.margin.BASELINE * 3.5}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     margin-top: 2rem;
@@ -22,14 +21,12 @@ export const CompactTableWrapper = styled.div`
   }
 `;
 
-export const SearchWrapper = styled.div`
-  width: 20%;
-
-  @media (max-width: ${tokens.breakpoints.tablet}) {
-    width: 40%;
-  }
+export const SearchBarWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    width: 100%;
+    justify-content: center;
   }
 `;

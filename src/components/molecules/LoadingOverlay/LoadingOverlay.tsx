@@ -1,5 +1,5 @@
 import { Spin } from "antd";
-import { FlexContainer } from "../../core/styled";
+import { FlexContainer } from "../../../core/styled";
 import * as S from "./styled";
 
 const LoadingOverlay = () => (

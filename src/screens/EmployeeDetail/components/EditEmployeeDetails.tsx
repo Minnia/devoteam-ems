@@ -1,8 +1,7 @@
-import { Button, Checkbox } from "antd";
 import { Employee, Food } from "../../../api/types";
 import { FC } from "react";
-import { FlexContainer, Label, Spacer } from "../../../components/core/styled";
-import tokens from "../../../components/core/theme/tokens";
+import { Label, Spacer, StyledButton } from "../../../core/styled";
+import tokens from "../../../core/theme/tokens";
 import useEditEmployeeDetails from "../hooks/useEditEmployeeDetails";
 import StyledInput from "../../../components/atoms/StyledInput";
 import useGetCompanyRolesAndAllergies from "../hooks/useGetCompanyRolesAndAllergies";
@@ -10,6 +9,7 @@ import LoadingOverlay from "../../../components/molecules/LoadingOverlay";
 import NotFound from "../../../components/molecules/NotFound";
 import Dropdown from "../../../components/organisms/Dropdown";
 import * as S from "../styled";
+import { themes } from "../../../core/theme/theme";
 
 type Props = {
   employee: Employee;
@@ -24,16 +24,23 @@ type Props = {
 
 const EditEmployeeDetails: FC<Props> = ({
   employee,
-  handleNestedInputChange,
   handleSaveEdit,
   handleCancelEdit,
+  handleNestedInputChange,
 }) => {
   const {
     editedEmployee,
     handleSaveClick,
     updateEmployeeField,
     handleDepartmentChange,
-  } = useEditEmployeeDetails(employee, handleSaveEdit, handleNestedInputChange);
+    handleCancel,
+    t,
+  } = useEditEmployeeDetails(
+    employee,
+    handleSaveEdit,
+    handleNestedInputChange,
+    handleCancelEdit
+  );
 
   const {
     roles: fetchedRoles,
@@ -110,44 +117,52 @@ const EditEmployeeDetails: FC<Props> = ({
 
   return (
     <S.Container>
-      <StyledInput label="Name" value={employee?.name} />
+      <StyledInput label={t("globals.name")} value={employee?.name} />
       <StyledInput
-        label="Email"
+        label={t("globals.email")}
         value={employee?.contact.email}
         onChange={(e) =>
           updateEmployeeField(["contact", "email"], e.target.value)
         }
       />
       <StyledInput
-        label="Telephone"
+        label={t("globals.telephone")}
         value={employee?.contact.telephone}
         onChange={(e) =>
           updateEmployeeField(["contact", "telephone"], e.target.value)
         }
       />
-      <Label $bold>Department</Label>
+      <Label $bold>{t("globals.department")}</Label>
       <Dropdown
         employee={employee!}
         handleDepartmentChange={handleDepartmentChange}
       />
-      <Label $bold>Role</Label>
+      <Label $bold>{t("globals.role")}</Label>
       <S.StyledFlexContainer>
         {renderRoleCheckboxes(roles, ["department"])}
       </S.StyledFlexContainer>
-      <Label $bold>Food Preferences</Label>
+
+      <Label $bold>{t("globals.preferences")}</Label>
       <S.StyledFlexContainer>
         {renderAllergyCheckboxes(allergies, ["food"])}
       </S.StyledFlexContainer>
       <Spacer height={20} />
       <S.StyledButtonContainer>
-        <Button
+        <StyledButton
+          color={themes.light.accent}
+          $textColor={themes.light.text}
           onClick={handleSaveClick}
-          type="primary"
           style={{ marginRight: tokens.margin.BASELINE * 1.5 }}
         >
-          Save Changes
-        </Button>
-        <Button onClick={handleCancelEdit}>Cancel</Button>
+          {t("globals.save")}
+        </StyledButton>
+        <StyledButton
+          color={themes.light.backgroundLight}
+          $textColor={themes.light.accent}
+          onClick={handleCancel}
+        >
+          {t("globals.cancel")}
+        </StyledButton>
       </S.StyledButtonContainer>
     </S.Container>
   );

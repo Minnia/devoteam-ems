@@ -51,6 +51,9 @@ const useChatbot = () => {
     if (userInput.toLowerCase().includes("thanks")) {
       return "You're welcome!";
     }
+    if (userInput.toLowerCase().includes("contact")) {
+      return `You can get in touch with us at devoteam, where you'll find all the information you need.`;
+    }
     return `You said: ${userInput}. How can I assist you further?`;
   };
 

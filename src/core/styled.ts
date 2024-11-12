@@ -1,4 +1,4 @@
-import { Typography } from "antd";
+import { Button, Typography } from "antd";
 import styled from "styled-components";
 import * as StyledSystem from "styled-system";
 import tokens from "./theme/tokens";
@@ -13,20 +13,20 @@ export const ClickableText = styled(Typography.Text)<{ link: string }>`
 `;
 
 export const FlexContainer = styled.div<{
-  spacing?: number;
-  paddingX?: number;
-  paddingY?: number;
+  $spacing?: number;
+  $paddingX?: number;
+  $paddingY?: number;
   $center?: boolean;
-  direction?: "row" | "column";
-  fullScreen?: boolean;
+  $direction?: "row" | "column";
+  $fullScreen?: boolean;
 }>`
   display: flex;
-  flex-direction: ${({ direction }) => direction || "row"};
-  gap: ${({ spacing }) => spacing || 0}px;
-  padding-top: ${({ paddingY }) => paddingY}px;
-  padding-bottom: ${({ paddingY }) => paddingY}px;
-  padding-left: ${({ paddingX }) => paddingX}px;
-  padding-right: ${({ paddingX }) => paddingX}px;
+  flex-direction: ${({ $direction }) => $direction || "row"};
+  gap: ${({ $spacing }) => $spacing || 0}px;
+  padding-top: ${({ $paddingY }) => $paddingY}px;
+  padding-bottom: ${({ $paddingY }) => $paddingY}px;
+  padding-left: ${({ $paddingX }) => $paddingX}px;
+  padding-right: ${({ $paddingX }) => $paddingX}px;
 
   ${({ $center }) =>
     $center &&
@@ -35,8 +35,8 @@ export const FlexContainer = styled.div<{
       align-items: center;
     `}
 
-  ${({ fullScreen }) =>
-    fullScreen &&
+  ${({ $fullScreen }) =>
+    $fullScreen &&
     `
       position: fixed;
       top: 0;
@@ -49,22 +49,26 @@ export const FlexContainer = styled.div<{
 `;
 
 export const ScreenContainer = styled.div<{
-  width?: number;
+  $width?: number;
   $center?: boolean;
-  horizontal?: boolean;
+  $horizontal?: boolean;
 }>`
-  ${({ width }) => (width ? `width: ${width}% ` : `width: 100%`)};
+  ${({ $width }) => ($width ? `width: ${$width}%` : `width: 100%`)};
   display: flex;
   flex-direction: row;
   justify-content: ${({ $center }) => ($center ? "center" : "flex-start")};
   align-items: ${({ $center }) => ($center ? "center" : "flex-start")};
-  overflow-x: scroll;
+  overflow-x: ${({ $horizontal }) => ($horizontal ? "auto" : "hidden")};
+  overflow-y: hidden;
 `;
 
-export const FullWidthContainer = styled.div`
+export const FullWidthContainer = styled.div<{ $direction?: "row" | "column" }>`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  flex-direction: ${({ $direction }) => $direction || "row"};
+  align-items: ${({ $direction }) =>
+    $direction === "column" ? "center" : "flex-start"};
+
   width: 100%;
 `;
 
@@ -86,6 +90,7 @@ export const CenteredContainer = styled.div`
 export const CardContainer = styled.div<{
   $center?: boolean;
   $minWidth?: number;
+  height?: number;
 }>`
   border-radius: ${tokens.borderRadius.BASELINE}px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -94,20 +99,24 @@ export const CardContainer = styled.div<{
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: ${({ height }) => (height ? `${height}px` : "auto")};
   transition: transform 0.2s ease;
+  cursor: pointer;
   min-width: ${({ $minWidth }) => ($minWidth ? `${$minWidth}px` : "600px")};
 
   @media (max-width: ${tokens.breakpoints.laptop &&
     tokens.breakpoints.tabletLarge}) {
     min-width: ${({ $minWidth }) =>
       $minWidth ? `${$minWidth * 0.8}px` : "80%"};
-    padding: ${tokens.padding.BASELINE * 1.5}px;
+    padding: ${tokens.padding.BASELINE * 0.5}px;
+    margin-left: 5rem;
   }
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
     min-width: ${({ $minWidth }) =>
-      $minWidth ? `${$minWidth * 0.6}px` : "60%"};
+      $minWidth ? `${$minWidth * 0.6}px` : "50%"};
     padding: ${tokens.padding.BASELINE}px;
+    margin-left: 2rem;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
@@ -119,6 +128,7 @@ export const CardContainer = styled.div<{
     align-items: center;
     padding: ${tokens.padding.BASELINE}px;
     margin: 0 auto;
+    margin-left: 1rem;
   }
 
   ${({ $center }) =>
@@ -134,6 +144,10 @@ export const CardContainer = styled.div<{
       align-items: center;
 
     `}
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 export const Label = styled(Typography)<{ $bold?: boolean }>`
@@ -147,5 +161,35 @@ export const Label = styled(Typography)<{ $bold?: boolean }>`
 
   @media (max-width: ${tokens.breakpoints.phone}) {
     font-size: ${tokens.text.fontSize.SMALL}px;
+  }
+`;
+
+export const InfoButton = styled(Button)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: ${tokens.text.fontSize.SMALL}px;
+  color: ${themes.light.accent};
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: blue;
+  }
+`;
+
+export const StyledButton = styled(Button)<{
+  color: string;
+  $textColor: string;
+}>`
+  background-color: ${({ color }) => color};
+  color: ${({ $textColor }) => $textColor};
+  width: 100%;
+  border: none;
+  &:hover {
+    color: ${themes.light.redHover} !important;
+    border: 1px solid ${themes.light.redHover} !important;
   }
 `;

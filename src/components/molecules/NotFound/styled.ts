@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { themes } from "../../core/theme/theme";
-import tokens from "../../core/theme/tokens";
+import { themes } from "../../../core/theme/theme";
+import tokens from "../../../core/theme/tokens";
 import { Button } from "antd";
 
 export const NotFoundContainer = styled.div`
@@ -18,4 +18,12 @@ export const NotFoundContainer = styled.div`
 export const StyledButton = styled(Button)`
   padding: 0 ${tokens.padding.BASELINE * 4}px;
   height: 48px;
+  background-color: ${themes.light.error};
+  border: none;
+  color: ${themes.light.text};
+
+  &:hover {
+    background-color: ${themes.light.error};
+    color: ${themes.light.text};
+  }
 `;

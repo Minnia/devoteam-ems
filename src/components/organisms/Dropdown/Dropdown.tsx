@@ -1,7 +1,7 @@
 import { Select } from "antd";
 import { FC } from "react";
 import { Employee } from "../../../api/types";
-import tokens from "../../core/theme/tokens";
+import tokens from "../../../core/theme/tokens";
 
 type Props = {
   employee: Employee;
@@ -14,7 +14,11 @@ const Dropdown: FC<Props> = ({ employee, handleDepartmentChange }) => {
       value={employee.department.name}
       onChange={handleDepartmentChange}
       placeholder={employee.department.name ?? "Select a department"}
-      style={{ marginBottom: tokens.margin.BASELINE * 1.5, width: "100%" }}
+      style={{
+        textAlign: "left",
+        marginBottom: tokens.margin.BASELINE * 1.5,
+        width: "100%",
+      }}
     >
       <Select.Option value="HR">HR</Select.Option>
       <Select.Option value="Engineering">Engineering</Select.Option>

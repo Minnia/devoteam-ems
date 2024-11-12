@@ -1,7 +1,7 @@
-import { Button, Input } from "antd";
+import { Input } from "antd";
 import styled from "styled-components";
-import { themes } from "../../components/core/theme/theme";
-import tokens from "../../components/core/theme/tokens";
+import { themes } from "../../core/theme/theme";
+import tokens from "../../core/theme/tokens";
 
 export const LoginContainer = styled.div`
   display: flex;
@@ -38,14 +38,6 @@ export const LoginCard = styled.div`
   @media (max-width: ${tokens.breakpoints.phone}) {
     width: 100%;
     padding: ${tokens.padding.CONTAINER}px ${tokens.padding.BASELINE * 2}px;
-  }
-`;
-
-export const LoginButton = styled(Button)`
-  width: 100%;
-  border: none;
-  &:hover {
-    background-color: ${themes.light.buttonHover};
   }
 `;
 

@@ -25,12 +25,15 @@ const brandPalette = {
   activeNavItem: "#ffffff33",
   link: "#00008b",
   buttonHover: "#1f66c1",
+  redHover: "#e03e4e",
+  inactive: "#f1f0f0",
 };
 
 type ThemeConfig = {
   accent: string;
   background: string;
   activeNavItem: string;
+  inactive: string;
   error: string;
   secondaryBackground: string;
   inputBackground: string;
@@ -42,6 +45,7 @@ type ThemeConfig = {
   textDark: string;
   black: string;
   buttonHover: string;
+  redHover: string;
 };
 
 const light: ThemeConfig = {
@@ -59,6 +63,8 @@ const light: ThemeConfig = {
   black: neutrals.black,
   activeNavItem: brandPalette.activeNavItem,
   buttonHover: brandPalette.buttonHover,
+  inactive: brandPalette.inactive,
+  redHover: brandPalette.redHover,
 };
 
 export const themes = {

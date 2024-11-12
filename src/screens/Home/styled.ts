@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import tokens from "../../components/core/theme/tokens";
+import tokens from "../../core/theme/tokens";
 
 export const TableContainer = styled.div`
   width: 100%;
@@ -28,7 +28,7 @@ export const CenteredContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: ${tokens.gap.LARGE * 2}px;
   padding:${tokens.padding.CONTAINER * 2}px; 0;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
@@ -43,21 +43,22 @@ export const CenteredContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: ${tokens.padding.BASELINE * 2}px;
-  justify-content: center;
+  width: 100%;
+  justify-items: center;
   align-items: flex-start;
-  flex-wrap: wrap;
+  padding: ${tokens.padding.CONTAINER}px;
 
   @media (max-width: ${tokens.breakpoints.tablet}) {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${tokens.padding.BASELINE * 1.5}px;
   }
 
   @media (max-width: ${tokens.breakpoints.phone}) {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: ${tokens.padding.BASELINE}px;
   }
 `;
 
