@@ -45,7 +45,7 @@ If you're an admin you have all the power! Kind of, you are allowed to see all e
 - **Styled Components**: For styling the app components with CSS-in-JS.
 - **Context API**: For managing global state (authentication, user info).
 - **JSON Server**: A simple way to set up a mock API based on a JSON file.
-- **Axios**: For making API requests (used in data fetching).
+- **React Query**: A state management system with built-in caching and automatic loading and error states.
 - **TypeScript**: For statically typed JavaScript and better tooling support.
 - **Styled Components**: To implement CSS-in-JS with styled-components for scoped styling.
 
