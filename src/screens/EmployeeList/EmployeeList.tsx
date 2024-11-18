@@ -1,4 +1,4 @@
-import { Space, Table } from "antd";
+import { Table } from "antd";
 import { FlexContainer, ScreenContainer, Spacer } from "../../core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
