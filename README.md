@@ -31,7 +31,6 @@ If you're an admin you have all the power! Kind of, you are allowed to see all e
 - **Edit Employee Details**: Admin users can edit employee information.
 - **Responsive Design**: The UI adapts for various screen sizes, including mobile, tablet, and desktop.
 - **User Authentication**: Supports user login and logout functionality.
-- **Navigation Bar**: Easy-to-use navigation with toggleable menus.
 - **Loading and Error Handling**: Displays loading overlays and error messages for a smooth user experience.
 - **Admin Controls**: Admin users can edit employee information and manage employee records.
 
