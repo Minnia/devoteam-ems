@@ -17,7 +17,6 @@ const EmployeeList = () => {
     searchText,
     setSearchText,
     error,
-    navbarWidth,
     setNavbarWidth,
   } = useEmployees();
   const { tableColumns, expandedRowRender, isExpandable } = useEmployeeList();
