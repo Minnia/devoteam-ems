@@ -67,13 +67,9 @@ const useEditEmployeeDetails = (
 
   const handleDepartmentChange = useCallback(
     (value: string) => {
-      handleNestedInputChange(
-        { target: { value } } as React.ChangeEvent<HTMLInputElement>,
-        "name",
-        "department"
-      );
+      updateEmployeeField(["department", "name"], value);
     },
-    [handleNestedInputChange]
+    [updateEmployeeField]
   );
 
   const handleCancel = () => {

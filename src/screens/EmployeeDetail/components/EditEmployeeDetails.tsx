@@ -33,6 +33,7 @@ const EditEmployeeDetails: FC<Props> = ({
     handleSaveClick,
     updateEmployeeField,
     handleDepartmentChange,
+
     t,
     navbarWidth,
   } = useEditEmployeeDetails(
@@ -135,7 +136,7 @@ const EditEmployeeDetails: FC<Props> = ({
       />
       <Label $bold>{t("globals.department")}</Label>
       <Dropdown
-        employee={editedEmployee!}
+        employee={editedEmployee}
         handleDepartmentChange={handleDepartmentChange}
       />
       <Label $bold>{t("globals.role")}</Label>
