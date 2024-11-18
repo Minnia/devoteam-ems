@@ -43,7 +43,7 @@ If you're an admin you have all the power! Kind of, you are allowed to see all e
 - **Context API**: For managing global state (authentication, user info).
 - **JSON Server**: A simple way to set up a mock API based on a JSON file.
 - **React Query**: A state management system with built-in caching and automatic loading and error states.
-- **Styled Components**: To implement CSS-in-JS with styled-components for scoped styling.
+- **Styled Components**: To implement CSS-in-JS with styled-components.
 - **i18n**: An internationalization-framework for easy localization.
 - **SheetDB**: A simple sheet database to manage translations.
 
