@@ -31,7 +31,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: ${tokens.padding.BASELINE * 2}px;
-  justify-items: center;
+  justify-content: center;
   align-items: flex-start;
   padding: ${tokens.padding.CONTAINER}px;
 

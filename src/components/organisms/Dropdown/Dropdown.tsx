@@ -15,7 +15,6 @@ const Dropdown: FC<Props> = ({ employee, handleDepartmentChange }) => {
     <Select
       value={employee.department?.name}
       onChange={handleDepartmentChange}
-      placeholder={employee.department?.name}
       style={{
         textAlign: "left",
         marginBottom: tokens.margin.BASELINE * 1.5,

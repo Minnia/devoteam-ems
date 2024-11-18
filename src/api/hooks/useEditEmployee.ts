@@ -6,43 +6,36 @@ import useEmployeeById from "./useEmployeeById";
 
 const useEditEmployee = (id: string) =>
   useMutation({
-    mutationFn: (user: Employee) => {
-      return api.employees.editEmployee(id, user);
-    },
+    mutationFn: (user: Employee) => api.employees.editEmployee(id, user),
+
     onMutate: async (newEmployee: Employee) => {
-      await queryClient.cancelQueries(useEmployeeById.queryKey(id));
+      const queryKey = useEmployeeById.queryKey(id);
+      await queryClient.cancelQueries({ queryKey });
 
-      const previousEmployee = queryClient.getQueryData<Employee>(
-        useEmployeeById.queryKey(id)
-      );
+      const previousEmployee = queryClient.getQueryData<Employee>(queryKey);
 
-      queryClient.setQueryData<Employee>(
-        useEmployeeById.queryKey(id),
-        (old) => ({
-          ...old,
-          ...newEmployee,
-        })
-      );
+      queryClient.setQueryData<Employee>(queryKey, (old) => ({
+        ...old,
+        ...newEmployee,
+      }));
 
       return { previousEmployee };
     },
+
     onError: (err, _, context) => {
+      const queryKey = useEmployeeById.queryKey(id) as [string, string];
       console.error("Mutation error:", err);
 
       if (context?.previousEmployee) {
-        queryClient.setQueryData<Employee>(
-          useEmployeeById.queryKey(id),
-          context.previousEmployee
-        );
+        queryClient.setQueryData<Employee>(queryKey, context.previousEmployee);
       }
     },
-    onSuccess: (updatedEmployee: Employee) => {
-      queryClient.setQueryData<Employee>(
-        useEmployeeById.queryKey(id),
-        updatedEmployee
-      );
 
-      queryClient.invalidateQueries(useEmployeeById.queryKey(id));
+    onSuccess: (updatedEmployee: Employee) => {
+      const queryKey = useEmployeeById.queryKey(id) as [string, string];
+      queryClient.setQueryData<Employee>(queryKey, updatedEmployee);
+
+      queryClient.invalidateQueries({ queryKey });
     },
   });
 

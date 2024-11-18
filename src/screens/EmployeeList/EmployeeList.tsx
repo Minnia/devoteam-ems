@@ -1,4 +1,4 @@
-import { Space, Table } from "antd";
+import { Table } from "antd";
 import { FlexContainer, ScreenContainer, Spacer } from "../../core/styled";
 import useEmployees from "./hooks/useEmployees";
 import useEmployeeList from "./hooks/useEmployeeList";
@@ -17,7 +17,6 @@ const EmployeeList = () => {
     searchText,
     setSearchText,
     error,
-    navbarWidth,
     setNavbarWidth,
   } = useEmployees();
   const { tableColumns, expandedRowRender, isExpandable } = useEmployeeList();
@@ -53,6 +52,7 @@ const EmployeeList = () => {
           </S.SearchBarWrapper>
           <Spacer height={8} />
           <Table
+            key={filteredEmployees.length}
             dataSource={filteredEmployees}
             columns={tableColumns}
             loading={isLoading}

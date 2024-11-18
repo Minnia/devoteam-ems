@@ -12,7 +12,6 @@ interface ColumnConfig {
   title: string;
   dataIndex: DataIndex;
   key: string;
-  width: string;
   sorter?: (a: any, b: any) => number;
   render?: (value: any, record: any) => JSX.Element;
 }
@@ -21,14 +20,12 @@ const createColumn = (
   title: string,
   dataIndex: DataIndex,
   key: string,
-  width: string,
   sorter?: ColumnConfig["sorter"],
   render?: ColumnConfig["render"]
 ): ColumnConfig => ({
   title,
   dataIndex,
   key,
-  width,
   sorter,
   render,
 });
@@ -81,7 +78,7 @@ const useEmployeeList = () => {
         t("globals.name"),
         "name",
         "name",
-        "2%",
+
         (a, b) => a.name.localeCompare(b.name),
         (name, record) => {
           const link = `/employees/${record.id}`;
@@ -92,38 +89,27 @@ const useEmployeeList = () => {
           );
         }
       ),
-      createColumn("Email", ["contact", "email"], "contact.email", "1%"),
+      createColumn("Email", ["contact", "email"], "contact.email"),
       createColumn(
         t("globals.telephone"),
         ["contact", "telephone"],
-        "contact.telephone",
-        "2%"
+        "contact.telephone"
       ),
       createColumn(
         t("globals.department"),
         ["department", "name"],
         "department",
-        "1%",
         (a, b) => a.department.name.localeCompare(b.department.name)
       ),
-      createColumn(
-        t("globals.role"),
-        ["department", "role"],
-        "role",
-        "1%",
-        (a, b) => a.department.role.localeCompare(b.department.role)
+      createColumn(t("globals.role"), ["department", "role"], "role", (a, b) =>
+        a.department.role.localeCompare(b.department.role)
       ),
-      createColumn(
-        t("globals.preferences"),
-        ["food", "preference"],
-        "food",
-        "1%"
-      ),
+      createColumn(t("globals.preferences"), ["food", "preference"], "food"),
       createColumn(
         t("globals.allergies"),
         ["food", "allergies"],
         "allergies",
-        "2%",
+
         undefined,
         (allergies) => (
           <span>{allergies?.length > 0 ? allergies.join(", ") : "None"}</span>
