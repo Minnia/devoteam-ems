@@ -52,6 +52,7 @@ const EmployeeList = () => {
           </S.SearchBarWrapper>
           <Spacer height={8} />
           <Table
+            key={filteredEmployees.length}
             dataSource={filteredEmployees}
             columns={tableColumns}
             loading={isLoading}
