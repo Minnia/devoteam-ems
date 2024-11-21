@@ -7,9 +7,13 @@ import { useTranslation } from "react-i18next";
 type Props = {
   employee: Employee;
   handleDepartmentChange: (value: string) => void;
+  options: {
+    name: string;
+    translationKey: string;
+  }[];
 };
 
-const Dropdown: FC<Props> = ({ employee, handleDepartmentChange }) => {
+const Dropdown: FC<Props> = ({ employee, handleDepartmentChange, options }) => {
   const { t } = useTranslation();
   return (
     <Select
@@ -21,15 +25,11 @@ const Dropdown: FC<Props> = ({ employee, handleDepartmentChange }) => {
         width: "100%",
       }}
     >
-      <Select.Option value="HR">{t("departments.hr")}</Select.Option>
-      <Select.Option value="Engineering">
-        {t("departments.engineering")}
-      </Select.Option>
-      <Select.Option value="Marketing">
-        {t("departments.marketing")}
-      </Select.Option>
-      <Select.Option value="Sales">{t("departments.sales")}</Select.Option>
-      <Select.Option value="Finance">{t("departments.finance")}</Select.Option>
+      {options.map((option) => (
+        <Select.Option key={option.name} value={option.translationKey}>
+          {t(`departments.${option.name.toLowerCase()}`)}
+        </Select.Option>
+      ))}
     </Select>
   );
 };

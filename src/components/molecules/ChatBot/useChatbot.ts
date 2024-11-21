@@ -1,12 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import { OpenAI } from "openai";
 
-const useChatbot = () => {
+const useChatbot = (apiKey: string) => {
+  const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [messages, setMessages] = useState<{ text: string; sender: string }[]>(
     []
   );
   const [inputValue, setInputValue] = useState("");
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  if (!apiKey) {
+    console.error("OpenAI API key is missing");
+  }
 
   useEffect(() => {
     if (chatEndRef.current) {
@@ -24,17 +32,55 @@ const useChatbot = () => {
     }
   };
 
-  const sendMessage = () => {
-    if (inputValue.trim()) {
-      setMessages((prev) => [...prev, { text: inputValue, sender: "user" }]);
+  const sendMessage = async () => {
+    if (inputValue.trim() && !isLoading) {
+      const userMessage = { text: inputValue, sender: "user" };
+      setMessages((prev) => [...prev, userMessage]);
       setInputValue("");
-      setTimeout(() => {
-        const robotResponse = generateRobotResponse(inputValue);
+      setIsLoading(true);
+      // setTimeout(() => {
+      //   const robotResponse = generateRobotResponse(inputValue);
+      //   setMessages((prev) => [
+      //     ...prev,
+      //     { text: robotResponse, sender: "robot" },
+      //   ]);
+      // }, 500);
+
+      try {
+        // Generate AI response using OpenAI
+        const completion = await openai.chat.completions.create({
+          model: "gpt-3.5-turbo",
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are a helpful assistant for Devoteam. Provide concise, professional responses.",
+            },
+            { role: "user", content: inputValue },
+          ],
+          max_completion_tokens: 150,
+        });
+
+        const robotResponse =
+          completion.choices[0].message.content ||
+          "I'm not sure how to respond to that.";
+
         setMessages((prev) => [
           ...prev,
           { text: robotResponse, sender: "robot" },
         ]);
-      }, 500);
+      } catch (error) {
+        console.error("Error generating response:", error);
+        setMessages((prev) => [
+          ...prev,
+          {
+            text: "Sorry, I'm having trouble responding right now.",
+            sender: "robot",
+          },
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -66,6 +112,7 @@ const useChatbot = () => {
     inputValue,
     setInputValue,
     chatEndRef,
+    isLoading,
   };
 };
 

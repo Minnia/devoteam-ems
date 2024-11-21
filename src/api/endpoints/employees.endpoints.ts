@@ -1,4 +1,4 @@
-import { Employee } from "../types";
+import { Employee, PaginatedResponse } from "../types";
 import { axiosClient } from "./axios-client";
 
 const employees = {
@@ -9,6 +9,18 @@ const employees = {
         return data;
       } catch (error) {
         console.error("Error fetching all employees", error);
+        throw error;
+      }
+    },
+
+    getPaginated: async (page: number, limit: number) => {
+      try {
+        const { data } = await axiosClient.get<PaginatedResponse<Employee[]>>(
+          `/employees?_page=${page}&_limit=${limit}`
+        );
+        return data;
+      } catch (error) {
+        console.error("Error fetching paginated employees", error);
         throw error;
       }
     },

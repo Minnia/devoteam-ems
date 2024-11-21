@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import useChatbot from "./useChatbot";
 import Logo from "../../atoms/Logo";
 import * as S from "./styled";
@@ -11,7 +13,8 @@ const ChatBot: React.FC = () => {
     inputValue,
     setInputValue,
     chatEndRef,
-  } = useChatbot();
+    isLoading,
+  } = useChatbot(process.env.REACT_APP_OPEN_AI_API_KEY as string);
 
   return (
     <S.ChatBotPopupContainer $isOpen={isOpen}>
@@ -24,12 +27,17 @@ const ChatBot: React.FC = () => {
           <S.ChatContent>
             <S.MessageList>
               {messages.map((msg, idx) => (
-                <S.MessageContainer key={idx} isUser={msg.sender === "user"}>
-                  <S.ChatMessage isUser={msg.sender === "user"}>
+                <S.MessageContainer key={idx} $isUser={msg.sender === "user"}>
+                  <S.ChatMessage $isUser={msg.sender === "user"}>
                     {msg.text}
                   </S.ChatMessage>
                 </S.MessageContainer>
               ))}
+              {isLoading && (
+                <S.MessageContainer $isUser={false}>
+                  <S.ChatMessage $isUser={false}>Typing...</S.ChatMessage>
+                </S.MessageContainer>
+              )}
               <div ref={chatEndRef} />
             </S.MessageList>
           </S.ChatContent>
@@ -40,8 +48,14 @@ const ChatBot: React.FC = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+              disabled={isLoading}
             />
-            <S.SendButton onClick={sendMessage}>Send</S.SendButton>
+            <S.SendButton
+              onClick={sendMessage}
+              disabled={isLoading || !inputValue.trim()}
+            >
+              Send
+            </S.SendButton>
           </S.MessageInputContainer>
         </>
       )}

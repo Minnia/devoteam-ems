@@ -18,6 +18,12 @@ const EmployeeList = () => {
     setSearchText,
     error,
     setNavbarWidth,
+    // paginatedEmployees,
+    employees,
+    // limit,
+    // page,
+    // fetchNextPage,
+    // setLimit,
   } = useEmployees();
   const { tableColumns, expandedRowRender, isExpandable } = useEmployeeList();
 
@@ -51,10 +57,19 @@ const EmployeeList = () => {
             <SearchBar searchText={searchText} setSearchText={setSearchText} />
           </S.SearchBarWrapper>
           <Spacer height={8} />
+
           <Table
             key={filteredEmployees.length}
             dataSource={filteredEmployees}
             columns={tableColumns}
+            pagination={{
+              total: employees?.length,
+              // pageSize: limit,
+
+              onChange: (page) => {
+                // fetchNextPage(page);
+              },
+            }}
             loading={isLoading}
             expandable={
               isExpandable

@@ -5,11 +5,11 @@
       "name": "Stella Wiza",
       "avatar": "https://via.placeholder.com/100x100/e1f11a/3ee87e.jpg?text=vindico%20sustineo%20volubilis",
       "contact": {
-        "email": "Brennon41@gmail.sdessdfh",
-        "telephone": "sdf1-466-919-5850 dd"
+        "email": "Brennon41@gmail.eeee",
+        "telephone": "sdf1-466-919-"
       },
       "department": {
-        "name": "Sales",
+        "name": "Marketing",
         "role": "Finance Manager",
         "isEmployee": true,
         "isManager": true,
@@ -19,12 +19,11 @@
         "preference": "Vegetarian",
         "allergies": [
           "Shellfish",
-          "Dairy",
-          "Soy"
+          "Dairy"
         ]
       },
-      "email": "Brennon41@gmail.sdessdfh",
-      "telephone": "sdf1-466-919-5850 dd",
+      "email": "Brennon41@gmail.eeee",
+      "telephone": "sdf1-466-919-",
       "isEmployee": true,
       "isManager": true,
       "isAdmin": false

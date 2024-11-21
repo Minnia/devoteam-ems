@@ -24,7 +24,6 @@
   "home.news.employees": "Number of employees",
   "employees.edit.information": "As an admin you can edit the user details, except the name, of your employees",
   "employees.edit.actions.edit": "Edit user details",
-  "test": "Employee details updated successfully.",
   "employees.details.title": "Employee details",
   "employees.details.you": "Your information",
   "employees.details.modal.title": "Unsaved changes",
@@ -38,5 +37,8 @@
   "departments.engineering": "Engineering",
   "departments.marketing": "Marketing",
   "departments.sales": "Sales",
-  "departments.finance": "Finance"
+  "departments.finance": "Finance",
+  "preferences.vegan": "Vegan",
+  "preferences.vegetarian": "Vegetarian",
+  "preferences.noneVegetarian": "None-vegetarian"
 }

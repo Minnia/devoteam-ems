@@ -1,7 +1,10 @@
+import "dotenv/config";
+
 import fs from "fs";
 import path from "path";
 
-const SHEETDB_API = "https://sheetdb.io/api/v1/w7u9huqxtmhja";
+const SHEETDB_API = process.env.REACT_APP_SHEET_DB_API as string;
+
 const OUTPUT_DIR = path.join(
   process.cwd(),
   "src",
