@@ -3,29 +3,29 @@ import { themes } from "../../../core/theme/theme";
 import { Typography } from "../../../core/theme/typography";
 import * as S from "./styled";
 import { Spacer } from "../../../core/styled";
+import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleGoHome = () => {
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <S.NotFoundContainer>
       <Typography.Heading1 style={{ color: themes.light.error }}>
-        404 - Page Not Found
+        {t("error.notFound.title")}
       </Typography.Heading1>
-      <Typography.BodyLarge>
-        Oops! It seems we couldn’t find the page you’re looking for, or
-        something went wrong while trying to load information.
-      </Typography.BodyLarge>
+      <Typography.BodyLarge>{t("error.notFound.body")}</Typography.BodyLarge>
       <Typography.BodyMedium>
-        Please check the URL, try refreshing the page, or click below to go
-        back.
+        {t("error.notFound.subText")}
       </Typography.BodyMedium>
       <Spacer height={16} />
-      <S.StyledButton onClick={handleGoHome}>Go back</S.StyledButton>
+      <S.StyledButton onClick={handleGoHome}>
+        {t("globals.back")}
+      </S.StyledButton>
     </S.NotFoundContainer>
   );
 };

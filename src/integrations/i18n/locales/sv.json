@@ -18,6 +18,7 @@
   "globals.no": "Nej",
   "globals.yes": "Ja",
   "globals.edit": "Ändra",
+  "globals.back": "Tillbaka",
   "home.news.employeeOfTheMonth": "Månadens anställda",
   "home.news.ceo": "Nyheter från VD:n",
   "home.news.departments": "Antal enheter",
@@ -40,5 +41,8 @@
   "departments.finance": "Ekonomi",
   "preferences.vegan": "Vegan",
   "preferences.vegetarian": "Vegetarian",
-  "preferences.noneVegetarian": "Ej vegetarisk"
+  "preferences.noneVegetarian": "Ej vegetarisk",
+  "error.notFound.title": "404 -Sidan Hittades Inte",
+  "error.notFound.body": "Oj! Det verkar som att vi inte kunde hitta sidan du letade efter, eller så gick något fel när vi försökte hämta informationen.",
+  "error.notFound.subText": "Kolla URLen, prova att uppdatera sidan eller tryck på knappen nedan för att gå tillbaka."
 }
