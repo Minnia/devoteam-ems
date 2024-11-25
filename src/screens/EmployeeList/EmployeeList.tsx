@@ -18,6 +18,12 @@ const EmployeeList = () => {
     setSearchText,
     error,
     setNavbarWidth,
+    // paginatedEmployees,
+    employees,
+    // limit,
+    // page,
+    // fetchNextPage,
+    // setLimit,
   } = useEmployees();
   const { tableColumns, expandedRowRender, isExpandable } = useEmployeeList();
 
@@ -45,7 +51,6 @@ const EmployeeList = () => {
         )}
       </FlexContainer>
       <ScreenContainer $center>
-        <Spacer width={70} />
         <S.CompactTableWrapper>
           <S.SearchBarWrapper>
             <SearchBar searchText={searchText} setSearchText={setSearchText} />
@@ -55,6 +60,14 @@ const EmployeeList = () => {
             key={filteredEmployees.length}
             dataSource={filteredEmployees}
             columns={tableColumns}
+            pagination={{
+              total: employees?.length,
+              // pageSize: limit,
+
+              onChange: (page) => {
+                // fetchNextPage(page);
+              },
+            }}
             loading={isLoading}
             expandable={
               isExpandable

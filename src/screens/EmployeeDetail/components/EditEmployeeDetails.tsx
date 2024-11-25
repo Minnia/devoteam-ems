@@ -7,7 +7,7 @@ import StyledInput from "../../../components/atoms/StyledInput";
 import useGetCompanyRolesAndAllergies from "../hooks/useGetCompanyRolesAndAllergies";
 import LoadingOverlay from "../../../components/molecules/LoadingOverlay";
 import NotFound from "../../../components/molecules/NotFound";
-import Dropdown from "../../../components/organisms/Dropdown";
+import Dropdown from "../../../components/molecules/Dropdown";
 import * as S from "../styled";
 import { themes } from "../../../core/theme/theme";
 
@@ -26,22 +26,16 @@ const EditEmployeeDetails: FC<Props> = ({
   employee,
   handleSaveEdit,
   handleCancelEdit,
-  handleNestedInputChange,
 }) => {
   const {
     editedEmployee,
     handleSaveClick,
     updateEmployeeField,
     handleDepartmentChange,
-
+    options,
     t,
     navbarWidth,
-  } = useEditEmployeeDetails(
-    employee,
-    handleSaveEdit,
-    handleNestedInputChange,
-    handleCancelEdit
-  );
+  } = useEditEmployeeDetails(employee, handleSaveEdit, handleCancelEdit);
 
   const {
     roles: fetchedRoles,
@@ -136,6 +130,7 @@ const EditEmployeeDetails: FC<Props> = ({
       />
       <Label $bold>{t("globals.department")}</Label>
       <Dropdown
+        options={options}
         employee={editedEmployee}
         handleDepartmentChange={handleDepartmentChange}
       />

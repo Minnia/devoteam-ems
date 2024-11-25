@@ -24,7 +24,6 @@
   "home.news.employees": "Antal anställda",
   "employees.edit.information": "Som adminanvändare kan du ändra användardetaljer, förutom namn, för dina anställlda",
   "employees.edit.actions.edit": "Ändra användaruppgifter",
-  "test": "Användaruppgifter uppdaterade.",
   "employees.details.title": "Anställds information",
   "employees.details.you": "Din information",
   "employees.details.modal.title": "Osparade ändringar",
@@ -38,5 +37,8 @@
   "departments.engineering": "Utveckling",
   "departments.marketing": "PR",
   "departments.sales": "Sälj",
-  "departments.finance": "Ekonomi"
+  "departments.finance": "Ekonomi",
+  "preferences.vegan": "Vegan",
+  "preferences.vegetarian": "Vegetarian",
+  "preferences.noneVegetarian": "Ej vegetarisk"
 }

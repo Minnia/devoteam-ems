@@ -8,7 +8,7 @@ export const ChatBotPopupContainer = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   bottom: ${tokens.margin.BASELINE}px;
   right: ${tokens.margin.BASELINE * 1.5}px;
-  width: ${({ $isOpen }) => ($isOpen ? "20rem" : `${tokens.chatBot.large}rem`)};
+  width: ${({ $isOpen }) => ($isOpen ? "18rem" : `${tokens.chatBot.large}rem`)};
   height: ${({ $isOpen }) =>
     $isOpen ? "25rem" : `${tokens.chatBot.large}rem`};
   background-color: ${themes.light.accent};
@@ -80,21 +80,21 @@ export const StyledSpan = styled.span`
 `;
 
 export const ChatMessage = styled.div<{
-  isUser: boolean;
+  $isUser: boolean;
   fontWeight?: boolean;
 }>`
   font-weight: ${({ fontWeight }) => (fontWeight ? "bold" : "normal")};
-  background: ${({ isUser }) =>
-    isUser ? themes.light.accent : themes.light.inactive};
-  color: ${({ isUser }) =>
-    isUser ? themes.light.backgroundLight : themes.light.textDark};
+  background: ${({ $isUser }) =>
+    $isUser ? themes.light.accent : themes.light.inactive};
+  color: ${({ $isUser }) =>
+    $isUser ? themes.light.backgroundLight : themes.light.textDark};
   padding: ${tokens.padding.BASELINE}px;
   border-radius: ${tokens.borderRadius.BASELINE * 2}px;
   max-width: 75%;
   font-size: ${tokens.text.fontSize.SMALL}px;
 
-  ${({ isUser }) =>
-    isUser
+  ${({ $isUser }) =>
+    $isUser
       ? css`
           border-bottom-right-radius: 0;
         `
@@ -103,9 +103,9 @@ export const ChatMessage = styled.div<{
         `}
 `;
 
-export const MessageContainer = styled.div<{ isUser: boolean }>`
+export const MessageContainer = styled.div<{ $isUser: boolean }>`
   display: flex;
-  justify-content: ${({ isUser }) => (isUser ? "flex-end" : "flex-start")};
+  justify-content: ${({ $isUser }) => ($isUser ? "flex-end" : "flex-start")};
 `;
 
 export const MessageInputContainer = styled.div`

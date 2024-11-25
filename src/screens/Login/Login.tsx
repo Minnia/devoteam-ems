@@ -13,12 +13,16 @@ import { useTranslation } from "react-i18next";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
   const { login, user } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const handleLoginClick = () => {
+    setIsLoggingIn(true);
     const isLoginSuccessful = login(email, password);
+    setIsLoggingIn(false);
 
     if (!isLoginSuccessful) {
       message.error("Invalid email or password. Please try again.");
@@ -56,6 +60,7 @@ const Login = () => {
           disabled={!email || !password}
           onClick={handleLoginClick}
           tabIndex={0}
+          loading={isLoggingIn}
         >
           {t("globals.login")}
         </StyledButton>

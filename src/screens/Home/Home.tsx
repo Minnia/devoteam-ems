@@ -50,7 +50,6 @@ const Overview = () => {
                   numberOfLines={1}
                   title={t("home.news.employees")}
                   text={numberOfEmployees}
-                  footer={join(roleDistributonData.map((data) => data.title))}
                 />
                 <InformationCard
                   onClick={() =>
