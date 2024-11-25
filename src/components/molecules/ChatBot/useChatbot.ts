@@ -1,8 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { OpenAI } from "openai";
 
-const useChatbot = (apiKey: string) => {
-  const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
+const useChatbot = (
+  apiKey: string,
+  projectId: string,
+  organization: string
+) => {
+  const openai = new OpenAI({
+    organization,
+    project: projectId,
+    apiKey,
+    dangerouslyAllowBrowser: true,
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,16 +48,8 @@ const useChatbot = (apiKey: string) => {
       setMessages((prev) => [...prev, userMessage]);
       setInputValue("");
       setIsLoading(true);
-      // setTimeout(() => {
-      //   const robotResponse = generateRobotResponse(inputValue);
-      //   setMessages((prev) => [
-      //     ...prev,
-      //     { text: robotResponse, sender: "robot" },
-      //   ]);
-      // }, 500);
 
       try {
-        // Generate AI response using OpenAI
         const completion = await openai.chat.completions.create({
           model: "gpt-3.5-turbo",
           messages: [

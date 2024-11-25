@@ -1,5 +1,3 @@
-import "dotenv/config";
-
 import useChatbot from "./useChatbot";
 import Logo from "../../atoms/Logo";
 import * as S from "./styled";
@@ -14,7 +12,11 @@ const ChatBot: React.FC = () => {
     setInputValue,
     chatEndRef,
     isLoading,
-  } = useChatbot(process.env.REACT_APP_OPEN_AI_API_KEY as string);
+  } = useChatbot(
+    process.env.REACT_APP_OPEN_AI_API_KEY as string,
+    process.env.REACT_APP_OPEN_AI_PROJECT_ID as string,
+    process.env.REACT_APP_OPEN_AI_ORGANIZATION as string
+  );
 
   return (
     <S.ChatBotPopupContainer $isOpen={isOpen}>

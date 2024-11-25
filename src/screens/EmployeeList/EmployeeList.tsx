@@ -51,13 +51,11 @@ const EmployeeList = () => {
         )}
       </FlexContainer>
       <ScreenContainer $center>
-        <Spacer width={70} />
         <S.CompactTableWrapper>
           <S.SearchBarWrapper>
             <SearchBar searchText={searchText} setSearchText={setSearchText} />
           </S.SearchBarWrapper>
           <Spacer height={8} />
-
           <Table
             key={filteredEmployees.length}
             dataSource={filteredEmployees}
