@@ -14,7 +14,7 @@ const useEditEmployeeDetails = (
   const [navbarWidth, setNavbarWidth] = useState(window.innerWidth);
   const { mutateAsync: editEmployee } = useEditEmployee(editedEmployee?.id);
 
-  const { refetch } = useEmployeeById(editedEmployee.id);
+  const { refetch } = useEmployeeById(editedEmployee?.id);
 
   const employeeRef = useRef(employee);
 
