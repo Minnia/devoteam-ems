@@ -86,27 +86,7 @@ const useChatbot = (
     }
   };
 
-  const generateRobotResponse = (userInput: string) => {
-    if (userInput.toLowerCase().includes("hello")) {
-      return "Hi! How can I assist you today?";
-    }
-    if (userInput.toLowerCase().includes("fire")) {
-      return "I understand! Who would you like to fire?";
-    }
-    if (userInput.toLowerCase().includes("help")) {
-      return "Sure! What do you need help with?";
-    }
-    if (userInput.toLowerCase().includes("thanks")) {
-      return "You're welcome!";
-    }
-    if (userInput.toLowerCase().includes("contact")) {
-      return `You can get in touch with us at devoteam, where you'll find all the information you need.`;
-    }
-    return `You said: ${userInput}. How can I assist you further?`;
-  };
-
   return {
-    generateRobotResponse,
     sendMessage,
     toggleChat,
     isOpen,

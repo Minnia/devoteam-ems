@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import tokens from "../../core/theme/tokens";
-import { FlexContainer } from "../../core/styled";
 
 export const Block = styled.div`
   display: flex;
