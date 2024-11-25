@@ -6,6 +6,7 @@ import EmployeeDetail from "./screens/EmployeeDetail";
 import EmployeeList from "./screens/EmployeeList";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
+import { ErrorBoundary } from "react-error-boundary";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import {
@@ -13,15 +14,30 @@ import {
   Route,
   Routes,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import LanguageToggler from "./components/molecules/LanguageToggler";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
 const AppRoutes = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== "/login") {
+      localStorage.setItem("lastPath", location.pathname);
+    }
+  }, [location]);
+
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" replace />} />
+      <Route
+        path="/"
+        element={
+          <Navigate to={localStorage.getItem("lastPath") || "/home"} replace />
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route
         path="/home"
@@ -66,15 +82,17 @@ const AppRoutes = () => {
 
 const App = () => {
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <ChatBot />
-          <LanguageToggler />
-          <AppRoutes />
-        </Router>
-      </QueryClientProvider>
-    </AuthProvider>
+    <ErrorBoundary FallbackComponent={NotFound}>
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <ChatBot />
+            <LanguageToggler />
+            <AppRoutes />
+          </Router>
+        </QueryClientProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 };
 
