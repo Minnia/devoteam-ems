@@ -3,6 +3,7 @@ import { FC } from "react";
 import { Employee } from "../../../api/types";
 import tokens from "../../../core/theme/tokens";
 import { useTranslation } from "react-i18next";
+import LoadingOverlay from "../../molecules/LoadingOverlay";
 
 type Props = {
   employee: Employee;
@@ -11,6 +12,7 @@ type Props = {
 
 const Dropdown: FC<Props> = ({ employee, handleDepartmentChange }) => {
   const { t } = useTranslation();
+  if (!employee.department) return <LoadingOverlay />;
   return (
     <Select
       value={employee.department?.name}
